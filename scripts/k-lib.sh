@@ -52,36 +52,38 @@
       fi
 
    }
-readarray -t newtcols < /etc/newt/palette
+function k-colors-normal {
+	readarray -t newtcols < /etc/newt/palette
 
-cols_error=(
-   window=,red
-   border=white,red
-   textbox=white,red
-   button=black,white
-)
-colors_normal=(
-	root=white,lightgrey
-	border=red,red
-	checkbox=,black
-	entry=,black
-	label=black,
-	actlistbox=,black
-	helpline=,black
-	roottext=,black
-	emptyscale=black
-	disabledentry=black,
-	checkbox=,black
-	entry=,black
-	label=black,
-	actlistbox=,black
-	helpline=,black
-	roottext=,black
-	emptyscale=black
-	disabledentry=black,
-)
-NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
-
+	cols_error=(
+	   window=,red
+	   border=white,red
+	   textbox=white,red
+	   button=black,white
+	)
+	colors_normal=(
+		root=white,lightgrey
+		border=red,red
+		checkbox=,black
+		entry=,black
+		label=black,
+		actlistbox=,black
+		helpline=,black
+		roottext=,black
+		emptyscale=black
+		disabledentry=black,
+		checkbox=,black
+		entry=,black
+		label=black,
+		actlistbox=,black
+		helpline=,black
+		roottext=,black
+		emptyscale=black
+		disabledentry=black,
+	)
+	NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
+	echo $NEWT_COLORS_NORMAL
+}
    function k-list-menu {
          title="$2"
          option_list="$1"
@@ -108,7 +110,7 @@ NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
          display_msg="[$total_displayed of $total_elements displayed] Use Up/Down arrows to scroll"
          width=60
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
-         command_string="NEWT_COLORS=$NEWT_COLORS_NORMAL whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3"
+         command_string="NEWT_COLORS=$(k-colors-normal) whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3"
          #echo $command_string
          menu_selection=$(eval NEWT_COLORS=$NEWT_COLORS_NORMAL whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
