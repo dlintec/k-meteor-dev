@@ -55,7 +55,7 @@
 function k-colors {
 	colors_normal=(
 		root=white,lightgrey
-		border=blue,blue
+		border=red,red
 		checkbox=,black
 		entry=,black
 		label=black,
@@ -83,7 +83,7 @@ function k-colors {
 
 			colors_red=(
 			   window=,red
-			   border=white,red
+			   border=red,red
 			   textbox=white,red
 			   button=black,white
 			)
@@ -94,7 +94,7 @@ function k-colors {
 		blue) #exit
 
 			colors_blue=(
-			   window=,blue
+			   window=white,blue
 			   border=blue,blue
 			   textbox=,black
 			   button=black,white
