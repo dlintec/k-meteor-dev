@@ -47,35 +47,7 @@ else
 	while [ "$exit_menu" != 1 ]; do
 		current_app=$(kalan-var "CURRENT_APP")
 
-readarray -t newtcols < /etc/newt/palette
 
-cols_error=(
-   window=,red
-   border=white,red
-   textbox=white,red
-   button=black,white
-)
-colors_normal=(
-root=white,lightgrey
-border=blue,blue
-checkbox=,black
-entry=,black
-label=black,
-actlistbox=,black
-helpline=,black
-roottext=,black
-emptyscale=black
-disabledentry=black,
-checkbox=,black
-entry=,black
-label=black,
-actlistbox=,black
-helpline=,black
-roottext=,black
-emptyscale=black
-disabledentry=black,
-)
-NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
 
 		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
