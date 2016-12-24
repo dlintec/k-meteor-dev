@@ -52,7 +52,36 @@
       fi
 
    }
-   
+readarray -t newtcols < /etc/newt/palette
+
+cols_error=(
+   window=,red
+   border=white,red
+   textbox=white,red
+   button=black,white
+)
+colors_normal=(
+	root=white,lightgrey
+	border=red,red
+	checkbox=,black
+	entry=,black
+	label=black,
+	actlistbox=,black
+	helpline=,black
+	roottext=,black
+	emptyscale=black
+	disabledentry=black,
+	checkbox=,black
+	entry=,black
+	label=black,
+	actlistbox=,black
+	helpline=,black
+	roottext=,black
+	emptyscale=black
+	disabledentry=black,
+)
+NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
+
    function k-list-menu {
          title="$2"
          option_list="$1"
@@ -90,33 +119,4 @@
             echo "$selection" 
          fi
    }          
-   		readarray -t newtcols < /etc/newt/palette
-
-		cols_error=(
-		   window=,red
-		   border=white,red
-		   textbox=white,red
-		   button=black,white
-		)
-		colors_normal=(
-		root=white,lightgrey
-		border=red,red
-		checkbox=,black
-		entry=,black
-		label=black,
-		actlistbox=,black
-		helpline=,black
-		roottext=,black
-		emptyscale=black
-		disabledentry=black,
-		checkbox=,black
-		entry=,black
-		label=black,
-		actlistbox=,black
-		helpline=,black
-		roottext=,black
-		emptyscale=black
-		disabledentry=black,
-		)
-		NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
-
+   
