@@ -147,7 +147,9 @@ function k-colors {
          width=60
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg $color_palette'"
          #echo $command_string
-         menu_selection=$(eval NEWT_COLORS="$(k-colors $color_palette)" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
+	 colors_used="$(k-colors  $color_palette)"
+         echo $colors_used > /etc/newt/palette
+         menu_selection=$(eval whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
          exitstatus=$?
 
