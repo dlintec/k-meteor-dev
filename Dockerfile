@@ -36,7 +36,7 @@ chmod -R +x $LOCAL_IMAGE_PATH/scripts/
 RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
 USER root
 RUN chown -Rh meteor /usr/local && \
-chown -Rh meteor /etc/newt/palette
+chown -Rh meteor /etc/newt
 USER meteor 
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
