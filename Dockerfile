@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 
 RUN apt-get update && \
 apt-get -y dist-upgrade && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential dialog whiptail
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano vi
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 && \
 useradd -mUd /home/meteor meteor && \
