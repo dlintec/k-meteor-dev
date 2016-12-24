@@ -81,26 +81,26 @@ function k-colors {
 	case "$palete_name" in
 		red) #exit
 
-			colors_palette=(
+			colors_red=(
 			   window=,red
 			   border=white,red
 			   textbox=white,red
 			   button=black,white
 			)
 
-			colors_palette="${colors_normal[@]} ${colors_palette[@]}" 		
+			colors_palette="${colors_normal[@]} ${colors_red[@]}" 		
 			break
 		;;
 		blue) #exit
 
-			colors_palette=(
+			colors_blue=(
 			   window=,blue
 			   border=blue,blue
 			   textbox=,black
 			   button=black,white
 			)
 
-			colors_palette="${colors_normal[@]} ${colors_palette[@]}" 		
+			colors_palette="${colors_normal[@]} ${colors_blue[@]}" 		
 			break
 		;;
 	esac
