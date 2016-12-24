@@ -81,8 +81,11 @@ function k-colors-normal {
 		emptyscale=black
 		disabledentry=black,
 	)
+	for var in "${colors_normal[@]}"
+	  echo $var
+	done
 	NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
-	echo $NEWT_COLORS_NORMAL
+
 }
    function k-list-menu {
          title="$2"
