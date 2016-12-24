@@ -79,6 +79,9 @@ function k-colors {
 	fi
 	colors_palette=( "${colors_normal[@]}" )
 	case "$palete_name" in
+		normal)
+			colors_palette=( "${colors_normal[@]}" )	
+			break
 		red) #exit
 
 			colors_red=(
@@ -88,7 +91,7 @@ function k-colors {
 			   button=black,white
 			)
 
-			colors_palette="${colors_normal[@]} ${colors_red[@]}" 		
+			colors_palette="${colors_red[@]}" 		
 			break
 		;;
 		blue) #exit
@@ -100,7 +103,7 @@ function k-colors {
 			   button=black,white
 			)
 
-			colors_palette="${colors_normal[@]} ${colors_blue[@]}" 		
+			colors_palette="${colors_blue[@]}" 		
 			break
 		;;
 	esac
