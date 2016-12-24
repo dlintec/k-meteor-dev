@@ -145,7 +145,7 @@ function k-colors {
          total_displayed=$(($total_elements<10?$total_elements:10))
          display_msg="[$total_displayed of $total_elements displayed] Use Up/Down arrows to scroll"
          width=60
-         title_string="--title '$title' --menu '\n  $param\n \n $display_msg $color_palette'"
+         title_string="--title ' $title ' --menu '\n  $param\n \n $display_msg'"
          #echo $command_string
 	 colors_used="$(k-colors  $color_palette)"
          echo $colors_used > /etc/newt/palette
