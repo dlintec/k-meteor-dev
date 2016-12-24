@@ -77,9 +77,18 @@ function k-colors {
 	if [ -z "$palette_name" ];then
 	  palete_name="normal"
 	fi
+	colors_palette=( "${colors_normal[@]}" )
 	case "$OPTIONS" in
-		normal) #exit
-			((colors_palette=colors_normal))
+		red) #exit
+
+			newtcols_error=(
+			   window=,red
+			   border=white,red
+			   textbox=white,red
+			   button=black,white
+			)
+
+			colors_palette="${colors_normal[@]} ${newtcols_error[@]}" 		
 			break
 		;;
 	esac
