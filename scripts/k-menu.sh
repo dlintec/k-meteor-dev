@@ -55,10 +55,29 @@ newtcols_error=(
    textbox=white,red
    button=black,white
 )
+colors_normal=(
+root=,gray
+checkbox=,magenta
+entry=,magenta
+label=magenta,
+actlistbox=,magenta
+helpline=,magenta
+roottext=,magenta
+emptyscale=magenta
+disabledentry=magenta,
+root=,magenta
+checkbox=,magenta
+entry=,magenta
+label=magenta,
+actlistbox=,magenta
+helpline=,magenta
+roottext=,magenta
+emptyscale=magenta
+disabledentry=magenta,
+)
+NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
 
-NEWT_COLORS_RED="${newtcols[@]} ${newtcols_error[@]}";
-
-		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_RED" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
+		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
 		 25 60 9 \
 		"1" "Select app" \
