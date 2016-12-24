@@ -145,7 +145,7 @@ function k-colors {
          total_displayed=$(($total_elements<10?$total_elements:10))
          display_msg="[$total_displayed of $total_elements displayed] Use Up/Down arrows to scroll"
          width=60
-         title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
+         title_string="--title '$title' --menu '\n  $param\n \n $display_msg $color_palette'"
          #echo $command_string
          menu_selection=$(eval NEWT_COLORS="$(k-colors $color_palette)" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
