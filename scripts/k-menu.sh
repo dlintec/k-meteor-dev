@@ -57,7 +57,6 @@ newtcols_error=(
 )
 
 NEWT_COLORS_RED="${newtcols[@]} ${newtcols_error[@]}";
-whiptail --msgbox "passwords don't match" 0 0
 
 		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_RED" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
