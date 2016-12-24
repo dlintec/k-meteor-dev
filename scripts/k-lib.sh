@@ -52,15 +52,7 @@
       fi
 
    }
-function k-colors-normal {
-	readarray -t newtcols < /etc/newt/palette
-
-	cols_error=(
-	   window=,red
-	   border=white,red
-	   textbox=white,red
-	   button=black,white
-	)
+function k-colors {
 	colors_normal=(
 		root=white,lightgrey
 		border=red,red
@@ -81,17 +73,32 @@ function k-colors-normal {
 		emptyscale=black
 		disabledentry=black,
 	)
-	for var in "${colors_normal[@]}"
+        palette_name="$1"
+	if [ -z "$palette_name" ];then
+	  palete_name="normal"
+	fi
+	case "$OPTIONS" in
+		normal) #exit
+			((colors_palette=colors_normal))
+			break
+		;;
+	esac
+
+	for var in "${colors_palette[@]}"
 	do
 	  echo "${var}"
 	done
-	NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
+
 
 }
    function k-list-menu {
          title="$2"
          option_list="$1"
          param="$3"
+	 color_palette="$4"
+	 if [ -z "$color_palette" ];then
+	 	color_palete="normal"
+	fi
          total_elements=0
          if [ -z "$title" ];then
             title="Option"
@@ -115,7 +122,7 @@ function k-colors-normal {
          width=60
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
          #echo $command_string
-         menu_selection=$(eval whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
+         menu_selection=$(eval NEWT_COLORS="$()" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
          exitstatus=$?
 
