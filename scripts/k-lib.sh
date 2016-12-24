@@ -81,14 +81,26 @@ function k-colors {
 	case "$OPTIONS" in
 		red) #exit
 
-			newtcols_error=(
+			colors_palette=(
 			   window=,red
 			   border=white,red
 			   textbox=white,red
 			   button=black,white
 			)
 
-			colors_palette="${colors_normal[@]} ${newtcols_error[@]}" 		
+			colors_palette="${colors_normal[@]} ${colors_palette[@]}" 		
+			break
+		;;
+		blue) #exit
+
+			colors_palette=(
+			   window=,blue
+			   border=blue,blue
+			   textbox=,black
+			   button=black,white
+			)
+
+			colors_palette="${colors_normal[@]} ${colors_palette[@]}" 		
 			break
 		;;
 	esac
