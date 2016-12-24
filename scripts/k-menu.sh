@@ -65,7 +65,6 @@ helpline=,black
 roottext=,black
 emptyscale=black
 disabledentry=black,
-root=,black
 checkbox=,black
 entry=,black
 label=black,
