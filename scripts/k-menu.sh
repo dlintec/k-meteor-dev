@@ -47,10 +47,10 @@ else
         exit_menu=0
 	while [ "$exit_menu" != 1 ]; do
 		current_app=$(kalan-var "CURRENT_APP")
-
+                echo "root=,black" >> /etc/newt/palette
 		 for elem in $colors_normal ; do
 		     #echo "Checking $line"
-		     echo "$elem" >> /etc/newt/palette
+		     echo "$elem" > /etc/newt/palette
 		done
 
 		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
