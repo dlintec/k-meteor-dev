@@ -82,6 +82,7 @@ function k-colors {
 		normal)
 			colors_palette=( "${colors_normal[@]}" )	
 			break
+		;;
 		red) #exit
 
 			colors_red=(
