@@ -111,7 +111,7 @@ function k-colors {
 
 	for var in "${colors_palette[@]}"
 	do
-	  echo "${var}\n"
+	  echo "${var}"
 	done
 
 
