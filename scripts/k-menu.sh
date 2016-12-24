@@ -49,8 +49,8 @@ else
 		current_app=$(kalan-var "CURRENT_APP")
  		colors_normal="$(k-colors-normal)"
                 echo $colors_normal > /etc/newt/palette
-
-		OPTIONS=$(NEWT_COLORS="$colors_normal" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
+		#NEWT_COLORS="$colors_normal" 
+		OPTIONS=$(whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
 		 25 60 9 \
 		"1" "Select app" \
