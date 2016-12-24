@@ -79,7 +79,7 @@
          display_msg="[$total_displayed of $total_elements displayed] Use Up/Down arrows to scroll"
          width=60
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
-         command_string="whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3"
+         command_string="NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3"
          #echo $command_string
          OPTIONS=$(eval $command_string)
 
