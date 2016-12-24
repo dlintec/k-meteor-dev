@@ -50,7 +50,7 @@ else
 
 		 for elem in $colors_normal ; do
 		     #echo "Checking $line"
-		     echo "$elem"
+		     echo "$elem" >> /etc/newt/palette
 		done
 
 		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
