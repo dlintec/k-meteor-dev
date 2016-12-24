@@ -73,7 +73,7 @@ else
 				;;
        				1) #select app
 					
-					selected_app=$(k-list-menu "$(k ps)" "Application" "Select default app for all meteor commands")
+					selected_app=$(k-list-menu "$(k ps)" "Application" "Select default app for all meteor commands" "red")
 					if [ ! -z "$selected_app" ];then
 						k use $selected_app
 						cd /opt/application/$selected_app/app
@@ -132,7 +132,7 @@ else
 				;;
 				6) #settings
 				    settings_string=$(cat ~/.$GIT_IMAGE.cfg)
-					selected_setting=$(k-list-menu "$settings_string" "SETTINGS" "Select config variable to edit")
+					selected_setting=$(k-list-menu "$settings_string" "SETTINGS" "Select config variable to edit" "red")
 					if [ ! -z "$selected_setting" ];then
 						IFS='=' read -ra value_pairs <<< "$selected_setting"    #Convert string to array
 						pair_name="${value_pairs[0]}"
