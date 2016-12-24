@@ -57,7 +57,7 @@ cols_error=(
 )
 colors_normal=(
 root=,blue
-border=grey,white
+border=blue,blue
 checkbox=,black
 entry=,black
 label=black,
