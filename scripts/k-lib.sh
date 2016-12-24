@@ -78,7 +78,7 @@ function k-colors {
 	  palete_name="normal"
 	fi
 	colors_palette=( "${colors_normal[@]}" )
-	case "$OPTIONS" in
+	case "$palete_name" in
 		red) #exit
 
 			colors_palette=(
