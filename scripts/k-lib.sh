@@ -82,6 +82,7 @@ function k-colors-normal {
 		disabledentry=black,
 	)
 	for var in "${colors_normal[@]}"
+	do
 	  echo "${var}"
 	done
 	NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
