@@ -46,13 +46,20 @@ else
         exit_menu=0
 	while [ "$exit_menu" != 1 ]; do
 		current_app=$(kalan-var "CURRENT_APP")
-		NEWT_COLORS='
-  window=,red
-  border=white,red
-  textbox=white,red
-  button=black,white
-' 
-		OPTIONS=$(whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
+
+readarray -t newtcols < /etc/newt/palette
+
+newtcols_error=(
+   window=,red
+   border=white,red
+   textbox=white,red
+   button=black,white
+)
+
+NEWT_COLORS_RED="${newtcols[@]} ${newtcols_error[@]}";
+whiptail --msgbox "passwords don't match" 0 0
+
+		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_RED" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
 		 25 60 9 \
 		"1" "Select app" \
