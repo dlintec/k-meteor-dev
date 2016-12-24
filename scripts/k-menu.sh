@@ -53,7 +53,7 @@ else
 		     echo "$elem" > /etc/newt/palette
 		done
 
-		OPTIONS=$(NEWT_COLORS="$NEWT_COLORS_NORMAL" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
+		OPTIONS=$(NEWT_COLORS="$(k-colors-normal)" whiptail --title "Kalan $GIT_IMAGE v1.0.2c" \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
 		 25 60 9 \
 		"1" "Select app" \
