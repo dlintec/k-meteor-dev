@@ -56,7 +56,8 @@ cols_error=(
    button=black,white
 )
 colors_normal=(
-root=,grey
+root=,blue
+border=white,white
 checkbox=,black
 entry=,black
 label=black,
