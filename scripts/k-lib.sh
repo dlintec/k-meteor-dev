@@ -110,12 +110,12 @@ NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
          command_string="NEWT_COLORS=$NEWT_COLORS_NORMAL whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3"
          #echo $command_string
-         OPTIONS=$(eval $command_string)
+         menu_selection=$(NEWT_COLORS=$NEWT_COLORS_NORMAL whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
          exitstatus=$?
 
          if [ $exitstatus = 0 ]; then
-            selection=${elementarray[$OPTIONS]}
+            selection=${elementarray[$menu_selection]}
             echo "$selection" 
          fi
    }          
