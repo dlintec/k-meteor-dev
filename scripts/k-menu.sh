@@ -49,31 +49,31 @@ else
 
 readarray -t newtcols < /etc/newt/palette
 
-newtcols_error=(
+cols_error=(
    window=,red
    border=white,red
    textbox=white,red
    button=black,white
 )
 colors_normal=(
-root=,gray
-checkbox=,magenta
-entry=,magenta
-label=magenta,
-actlistbox=,magenta
-helpline=,magenta
-roottext=,magenta
-emptyscale=magenta
-disabledentry=magenta,
-root=,magenta
-checkbox=,magenta
-entry=,magenta
-label=magenta,
-actlistbox=,magenta
-helpline=,magenta
-roottext=,magenta
-emptyscale=magenta
-disabledentry=magenta,
+root=,black
+checkbox=,black
+entry=,black
+label=black,
+actlistbox=,black
+helpline=,black
+roottext=,black
+emptyscale=black
+disabledentry=black,
+root=,black
+checkbox=,black
+entry=,black
+label=black,
+actlistbox=,black
+helpline=,black
+roottext=,black
+emptyscale=black
+disabledentry=black,
 )
 NEWT_COLORS_NORMAL="${newtcols[@]} ${colors_normal[@]}";
 
