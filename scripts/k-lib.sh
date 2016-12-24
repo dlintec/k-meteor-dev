@@ -106,7 +106,7 @@ function k-colors {
          param="$3"
 	 color_palette="$4"
 	 if [ -z "$color_palette" ];then
-	 	color_palete="normal"
+	 	color_palette="normal"
 	fi
          total_elements=0
          if [ -z "$title" ];then
@@ -131,7 +131,7 @@ function k-colors {
          width=60
          title_string="--title '$title' --menu '\n  $param\n \n $display_msg'"
          #echo $command_string
-         menu_selection=$(eval NEWT_COLORS="$()" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
+         menu_selection=$(eval NEWT_COLORS="$(k-colors $color_palette)" whiptail $title_string $height $width $total_elements $menu_elements 3>&1 1>&2 2>&3)
 
          exitstatus=$?
 
