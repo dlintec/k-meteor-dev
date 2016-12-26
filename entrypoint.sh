@@ -55,11 +55,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
 
    if [ -z $APP_TEMPLATE ]; then
       cd /opt/application/
-      echo "Creating new app $APP_NAME"
+      echo "Creating new app $APP_NAME (maka create)"
       #mkdir -p /opt/application/$APP_NAME
       cd /opt/application
-      meteor maka create app
-      cd /opt/application/$APP_NAME/app
+      meteor maka create "$APP_NAME"
+      cd /opt/application/$APP_NAME
       if [[ -d "$APP_LOCALDB" ]];then
         echo "Cleaning Existing LOCALDB folder..."
         rm -rf $APP_LOCALDB
@@ -70,6 +70,9 @@ if [ ! -d /opt/application/$APP_NAME ];then
          echo "Copy generated local to $APP_LOCALDB..."
          cp -ar /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
          mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
+      fi
+      if [ ! -d /opt/application/$APP_NAME/app/.meteor ];then
+        mkdir -p /opt/application/$APP_NAME/app/.meteor
       fi
       cd /opt/application/$APP_NAME/app
       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
