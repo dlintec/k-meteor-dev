@@ -123,7 +123,7 @@ function k-colors {
 	 color_palette="$4"
 	 if [ -z "$color_palette" ];then
 	 	color_palette="normal"
-	fi
+	 fi
          total_elements=0
          if [ -z "$title" ];then
             title="Option"
