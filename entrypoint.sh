@@ -58,7 +58,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       echo "Creating new app $APP_NAME"
       mkdir -p /opt/application/$APP_NAME
       cd /opt/application/$APP_NAME
-      meteor create app
+      meteor maka create app
       cd /opt/application/$APP_NAME/app
       if [[ -d "$APP_LOCALDB" ]];then
         echo "Cleaning Existing LOCALDB folder..."
