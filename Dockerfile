@@ -39,7 +39,8 @@ RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
 RUN mkdir -p /home/meteor/downloads &&\
 git clone https://github.com/dlintec/easybashgui.git /home/meteor/downloads/easybashgui  &&\
-cd /home/meteor/downloads/easybashgui  &&\
+cd /home/meteor/downloads/easybashgui &&\
+chown -Rh meteor /home/meteor/downloads  &&\
 make install 
 USER meteor 
 
