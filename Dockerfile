@@ -37,6 +37,10 @@ RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
 USER root
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
+RUN mkdir -p /home/meteor/dowloads &&\
+git clone https://github.com/dlintec/easybashgui.git /home/meteor/dowloads/easybashgui  &&\
+cd /home/meteor/dowloads/easybashgui  &&\
+sudo make install 
 USER meteor 
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
