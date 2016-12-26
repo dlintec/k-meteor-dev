@@ -34,14 +34,21 @@ ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
 chmod +x $LOCAL_IMAGE_PATH/entrypoint.sh  && \
 chmod -R +x $LOCAL_IMAGE_PATH/scripts/
 RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
+RUN mkdir -p /home/meteor/downloads &&\
+git clone https://github.com/dlintec/easybashgui.git /home/meteor/downloads/easybashgui 
+
 USER root
+
+RUN cd /home/meteor/downloads/easybashgui &&\
+make install 
+
+RUN cp /usr/bin/easybashgui /usr/local/bin/easybashgui  &&\
+cp /usr/bin/easybashgui-debug /usr/local/bin/easybashgui-debug  &&\
+cp /usr/bin/easydialog /usr/local/bin/easydialog
+
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
-RUN mkdir -p /home/meteor/downloads &&\
-git clone https://github.com/dlintec/easybashgui.git /home/meteor/downloads/easybashgui  &&\
-cd /home/meteor/downloads/easybashgui &&\
-chown -Rh meteor /home/meteor/downloads  &&\
-make install 
+
 USER meteor 
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
