@@ -56,8 +56,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
    if [ -z $APP_TEMPLATE ]; then
       cd /opt/application/
       echo "Creating new app $APP_NAME"
-      mkdir -p /opt/application/$APP_NAME
-      cd /opt/application/$APP_NAME
+      #mkdir -p /opt/application/$APP_NAME
+      cd /opt/application
       meteor maka create app
       cd /opt/application/$APP_NAME/app
       if [[ -d "$APP_LOCALDB" ]];then
@@ -73,7 +73,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       fi
       cd /opt/application/$APP_NAME/app
       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
-      meteor npm install
+      #meteor npm install
       #meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
       #meteor add sacha:spin orionjs:filesystem orionjs:image-attribute vsivsi:orion-file-collection
 
@@ -191,13 +191,18 @@ if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     echo $APP_SETTINGS
 fi
 
-cd /opt/application/$APP_NAME/app
-#echo "Starting application: [$APP_NAME]"
-echo $APP_SETTINGS
-kalan-var "CURRENT_APP" "$APP_NAME"
-echo ""
-echo "Starting meteor. Press Ctrl+Z to stop."
-#echo "CURRENT_APP: [$APP_NAME]"
-meteor $APP_SETTINGS $APP_PARAMETERS
-   
+if [ -d /opt/application/$APP_NAME/.maka ];then
+    echo "maka start"
+  cd /opt/application/$APP_NAME
+  meteor maka run
+else
+  cd /opt/application/$APP_NAME/app
+  #echo "Starting application: [$APP_NAME]"
+  echo $APP_SETTINGS
+  kalan-var "CURRENT_APP" "$APP_NAME"
+  echo ""
+  echo "Starting meteor. Press Ctrl+Z to stop."
+  #echo "CURRENT_APP: [$APP_NAME]"
+  meteor $APP_SETTINGS $APP_PARAMETERS
+ fi
 #exit 0
