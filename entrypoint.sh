@@ -19,32 +19,6 @@ fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
 
-if [ ! -z $ADD_MODULE ]; then
-  echo "adding package $ADD_MODULE"
-  if [ ! -d /opt/application/$APP_NAME/packages ];then
-      mkdir -p /opt/application/$APP_NAME/packages
-  fi
-
-  #export METEOR_PACKAGE_DIRS="/opt/application/$APP_NAME/packages"
-  cd /opt/application/$APP_NAME/packages 
-  if [ ! -d /opt/application/$APP_NAME/packages/$ADD_MODULE ];then
-      git clone https://github.com/$GIT_REPO/$ADD_MODULE.git 
-  fi
-  if [ "$ADD_MODULE" == "orion" ];then
-     echo "Reimporting local packages for module $ADD_MODULE"
-     mkdir -p /opt/application/$APP_NAME/app/packages
-     if [ -d /opt/application/$APP_NAME/app/packages/materialize ];then
-         ln -s /opt/application/$APP_NAME/packages/orion/packages/materialize /opt/application/$APP_NAME/app/packages/materialize
-     fi
-     cd /opt/application/$APP_NAME/app
-     
-     meteor remove orionjs:materialize
-     #meteor add materialize:materialize@=0.97.0
-     meteor add orionjs:materialize@=1.8.1
-  fi
-  export ADD_MODULE=""
-  exit 0
-fi
 
 #if [ -d /opt/application/$APP_NAME/packages ];then
       #export METEOR_PACKAGE_DIRS="/opt/application/$APP_NAME/packages"
@@ -79,6 +53,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       meteor maka npm install -g jsdoc
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
+      meteor maka add fezvrasta:bootstrap-material-design
       #meteor npm install
       #meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
       #meteor add sacha:spin orionjs:filesystem orionjs:image-attribute vsivsi:orion-file-collection
