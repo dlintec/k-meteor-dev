@@ -78,14 +78,14 @@ main() {
            
            use)
                ap=$2
-               if [ ! -z $ap ] && [ -e /opt/application/$ap/app/package.json ]; then
+               if [ ! -z $ap ] && [ -e /opt/application/$ap/app/.meteor ]; then
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
                   exit 0
                else 
                   if [ ! -z $ap ];then
-                     echo "Can not use [$ap]. There is no valid package.json at $ap/app folder"
+                     echo "Can not use [$ap]. There is no valid project folder at $ap/app "
                   else
                      echo "$(kalan-var 'CURRENT_APP')"
                   fi
