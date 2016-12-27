@@ -120,7 +120,9 @@ if [ ! -d /opt/application/$APP_NAME ];then
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
        echo $APP_SETTINGS > /opt/application/$APP_NAME/app_settings.txt
        cd /opt/application/$APP_NAME/app 
-
+       if [ "$APP_TEMPLATE" == "base" ];then
+          meteor npm install --save babel-runtime bcrypt jquery bootstrap react react-dom react-router react-bootstrap react-komposer react-router-bootstrap jquery-validation
+       fi
        #meteor npm install
        #meteor add npm-bcrypt 
        #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
