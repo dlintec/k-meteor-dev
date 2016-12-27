@@ -65,7 +65,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
      
-      meteor maka npm install --save react react-dom
+      meteor maka npm install --save react react-dom react-addons-pure-render-mixin
       meteor add accounts-ui 
 
       meteor add react react-meteor-data kadira:react-layout
