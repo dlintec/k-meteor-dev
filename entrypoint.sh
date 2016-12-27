@@ -71,6 +71,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
 
       #meteor add react react-meteor-data kadira:react-layout
       meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
+      meteor add kadira:flow-router kadira:blaze-layout
       meteor remove autopublish insecure
 
       # meteor add accounts-password      #meteor add accounts-facebook accounts-google 
