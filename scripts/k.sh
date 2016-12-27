@@ -93,6 +93,8 @@ main() {
                fi
                
            ;;
+           maka)
+           ;;
            meteor)
               m_command=$2
               shift
@@ -104,7 +106,7 @@ main() {
                  echo "$(pwd)"
                  case "$m_command" in
                      reset)
-                        meteor maka $pars
+                        meteor $pars
                         if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
                            echo "removing link"
                             rm -sf /opt/application/$APP_NAME/app/.meteor/local
@@ -117,7 +119,7 @@ main() {
                         if [ -z "$pars" ];then
                            entrypoint.sh
                         else
-                           meteor maka $pars
+                           meteor $pars
                         fi
                         exit 0
 
