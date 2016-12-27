@@ -53,7 +53,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       meteor maka npm install -g jsdoc
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
-      meteor maka add react 
+      meteor maka npm install react 
       #meteor maka add fezvrasta:bootstrap-material-design
       #meteor npm install
       #meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
