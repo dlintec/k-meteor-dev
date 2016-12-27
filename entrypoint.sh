@@ -54,8 +54,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
       meteor maka npm install react 
-      meteor add accounts-ui
-      meteor add accounts-password accounts-facebook accounts-google
+      meteor add accounts-ui 
+      meteor add accounts-password 
+      #meteor add accounts-facebook accounts-google 
+      #meteor add twbs:bootstrap fortawesome:fontawesome
+      #meteor add useraccounts:bootstrap
       #meteor maka add fezvrasta:bootstrap-material-design
       #meteor npm install
       #meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
