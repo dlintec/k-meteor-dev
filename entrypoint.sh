@@ -77,6 +77,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       cd /opt/application/$APP_NAME/app
       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
       meteor maka npm install -g jsdoc
+      meteor maka npm install --save babel-runtime
       #meteor npm install
       #meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
       #meteor add sacha:spin orionjs:filesystem orionjs:image-attribute vsivsi:orion-file-collection
