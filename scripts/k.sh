@@ -37,7 +37,14 @@ main() {
                ap=$2
                if [ ! -z $ap ] && [ -d /opt/application/$ap ]; then
                       export APP_NAME="$ap"
+               else   
+                      
+                      current_app=$(kalan-var "CURRENT_APP")
+                      if [ ! -z $current_app ];then
+                        export APP_NAME="$current_app"
+                      fi
                fi
+               
                cd /opt/application/$APP_NAME
                entrypoint.sh
                exit 0
