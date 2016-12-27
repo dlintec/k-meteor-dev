@@ -56,10 +56,12 @@ if [ ! -d /opt/application/$APP_NAME ];then
      
       meteor maka npm install --save react react-dom
       meteor add accounts-ui 
-      meteor add accounts-password 
+
       meteor add react react-meteor-data kadira:react-layout
-      
-      #meteor add accounts-facebook accounts-google 
+      meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
+      meteor remove autopublish insecure
+
+      # meteor add accounts-password      #meteor add accounts-facebook accounts-google 
       #meteor add twbs:bootstrap fortawesome:fontawesome
       #meteor add useraccounts:bootstrap
       #meteor maka add fezvrasta:bootstrap-material-design
