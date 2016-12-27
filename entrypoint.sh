@@ -53,7 +53,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
       meteor maka npm install -g jsdoc
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
-      meteor maka npm install react 
+     
+      meteor maka npm install --save react react-dom
       meteor add accounts-ui 
       meteor add accounts-password 
       #meteor add accounts-facebook accounts-google 
