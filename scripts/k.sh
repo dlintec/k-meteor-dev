@@ -94,6 +94,10 @@ main() {
                
            ;;
            maka)
+              mk_command=$2
+              shift
+              pars=$@
+              meteor maka $pars
            ;;
            meteor)
               m_command=$2
