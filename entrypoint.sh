@@ -50,6 +50,17 @@ if [ ! -d /opt/application/$APP_NAME ];then
       fi
       cd /opt/application/$APP_NAME/app
       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
+      package_string='{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "start": "k run"
+  },
+  "dependencies": {
+  }
+}'
+      echo $package_string >> /opt/application/$APP_NAME/app/package.json
+
       meteor maka npm install -g jsdoc
       meteor maka npm install --save babel-runtime
       meteor maka jsdoc
