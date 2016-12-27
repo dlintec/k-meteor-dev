@@ -98,6 +98,7 @@ main() {
               shift
               pars=$@
               meteor maka $pars
+              exit 0
            ;;
            meteor)
               m_command=$2
