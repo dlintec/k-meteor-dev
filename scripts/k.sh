@@ -119,19 +119,22 @@ main() {
               current_app=$(kalan-var "CURRENT_APP")
               echo "CURRENT_APP : [$current_app]"
               if [ ! -z $current_app ] && [ -d /opt/application/$current_app/app ];then
+                 link_or_folder="/opt/application/$current_app/app/.meteor/local"
                  cd /opt/application/$current_app/app
                  echo "$(pwd)"
                  case "$m_command" in
                      reset)
-                         if [ ! -z "$(readlink /opt/application/$current_app/app/.meteor/local)" ];then
-                           echo "removing link"
-                            rm -f /opt/application/$current_app/app/.meteor/local
+                        if [[ -L "$link_or_folder" && -d "$link_or_folder" ]]
+                        then
+                            echo "Local link OK to reset"
+                            echo "$link_or_folder is a symlink to a directory"
+                            meteor $pars
                             export APP_LOCALDB="/home/meteor/meteorlocal/$current_app"
-                            rm -rf $APP_LOCALDB
+                            rm -rf $APP_LOCALDB/
                             mkdir -p $APP_LOCALDB
-                            ln -s $APP_LOCALDB /opt/application/$current_app/app/.meteor/local
-                        fi
-                        meteor $pars
+                            ln -s $APP_LOCALDB $link_or_folder
+                      fi
+
                        exit 0
                      ;;
                      #any other command
