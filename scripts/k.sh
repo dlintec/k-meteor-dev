@@ -137,9 +137,9 @@ main() {
                             echo "Local link OK to reset"
                             echo "$link_or_folder is a symlink to a directory"
                             meteor $pars
-                            rm $link_or_folder
                             rm -rf $APP_LOCALDB/
                             mkdir -p $APP_LOCALDB
+                            rm -f $link_or_folder
                             ln -s $APP_LOCALDB $link_or_folder
                         fi
 
