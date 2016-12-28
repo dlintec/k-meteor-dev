@@ -137,6 +137,14 @@ if [ ! -d /opt/application/$APP_NAME ];then
           meteor update
           meteor add thereactivestack:blazetoreact
        fi
+      if [ "$APP_TEMPLATE" == "jump-scroll-site" ];then
+         meteor add orionjs:filesystem
+         meteor add orionjs:image-attribute
+         meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
+
+      fi
+       
+
        #meteor npm install
        #meteor add npm-bcrypt 
        #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
