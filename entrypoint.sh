@@ -200,8 +200,8 @@ else
         echo "Cleaning Existing LOCALDB folder:"
         echo "$APP_LOCALDB"
         rm -rf $APP_LOCALDB
-        mkdir -p $APP_LOCALDB
       fi
+        mkdir -p $APP_LOCALDB
 
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
 
