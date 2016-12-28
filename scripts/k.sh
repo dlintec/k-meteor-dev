@@ -133,14 +133,29 @@ main() {
                         exit 0
                      ;;
                      reset)
-                        if [[ -L "$link_or_folder" && -d "$link_or_folder" ]];then
-                            echo "Local link OK to reset"
-                            echo "$link_or_folder is a symlink to a directory"
-                            meteor $pars
+                        mkdir -p $APP_LOCALDB
+                        if [ -L "$link_or_folder" ];then
+                           echo "Local is Link"
+                            
+                           if [ -d "$link_or_folder" ];then
+                             echo "Folder Link OK for: $link_or_folder"
+                             meteor $pars
                             rm -rf $APP_LOCALDB/
                             mkdir -p $APP_LOCALDB
                             rm -f $link_or_folder
                             ln -s $APP_LOCALDB $link_or_folder
+                          else
+                             echo "WARNING: Local link broken. Removing and recreating"
+                             rm -f $link_or_folder
+                            ln -s $APP_LOCALDB $link_or_folder
+                           fi
+                        else
+                            if [  -d "$link_or_folder" ];then
+                                 echo "WARINING: previous real folder under .meteor"
+                             else
+                                echo "Creating new link: No previous link or folder under .meteor"
+                                ln -s $APP_LOCALDB $link_or_folder
+                           fi
                         fi
 
                         exit 0
