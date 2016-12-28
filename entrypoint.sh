@@ -138,7 +138,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           meteor add thereactivestack:blazetoreact
        fi
       if [ "$APP_TEMPLATE" == "jump-scroll-site" ];then
-         meteor npm -g install npm
+         meteor update
          meteor npm install --save bcrypt babel-runtime
          meteor add orionjs:filesystem
          meteor add orionjs:image-attribute
