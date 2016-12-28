@@ -22,6 +22,11 @@ main() {
                echo "$valid_apps"
                exit 0
          ;;
+         tree)
+              for p in `meteor list | grep '^[a-z]' | awk '{ print $1"@"$2 }'`; do echo "$p"; meteor show "$p" | grep -E '^  [a-z]'; echo; done
+              read -n 1 -p "Press a key to return to menu:" wait_var
+              exit 0
+         ;;
          menu)
                k-menu
                exit 0
