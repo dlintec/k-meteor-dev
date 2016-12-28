@@ -145,7 +145,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
          meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
          meteor update
          meteor npm install --save bcrypt babel-runtime
-         k meteor reset
+         #k meteor reset
       fi
        
 
