@@ -54,7 +54,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
   "name": "app",
   "private": true,
   "scripts": {
-    "start": "k run"
+    "start": "meteor"
   },
   "dependencies": {
   }
@@ -121,7 +121,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
   "name": "app",
   "private": true,
   "scripts": {
-    "start": "k run"
+    "start": "meteor"
   },
   "dependencies": {
   }
