@@ -118,12 +118,12 @@ main() {
                  echo "$(pwd)"
                  case "$m_command" in
                      reset)
-                        meteor $pars
-                        if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
+                         if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
                            echo "removing link"
                             rm -sf /opt/application/$APP_NAME/app/.meteor/local
                         fi
-                        exit 0
+                        meteor $pars
+                       exit 0
                      ;;
                      #any other command
                      *)
