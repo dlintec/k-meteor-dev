@@ -118,17 +118,18 @@ main() {
               pars=$@
               current_app=$(kalan-var "CURRENT_APP")
               echo "CURRENT_APP : [$current_app]"
-              if [ ! -z $current_app ] && [ -d /opt/application/$APP_NAME/app ];then
+              if [ ! -z $current_app ] && [ -d /opt/application/$current_app/app ];then
                  cd /opt/application/$current_app/app
                  echo "$(pwd)"
                  case "$m_command" in
                      reset)
-                         if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
+                         if [ ! -z "$(readlink /opt/application/$current_app/app/.meteor/local)" ];then
                            echo "removing link"
-                            rm -f /opt/application/$APP_NAME/app/.meteor/local
-                            export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
+                            rm -f /opt/application/$current_app/app/.meteor/local
+                            export APP_LOCALDB="/home/meteor/meteorlocal/$current_app"
+                            rm -rf $APP_LOCALDB
                             mkdir -p $APP_LOCALDB
-                            ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+                            ln -s $APP_LOCALDB /opt/application/$current_app/app/.meteor/local
                         fi
                         meteor $pars
                        exit 0
