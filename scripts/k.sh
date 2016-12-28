@@ -139,8 +139,8 @@ main() {
                             
                            if [ -d "$link_or_folder" ];then
                              echo "Folder Link OK for: $link_or_folder"
-                             meteor $pars
-                            rm -rf $APP_LOCALDB/
+                             #meteor $pars
+                            rm -rf $APP_LOCALDB/*
                             mkdir -p $APP_LOCALDB
                             rm -f $link_or_folder
                             ln -s $APP_LOCALDB $link_or_folder
