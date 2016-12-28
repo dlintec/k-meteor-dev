@@ -126,6 +126,9 @@ main() {
                          if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
                            echo "removing link"
                             rm -f /opt/application/$APP_NAME/app/.meteor/local
+                            export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
+                            mkdir -p $APP_LOCALDB
+                            ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
                         fi
                         meteor $pars
                        exit 0
