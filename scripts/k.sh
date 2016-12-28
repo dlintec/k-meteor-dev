@@ -120,7 +120,7 @@ main() {
                      reset)
                          if [ ! -z "$(readlink /opt/application/$APP_NAME/app/.meteor/local)" ];then
                            echo "removing link"
-                            rm -sf /opt/application/$APP_NAME/app/.meteor/local
+                            rm -f /opt/application/$APP_NAME/app/.meteor/local
                         fi
                         meteor $pars
                        exit 0
