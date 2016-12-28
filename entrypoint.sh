@@ -140,11 +140,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
        fi
       if [ "$APP_TEMPLATE" == "jump-scroll-site" ];then
          meteor add npm-bcrypt
-         meteor update
          meteor npm install --save bcrypt babel-runtime
          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
          meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
          meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
+         meteor update
  
       fi
        
