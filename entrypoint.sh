@@ -145,6 +145,10 @@ if [ ! -d /opt/application/$APP_NAME ];then
          meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
          meteor update
          meteor npm install --save bcrypt babel-runtime
+meteor update accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema aldeed:tabular autoupdate \
+babel-runtime blaze coffeescript dburles:collection-helpers ddp-client ddp-server ecmascript email http launch-screen less \
+matb33:collection-hooks momentjs:moment nicolaslopezj:roles softwarerero:accounts-t9n useraccounts:bootstrap \
+useraccounts:core vsivsi:file-collection 
          #k meteor reset
       fi
        
