@@ -42,7 +42,7 @@ RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
 
 USER meteor 
-RUN meteor meteor npm -g install npm && \
+RUN meteor npm -g install npm && \
 meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
