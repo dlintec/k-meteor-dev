@@ -145,7 +145,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
          meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
          meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
-
+ 
       fi
        
 
