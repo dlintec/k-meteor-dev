@@ -116,7 +116,19 @@ if [ ! -d /opt/application/$APP_NAME ];then
          cp -arv /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
          mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
       fi
-
+      if [ ! -e /opt/application/$APP_NAME/app/package.js ];then
+      package_string='{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "start": "k run"
+  },
+  "dependencies": {
+  }
+}'
+           echo $package_string >> /opt/application/$APP_NAME/app/package.json
+      fi
+      
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
        echo $APP_SETTINGS > /opt/application/$APP_NAME/app_settings.txt
        cd /opt/application/$APP_NAME/app 
