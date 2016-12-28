@@ -17,7 +17,7 @@ main() {
    for arg in "$@" ; do
        case "$arg" in
 
-         ps)
+         ls)
                valid_apps="$(meteor-dev-ls)"
                echo "$valid_apps"
                exit 0
