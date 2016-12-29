@@ -13,7 +13,7 @@ if [[ "$DOCKER_WD" == /opt/application* ]]; then
 fi
 
 if [ "$APP_NAME" == "default" ]; then
-   echo "Setting APP_TEMPLATE to meteor-dev-kalan"
+   echo "Setting APP_TEMPLATE to k-cms"
    export APP_TEMPLATE="meteor-dev-kalan"
 fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
@@ -138,17 +138,17 @@ if [ ! -d /opt/application/$APP_NAME ];then
           meteor npm install --save babel-runtime bcrypt jquery bootstrap react react-dom react-router react-bootstrap react-komposer react-router-bootstrap jquery-validation
           meteor add thereactivestack:blazetoreact
        fi
-      if [ "$APP_TEMPLATE" == "jump-scroll-site" ];then
+      if [ "$APP_TEMPLATE" == "k-cms" ];then
          meteor add npm-bcrypt
          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
          meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
          meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
          meteor update
          meteor npm install --save bcrypt babel-runtime
-meteor update accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema aldeed:tabular autoupdate \
-babel-runtime blaze coffeescript dburles:collection-helpers ddp-client ddp-server ecmascript email http launch-screen less \
-matb33:collection-hooks momentjs:moment nicolaslopezj:roles softwarerero:accounts-t9n useraccounts:bootstrap \
-useraccounts:core vsivsi:file-collection 
+        meteor update accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema aldeed:tabular autoupdate \
+        babel-runtime blaze coffeescript dburles:collection-helpers ddp-client ddp-server ecmascript email http launch-screen less \
+        matb33:collection-hooks momentjs:moment nicolaslopezj:roles softwarerero:accounts-t9n useraccounts:bootstrap \
+        useraccounts:core vsivsi:file-collection 
          #k meteor reset
       fi
        
