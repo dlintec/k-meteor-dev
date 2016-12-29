@@ -1,4 +1,4 @@
-meteor-dev
+k-meteor-dev
 ==========
 
 
@@ -29,7 +29,7 @@ Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-wi
 
 Build image from this repository
 
-    docker build --tag="meteor-dev" git://github.com/dlintec/meteor-dev
+    docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
     
 If you are running docker for windows, create persistent volume for /home/meteor. (not necessary for docker on linux or mac)
 
@@ -43,11 +43,11 @@ To run the container use the followind command:
 
 For Linux
 
-    docker run --rm  --name c-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  meteor-dev-local://home/meteor --entrypoint //bin/bash meteor-dev
+    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor --entrypoint //bin/bash k-meteor-dev
     
 For Windows
 
-    docker run --rm  --name c-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  meteor-dev-local://home/meteor --entrypoint //bin/bash meteor-dev
+    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor --entrypoint //bin/bash k-meteor-dev
 
 
 You will get a bash command lines inside the container. To start de default run
@@ -60,11 +60,11 @@ Note:When interrupted using `ctrl-C`, meteor will restart, so use the `docker st
 
 Get bash prompt inside container
 
-    docker run --rm  --name c-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  meteor-dev-local:/home/meteor --entrypoint /bin/bash meteor-dev 
+    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  k-meteor-dev-local:/home/meteor --entrypoint /bin/bash k-meteor-dev 
 
 Get bash prompt inside existing app
 
-    docker run --rm  --name c-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  meteor-dev-local:/home/meteor -w /opt/application --entrypoint /bin/bash meteor-dev 
+    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  k-meteor-dev-local:/home/meteor -w /opt/application --entrypoint /bin/bash k-meteor-dev 
 
 
 References
