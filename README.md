@@ -33,7 +33,7 @@ Build image from this repository
     
 If you are running docker for windows, create persistent volume for /home/meteor. (not necessary for docker on linux or mac)
 
-    docker volume create --name meteor-dev-local
+    docker volume create --name k-meteor-dev-local
 
 Add an alias tu call just "meteor-dev" instead of full docker command
 
