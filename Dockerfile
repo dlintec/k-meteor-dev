@@ -25,7 +25,7 @@ ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
 ENV APP_VER=1.76
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
-ENV GIT_IMAGE="meteor-dev"
+ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
 ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
