@@ -2,7 +2,7 @@
 main() {
    source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
    function meteor-dev-ls {
-      filelines=$(ls -d */ /opt/application)
+      filelines=$(ls -d */ /opt/application | cut -f1 -d'/')
       valid_apps=""
       for line in $filelines ; do
           #echo "Checking $line"
