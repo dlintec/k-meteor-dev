@@ -2,11 +2,11 @@
 main() {
    source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
    function meteor-dev-ls {
-      filelines=$(ls /opt/application)
+      filelines=$(ls -d */ /opt/application)
       valid_apps=""
       for line in $filelines ; do
           #echo "Checking $line"
-          if [ -d /opt/application/$line/app/.meteor ];then
+          if [ -d /opt/application/$line/app/.meteor ] && [ ! "$line" == "/opt/application" ];then
              echo $line
           fi
           
