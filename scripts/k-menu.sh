@@ -73,7 +73,7 @@ else
 				;;
        				1) #select app
 					
-					selected_app=$(k-list-menu "$(k ps)" "Application" "Select default app for all meteor commands" "blue")
+					selected_app=$(k-list-menu "$(k ls)" "Application" "Select default app for all meteor commands" "blue")
 					if [ ! -z "$selected_app" ];then
 						k use $selected_app
 						cd /opt/application/$selected_app/app
