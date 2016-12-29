@@ -139,6 +139,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           meteor add thereactivestack:blazetoreact
        fi
       if [ "$APP_TEMPLATE" == "k-cms" ];then
+        echo "Configuring and updating for k-cms"
          meteor add npm-bcrypt
          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
          meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
