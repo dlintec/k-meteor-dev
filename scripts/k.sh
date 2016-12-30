@@ -43,10 +43,17 @@ main() {
                        echo "removing k-temp"
                        rm -rf $temp_folder
                     fi
-                    mkdir $temp_folder
-                    cd 
-                    tar -pxzf $file_name
-                    
+                    old_ls=$(ls -a /home/meteor)
+                    echo "CONTENT: $old_ls"
+                     for line in $old_ls ; do
+                         echo "$line"
+                         
+
+                     done                    
+                     mkdir $temp_folder
+                    cd $temp_folder
+                    #tar -pxzf $file_name
+                    read -n 1 -p "press a key..." wait_var
               fi
               if [ "$valid_tar" == "true" ];then
                     echo "Valid backup file"
