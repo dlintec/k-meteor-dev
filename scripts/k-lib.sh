@@ -54,8 +54,8 @@
    }
 function k-colors {
 	colors_normal=(
-		root=black,white
-		border=white,white
+		root=white,black
+		border=red,red
 		checkbox=,black
 		entry=,black
 		label=black,
