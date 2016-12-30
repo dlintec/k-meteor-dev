@@ -22,11 +22,7 @@ main() {
                echo "$valid_apps"
                exit 0
          ;;
-         sync)
-              mkdir -p /opt/application/_k-meteor-dev/sync
-              rsync -rlh --progress --delete --force /home/meteor /opt/application/_k-meteor-dev/sync
-            
-         ;;
+
          backup)
               name=$2
               if [ -z "$name" ];then
@@ -34,7 +30,7 @@ main() {
               fi
               mkdir -p /opt/application/_k-meteor-dev/backups
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar.gz"
-              tar -cpzf $file_name /home/meteor 
+              tar -cpzf $file_name /home/meteor/ 
          ;;
          tree)
               for p in `meteor list | grep '^[a-z]' | awk '{ print $1"@"$2 }'`; do echo "$p"; meteor show "$p" | grep -E '^  [a-z]'; echo; done
