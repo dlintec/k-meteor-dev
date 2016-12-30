@@ -45,10 +45,12 @@ main() {
                        rm -rf $temp_folder
                     fi
                     old_ls="$(ls -a /home/meteor)"
-                    echo "CONTENT: $old_ls"
+                    
                      for line in $old_ls ; do
                          echo "$line"
-                         
+                         if [ ! "$line" == "." ] && [ ! "$line" == ".." ];then
+                            echo "$line"
+                         fi
 
                      done                    
                      mkdir $temp_folder
