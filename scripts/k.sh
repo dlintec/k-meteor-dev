@@ -31,7 +31,7 @@ main() {
               mkdir -p /opt/application/_k-meteor-dev/backups
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar"
               echo "Be patient. Starting backup..."
-              tar -pcvzf $file_name /home/meteor/ 
+              tar -pczf $file_name /home/meteor/ 
          ;;
          restore)
               file_name=$2
@@ -45,7 +45,7 @@ main() {
                     fi
                     mkdir $temp_folder
                     cd 
-                    tar -pXvzf $file_name
+                    tar -pxzf $file_name
                     
               fi
               if [ "$valid_tar" == "true" ];then
