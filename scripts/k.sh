@@ -44,7 +44,7 @@ main() {
                        echo "removing k-temp"
                        rm -rf $temp_folder
                     fi
-                    old_ls=$(ls -a /home/meteor)
+                    old_ls="$(ls -a /home/meteor)"
                     echo "CONTENT: $old_ls"
                      for line in $old_ls ; do
                          echo "$line"
