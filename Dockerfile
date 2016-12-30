@@ -23,7 +23,7 @@ ENV PYTHON=/usr/bin/python2.7
 
 ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
-ENV APP_VER=1.76
+ENV APP_VER=1.77
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
