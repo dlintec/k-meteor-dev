@@ -33,6 +33,8 @@ main() {
               echo "Be patient. Starting backup..."
               tar -pczf $file_name /home/meteor/ 
               echo "Backup finished"
+              read -n 1 -p "press akey to continue..." wait_var
+              exit 0
          ;;
          restore)
               file_name=$2
@@ -65,6 +67,7 @@ main() {
                     echo "Nothing restored"
               fi  
               read -n 1 -p "press akey to continue..." wait_var
+              exit 0
          ;;
          tree)
               for p in `meteor list | grep '^[a-z]' | awk '{ print $1"@"$2 }'`; do echo "$p"; meteor show "$p" | grep -E '^  [a-z]'; echo; done
