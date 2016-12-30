@@ -33,6 +33,21 @@ main() {
               echo "Be patient. Starting backup..."
               tar -cvf $file_name /home/meteor/ 
          ;;
+         restore)
+              name=$2
+              valid_tar="false"
+              if [ ! -z "$name" ] && [ -e $name ];then
+                    name=$(kalan-var "CURRENT_APP")
+                    
+              fi
+              if [ "$valid_tar" == "true" ];then
+                   
+              else
+                    echo "The file is not a valid backup"
+                    echo "Nothing restored.
+              fi  
+              read -n 1 -p "press akey to continue..." wait_var
+         ;;
          tree)
               for p in `meteor list | grep '^[a-z]' | awk '{ print $1"@"$2 }'`; do echo "$p"; meteor show "$p" | grep -E '^  [a-z]'; echo; done
               read -n 1 -p "Press a key to return to menu:" wait_var
