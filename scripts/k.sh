@@ -47,7 +47,7 @@ main() {
                     old_ls="$(ls -a /home/meteor)"
                     
                      for line in $old_ls ; do
-                         echo "$line"
+                      
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ];then
                             echo "$line"
                          fi
