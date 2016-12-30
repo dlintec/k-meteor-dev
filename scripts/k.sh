@@ -52,7 +52,7 @@ main() {
                     echo "Valid backup file"
               else
                     echo "The file is not a valid backup"
-                    echo "Nothing restored.
+                    echo "Nothing restored"
               fi  
               read -n 1 -p "press akey to continue..." wait_var
          ;;
