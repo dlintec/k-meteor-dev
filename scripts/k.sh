@@ -31,17 +31,24 @@ main() {
               mkdir -p /opt/application/_k-meteor-dev/backups
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar"
               echo "Be patient. Starting backup..."
-              tar -cvf $file_name /home/meteor/ 
+              7z -r $file_name /home/meteor/ 
          ;;
          restore)
-              name=$2
+              file_name=$2
               valid_tar="false"
-              if [ ! -z "$name" ] && [ -e $name ];then
-                    name=$(kalan-var "CURRENT_APP")
-                    
+              temp_folder="/home/meteor/k-temp"
+              if [ ! -z "$file_name" ] && [ -e $file_name ];then
+                    echo "Decompressing to temp"
+                    if [ -d $temp_folder ];then
+                       echo "removing k-temp"
+                       rm -rf $temp_folder
+                    fi
+                    mkdir $temp_folder
+                    cd 
+                    7z $file_name
               fi
               if [ "$valid_tar" == "true" ];then
-                   
+                    
               else
                     echo "The file is not a valid backup"
                     echo "Nothing restored.
