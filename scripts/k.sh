@@ -53,7 +53,7 @@ main() {
                       
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
                             echo "moving $line to temp folder"
-                            mv /home/meteor/$line $temp_folder/$line
+                            mv /home/meteor/$line /home/meteor/k-temp/$line
                          fi
 
                      done                    
