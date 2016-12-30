@@ -22,6 +22,11 @@ main() {
                echo "$valid_apps"
                exit 0
          ;;
+         sync)
+              mkdir -p /opt/application/_k-meteor-dev/sync
+              rsync -zvr /home/meteor /opt/application/_k-meteor-dev/sync
+            
+         ;;
          backup)
               name=$2
               if [ -z "$name" ];then
