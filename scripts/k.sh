@@ -58,7 +58,7 @@ main() {
 
                      done                    
                      
-                    cd /home/meteor
+                    cd /
                     tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
                     if [ -d /home/meteor/.meteor ];then
                        valid_tar="true"
