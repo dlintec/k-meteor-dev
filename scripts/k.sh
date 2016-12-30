@@ -39,7 +39,7 @@ main() {
          restore)
               file_name=$2
               valid_tar="false"
-              temp_folder="/home/meteor/k-temp"
+              $temp_folder="/home/meteor/k-temp"
               if [ ! -z "$file_name" ] && [ -e /opt/application/_k-meteor-dev/backups/$file_name ];then
                     echo "Decompressing to temp"
                     if [ -d $temp_folder ];then
@@ -48,6 +48,7 @@ main() {
                     fi
                     old_ls="$(ls -a /home/meteor)"
                      mkdir $temp_folder
+                     echo "making backup"
                      for line in $old_ls ; do
                       
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
@@ -57,13 +58,25 @@ main() {
 
                      done                    
                      
-                    cd $temp_folder
-                    #tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
+                    cd /home/meteor
+                    tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
+                    if [ -d /home/meteor/.meteor ];then
+                       valid_tar="true"
+                    fi
                    
               fi
               if [ "$valid_tar" == "true" ];then
                     echo "Valid backup file"
               else
+                     backup_ls="$(ls -a $temp_folder)"
+                     
+                     echo "restoring from temp"
+                     for line in $backup_ls ; do
+                            echo "restoring $line to user folder"
+                            mv $temp_folder/$line /home/meteor/
+ 
+                     done                    
+
                     echo "The file is not a valid backup"
                     echo "Nothing restored"
               fi  
