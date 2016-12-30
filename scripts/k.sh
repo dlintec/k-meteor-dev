@@ -63,25 +63,26 @@ main() {
                     if [ -d /home/meteor/.meteor ];then
                        valid_tar="true"
                     fi
-                   
-              fi
-              if [ "$valid_tar" == "true" ];then
-                    echo "Valid backup file"
-              else
-                     backup_ls="$(ls -a $temp_folder)"
-                     
-                     echo "restoring from temp"
-                     for line in $backup_ls ; do
-                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
-                           echo "restoring $line to user folder"
-                            mv $temp_folder/$line /home/meteor/$line
-                          fi
-                     done                    
+                     if [ "$valid_tar" == "true" ];then
+                          echo "Valid backup file"
+                    else
+                           backup_ls="$(ls -a $temp_folder)"
 
-                    echo "The file is not a valid backup"
-                    echo "Nothing restored"
-              fi  
-              read -n 1 -p "press akey to continue..." wait_var
+                           echo "restoring from temp"
+                           for line in $backup_ls ; do
+                                if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                                 echo "restoring $line to user folder"
+                                  mv $temp_folder/$line /home/meteor/$line
+                                fi
+                           done                    
+
+                           echo "Nothing restored"
+                    fi  
+              else 
+                 echo "The file is not a valid backup"
+                 echo "$file_name"
+              fi
+               read -n 1 -p "press akey to continue..." wait_var
               exit 0
          ;;
          tree)
