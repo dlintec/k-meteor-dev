@@ -38,7 +38,7 @@ main() {
               file_name=$2
               valid_tar="false"
               temp_folder="/home/meteor/k-temp"
-              if [ ! -z "$file_name" ] && [ -e $file_name ];then
+              if [ ! -z "$file_name" ] && [ -e /opt/application/_k-meteor-dev/backups/$file_name ];then
                     echo "Decompressing to temp"
                     if [ -d $temp_folder ];then
                        echo "removing k-temp"
@@ -53,7 +53,7 @@ main() {
                      done                    
                      mkdir $temp_folder
                     cd $temp_folder
-                    #tar -pxzf $file_name
+                    #tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
                     read -n 1 -p "press a key..." wait_var
               fi
               if [ "$valid_tar" == "true" ];then
