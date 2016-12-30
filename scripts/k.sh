@@ -56,7 +56,7 @@ main() {
                      mkdir $temp_folder
                     cd $temp_folder
                     #tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
-                    read -n 1 -p "press a key..." wait_var
+                   
               fi
               if [ "$valid_tar" == "true" ];then
                     echo "Valid backup file"
