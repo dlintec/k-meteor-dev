@@ -72,9 +72,10 @@ main() {
                      
                      echo "restoring from temp"
                      for line in $backup_ls ; do
-                            echo "restoring $line to user folder"
+                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                           echo "restoring $line to user folder"
                             mv $temp_folder/$line /home/meteor/$line
- 
+                          fi
                      done                    
 
                     echo "The file is not a valid backup"
