@@ -32,6 +32,7 @@ main() {
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar"
               echo "Be patient. Starting backup..."
               tar -pczf $file_name /home/meteor/ 
+              echo "Backup finished"
          ;;
          restore)
               file_name=$2
