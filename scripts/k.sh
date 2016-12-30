@@ -53,7 +53,7 @@ main() {
                       
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
                             echo "moving $line to temp folder"
-                            mv /home/meteor/$line $temp_folder/
+                            mv /home/meteor/$line $temp_folder/$line
                          fi
 
                      done                    
@@ -73,7 +73,7 @@ main() {
                      echo "restoring from temp"
                      for line in $backup_ls ; do
                             echo "restoring $line to user folder"
-                            mv $temp_folder/$line /home/meteor/
+                            mv $temp_folder/$line /home/meteor/$line
  
                      done                    
 
