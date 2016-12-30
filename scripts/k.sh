@@ -46,9 +46,10 @@ main() {
                     mkdir $temp_folder
                     cd 
                     unzip $file_name
+                    
               fi
               if [ "$valid_tar" == "true" ];then
-                    
+                    echo "Valid backup file"
               else
                     echo "The file is not a valid backup"
                     echo "Nothing restored.
