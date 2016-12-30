@@ -28,8 +28,8 @@ main() {
               if [ -z "$name" ];then
                     name=$(kalan-var "CURRENT_APP")
               fi
-              mkdir -p /opt/application/_k-meteor-dev/backups
-              file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar.gz"
+              mkdir -p /opt/application/.k-meteor-dev/backups
+              file_name="/opt/application/.k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar.gz"
               echo "Be patient. Starting backup..."
               tar -cpzf $file_name /home/meteor/ 
          ;;
