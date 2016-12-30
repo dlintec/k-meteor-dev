@@ -44,18 +44,19 @@ main() {
                     echo "Decompressing to temp"
                     if [ -d $temp_folder ];then
                        echo "removing k-temp"
-                       rm -rf $temp_folder
+                       #rm -rf $temp_folder
                     fi
                     old_ls="$(ls -a /home/meteor)"
-                    
+                     mkdir $temp_folder
                      for line in $old_ls ; do
                       
-                         if [ ! "$line" == "." ] && [ ! "$line" == ".." ];then
-                            echo "$line"
+                         if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                            echo "moving $line to temp folder"
+                            mv /home/meteor/$line $temp_folder/
                          fi
 
                      done                    
-                     mkdir $temp_folder
+                     
                     cd $temp_folder
                     #tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
                    
