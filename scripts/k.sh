@@ -24,7 +24,7 @@ main() {
          ;;
          sync)
               mkdir -p /opt/application/_k-meteor-dev/sync
-              rsync -ha /home/meteor /opt/application/_k-meteor-dev/sync
+              rsync -rlth /home/meteor /opt/application/_k-meteor-dev/sync
             
          ;;
          backup)
