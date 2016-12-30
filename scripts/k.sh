@@ -22,6 +22,15 @@ main() {
                echo "$valid_apps"
                exit 0
          ;;
+         backup)
+              name=$2
+              if [ -z "$name" ];then
+                    name=$(kalan-var "CURRENT_APP")
+              fi
+              mkdir -p /opt/application/_k-meteor-dev/backups
+              file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar.gz"
+              tar c(z/j)vf $file_name /home/meteor 
+         ;;
          tree)
               for p in `meteor list | grep '^[a-z]' | awk '{ print $1"@"$2 }'`; do echo "$p"; meteor show "$p" | grep -E '^  [a-z]'; echo; done
               read -n 1 -p "Press a key to return to menu:" wait_var
