@@ -86,7 +86,11 @@ main() {
                                else
                                   rm -f /home/meteor/$line
                                fi
-                         done      
+                               
+                               
+                         done
+                         
+                         
                          echo "restoring from $temp_folder"
                          backup_ls="$(ls -a $temp_folder)"
                         for line in $backup_ls ; do
