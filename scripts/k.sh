@@ -77,6 +77,17 @@ main() {
                     else
 
                         echo "removing failed restore"
+                        failed_ls="$(ls -a /home/meteor)"
+                        
+                        echo "restoring from $temp_folder"
+                         backup_ls="$(ls -a $temp_folder)"
+                        for line in $backup_ls ; do
+                             if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                              echo "restoring $line to user folder"
+                               mv $temp_folder/$line /home/meteor/$line
+                             fi
+                        done                    
+                        rm $temp_folder
                         
                          echo "Reverted to original state"
                     fi  
