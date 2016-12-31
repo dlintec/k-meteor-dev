@@ -174,10 +174,16 @@ else
 							k backup $valid_name
 						fi
 					fi
-
+					read -n 1 -p "press akey to continue..." wait_var
 				;;
 				8) #restore
 					echo "Restore"
+					backups_list=$(ls /opt/application/_k-meteor-dev/backups/)
+					selected_backup=$(k-list-menu "$backups_list" "SETTINGS" "Select a Backup to restore" "red")
+					if [ ! -z "$selected_backup" ];then
+					  k restore $selected_backup
+					fi
+					read -n 1 -p "press akey to continue..." wait_var
 
 				;;
 				9) #help
