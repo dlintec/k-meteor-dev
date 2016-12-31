@@ -87,7 +87,7 @@ main() {
                                   rm -f /home/meteor/$line
                                fi
                                
-                               
+                             fi  
                          done
                          
                          
