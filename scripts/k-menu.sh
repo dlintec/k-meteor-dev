@@ -52,14 +52,16 @@ else
 		#NEWT_COLORS="$colors_normal" 
 		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
 		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n \n  $menu_status\n \n  Choose an action:\n" \
-		 25 60 9 \
+		 25 60 10 \
 		"1" "Select app" \
 		"2" "Start app " \
 		"3" "Create new app" \
 		"4" "Run a command" \
-		"5" "Update this containter (internet required)" \
+		"5" "Update this containter" \
 		"6" "Settings" \
-		"7" "Help" \
+		"7" "Backup" \
+		"8" "Restore" \
+		"9" "Help" \
 		"0" "Exit" 3>&1 1>&2 2>&3)
 
 		exitstatus=$?
@@ -92,6 +94,7 @@ else
 					exitstatus=$?
 					if [ $exitstatus = 0 ]; then
 						if [ ! -z "$new_name" ];then
+						        valid_name=$(echo "$new_name" | sed 's/[^a-zA-Z0-9-]//g')
 							new_template=$(whiptail --title "Create New Meteor Application" \
 							       --inputbox "\n  Type a Git hub repository name to use as template \n  or leave blank to create new app:" 10 60 "" 3>&1 1>&2 2>&3)
 							exitstatus2=$?
@@ -102,8 +105,8 @@ else
 								new_template=""
 							fi
 							clear
-							k create $new_name 
-							k use $new_name
+							k create $valid_name 
+							k use $valid_name
 							cd /opt/application/$new_name/app
 							echo "---------------------------------------"
 							echo "press any key to return to menu" 
@@ -159,7 +162,25 @@ else
 					#read  TEST
 
 				;;
-				7) #help
+				7) #backup
+					echo "backup"
+					new_name=$(whiptail --title "Create Backup" \
+					       --inputbox "\n  Type a DESCRIPTION for the Backup:" 10 60 "" 3>&1 1>&2 2>&3)
+
+					exitstatus=$?
+					if [ $exitstatus = 0 ]; then
+						if [ ! -z "$new_name" ];then
+							valid_name=$(echo "$new_name" | sed 's/[^a-zA-Z0-9-]//g')
+							k backup $valid_name
+						fi
+					fi
+
+				;;
+				8) #restore
+					echo "Restore"
+
+				;;
+				9) #help
 					echo "Help"
 
 				;;
