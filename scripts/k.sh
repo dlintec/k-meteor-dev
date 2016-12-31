@@ -15,9 +15,6 @@ main() {
       done
       #echo $valid_apps
    }
-   function restore-local-backup {
- 
- }
 
    for arg in "$@" ; do
        case "$arg" in
