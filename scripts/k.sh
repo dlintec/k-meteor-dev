@@ -78,7 +78,7 @@ main() {
 
                         echo "removing failed restore"
                         
-                         failed_ls="$(ls -a $/home/meteor)"
+                         failed_ls="$(ls -a /home/meteor)"
                         for line in $failed_ls ; do
                              if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
                               echo "removing $line "
