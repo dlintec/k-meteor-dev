@@ -1,6 +1,8 @@
 #!/bin/bash
 main() {
    source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
+   backup_folder="/home/meteor/k-temp"
+
    function meteor-dev-ls {
       filelines=$(ls -d */ /opt/application | cut -f1 -d'/')
       valid_apps=""
@@ -13,6 +15,9 @@ main() {
       done
       #echo $valid_apps
    }
+   function restore-local-backup {
+ 
+ }
 
    for arg in "$@" ; do
        case "$arg" in
@@ -39,11 +44,15 @@ main() {
          restore)
               file_name=$2
               valid_tar="false"
-              temp_folder="/home/meteor/k-temp"
+              backup_made="false"
+              temp_folder="$backup_folder"
               if [ ! -z "$file_name" ] && [ -e /opt/application/_k-meteor-dev/backups/$file_name ];then
                     echo "Decompressing to temp"
                     if [ -d $temp_folder ];then
-                       echo "removing k-temp"
+                       echo "A previous restore failed. The original backup is in "
+                       echo "$temp_folder"
+                       echo ""
+                       read -n 1 -p "press akey to continue..." wait_var
                        #rm -rf $temp_folder
                     fi
                     old_ls="$(ls -a /home/meteor)"
@@ -53,30 +62,46 @@ main() {
                       
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
                             echo "moving $line to temp folder"
-                            mv /home/meteor/$line /home/meteor/k-temp/$line
+                            mv /home/meteor/$line $temp_folder/$line
                          fi
 
                      done                    
                      
                     cd /
                     tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
-                    if [ -d /home/meteor/.meteor ];then
+                    if [ -d /home/meteor/.meteor ] && [ -e /home/meteor/localimage/scripts/k-update.sh ];then
                        valid_tar="true"
                     fi
-                     if [ "$valid_tar" == "true" ];then
+                    if [ "$valid_tar" == "true" ];then
                           echo "Valid backup file"
+                           if [ -d $temp_folder  ];then
+                                 rm -rf $temp_folder 
+                           fi
                     else
-                           backup_ls="$(ls -a $temp_folder)"
 
-                           echo "restoring from temp"
-                           for line in $backup_ls ; do
-                                if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
-                                 echo "restoring $line to user folder"
-                                  mv $temp_folder/$line /home/meteor/$line
-                                fi
-                           done                    
+                        echo "removing failed restore"
+                        
+                         failed_ls="$(ls -a $/home/meteor)"
+                        for line in $failed_ls ; do
+                             if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                              echo "removing $line "
+                               if [ -d /home/meteor/$line ];then
+                                  rm -rf /home/meteor/$line 
+                               else
+                                  rm -f /home/meteor/$line
+                              fi
+                        done                    
 
-                           echo "Nothing restored"
+                        echo "restoring from $temp_folder"
+                         backup_ls="$(ls -a $temp_folder)"
+                        for line in $backup_ls ; do
+                             if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
+                              echo "restoring $line to user folder"
+                               mv $temp_folder/$line /home/meteor/$line
+                             fi
+                        done                    
+                        rm $temp_folder
+                        echo "Reverted to original state"
                     fi  
               else 
                  echo "The file is not a valid backup"
