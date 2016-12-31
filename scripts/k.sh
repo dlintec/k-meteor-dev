@@ -38,7 +38,7 @@ main() {
               echo "Be patient. Starting backup..."
               tar -pczf $file_name /home/meteor/ 
               echo "Backup finished"
-              read -n 1 -p "press akey to continue..." wait_var
+              
               exit 0
          ;;
          restore)
@@ -107,7 +107,7 @@ main() {
                  echo "The file is not a valid backup"
                  echo "$file_name"
               fi
-               read -n 1 -p "press akey to continue..." wait_var
+               
               exit 0
          ;;
          tree)
