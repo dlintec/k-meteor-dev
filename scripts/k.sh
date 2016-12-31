@@ -78,27 +78,7 @@ main() {
 
                         echo "removing failed restore"
                         
-                         failed_ls="$(ls -a /home/meteor)"
-                        for line in $failed_ls ; do
-                             if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
-                              echo "removing $line "
-                               if [ -d /home/meteor/$line ];then
-                                  rm -rf /home/meteor/$line 
-                               else
-                                  rm -f /home/meteor/$line
-                              fi
-                        done
-
-                        echo "restoring from $temp_folder"
-                         backup_ls="$(ls -a $temp_folder)"
-                        for line in $backup_ls ; do
-                             if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
-                              echo "restoring $line to user folder"
-                               mv $temp_folder/$line /home/meteor/$line
-                             fi
-                        done                    
-                        rm $temp_folder
-                        echo "Reverted to original state"
+                         echo "Reverted to original state"
                     fi  
               else 
                  echo "The file is not a valid backup"
