@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 #apt-get -y dist-upgrade && \
 RUN apt-get update && \
 apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano zip unzip software-properties-common && \
-add-apt-repository ppa:ubuntu-desktop/ubuntu-make && \
+add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 apt-get update && \
 apt-get install -y ubuntu-make
 
