@@ -42,7 +42,7 @@ main() {
               file_name=$2
               valid_tar="false"
               backup_made="false"
-              temp_folder="$backup_folder"
+              temp_folder="/home/meteor/k-temp"
               if [ ! -z "$file_name" ] && [ -e /opt/application/_k-meteor-dev/backups/$file_name ];then
                     echo "Decompressing to temp"
                     if [ -d $temp_folder ];then
@@ -99,7 +99,7 @@ main() {
                                mv $temp_folder/$line /home/meteor/$line
                              fi
                         done                    
-                        rm $temp_folder
+                        rm -rf $temp_folder
                         
                          echo "Reverted to original state"
                     fi  
