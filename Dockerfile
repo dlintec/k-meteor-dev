@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 
 RUN apt-get update && \
 apt-get -y dist-upgrade && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano zip unzip
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano zip unzip software-properties-common
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 && \
 useradd -mUd /home/meteor meteor && \
@@ -23,7 +23,7 @@ ENV PYTHON=/usr/bin/python2.7
 
 ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
-ENV APP_VER=1.77
+ENV APP_VER=1.78
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
