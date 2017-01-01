@@ -32,6 +32,8 @@ ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
 ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+#replace with "yourdomain.com"
+ENV DOMAIN_NAME="localhost"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN git clone https://github.com/$GIT_REPO/$GIT_IMAGE.git $LOCAL_IMAGE_PATH && \
 ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
@@ -55,7 +57,7 @@ RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && \
 openssl rsa -passin pass:x -in server.pass.key -out server.key && \
 rm server.pass.key && \
 openssl req -new -key server.key -out server.csr \
-  -subj "/C=UK/ST=Warwickshire/L=Leamington/O=OrgName/OU=IT Department/CN=example.com" && \
+  -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" && \
 openssl x509 -req -days 365 -in server.csr -signkey /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
 WORKDIR /opt/application/
