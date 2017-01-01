@@ -52,6 +52,7 @@ openssl req -nodes -newkey rsa:2048 -keyout /etc/ssl/certs/nginx-selfsigned.key 
 RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
+copy self-signed.conf /etc/nginx/snippets/self-signed.conf
 USER meteor 
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
