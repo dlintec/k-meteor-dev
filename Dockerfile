@@ -48,11 +48,11 @@ RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
 RUN cd /etc/ssl && \
 openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-RUN openssl rsa -passin pass:x -in server.pass.key -out server.key && \
+RUN openssl rsa -passin pass:x -in /etc/ssl/server.pass.key -out /etc/ssl/server.key && \
 rm server.pass.key 
-RUN openssl req -new -key server.key -out server.csr \
+RUN openssl req -new -key /etc/ssl/server.key -out /etc/ssl/server.csr \
   -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" 
-RUN openssl x509 -req -days 2000 -in server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 USER meteor 
 RUN meteor npm install -g maka-cli && \
