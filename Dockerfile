@@ -55,7 +55,9 @@ COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
 RUN ufw allow 'Nginx Full'  && \
     ufw delete allow 'Nginx HTTP' && \
-    cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+    mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+RUN  ln -s $LOCAL_IMAGE_PATH/ngynx-proxy-settings /etc/nginx/sites-available/default
+
 USER meteor 
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
