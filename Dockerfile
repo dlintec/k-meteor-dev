@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano  
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx  
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 #apt-get update && \
@@ -51,5 +51,12 @@ meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
+RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && \
+openssl rsa -passin pass:x -in server.pass.key -out server.key && \
+rm server.pass.key && \
+openssl req -new -key server.key -out server.csr \
+  -subj "/C=UK/ST=Warwickshire/L=Leamington/O=OrgName/OU=IT Department/CN=example.com" && \
+openssl x509 -req -days 365 -in server.csr -signkey /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+
 WORKDIR /opt/application/
 
