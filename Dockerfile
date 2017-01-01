@@ -46,19 +46,20 @@ USER root
 
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
-
+RUN cd /etc/ssl && \
+openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && \
+openssl rsa -passin pass:x -in server.pass.key -out server.key && \
+rm server.pass.key && \
+openssl req -new -key server.key -out server.csr \
+  -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" && \
+openssl x509 -req -days 2000 -in server.csr -signkey /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 USER meteor 
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
-RUN openssl genrsa -des3 -passout pass:x -out server.pass.key 2048 && \
-openssl rsa -passin pass:x -in server.pass.key -out server.key && \
-rm server.pass.key && \
-openssl req -new -key server.key -out server.csr \
-  -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" && \
-openssl x509 -req -days 365 -in server.csr -signkey /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
 WORKDIR /opt/application/
 
