@@ -47,10 +47,7 @@ USER root
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
 RUN cd /etc/ssl && \
-openssl genrsa -des3 -passout pass:x -out server.pass.key 2048
-RUN openssl rsa -passin pass:x -in /etc/ssl/server.pass.key -out /etc/ssl/server.key && \
-rm server.pass.key 
-RUN openssl req -new -key /etc/ssl/server.key -out /etc/ssl/server.csr \
+openssl req -nodes -newkey rsa:2048 -keyout /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/server.csr \
   -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" 
 RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
