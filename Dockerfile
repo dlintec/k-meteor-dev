@@ -33,7 +33,7 @@ ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
 ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 #replace with "yourdomain.com"
-ENV DOMAIN_NAME="localhost"
+ENV DOMAIN_NAME="127.0.0.1"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN git clone https://github.com/$GIT_REPO/$GIT_IMAGE.git $LOCAL_IMAGE_PATH && \
 ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
@@ -52,7 +52,10 @@ openssl req -nodes -newkey rsa:2048 -keyout /etc/ssl/certs/nginx-selfsigned.key 
 RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
-copy self-signed.conf /etc/nginx/snippets/self-signed.conf
+COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
+RUN ufw allow 'Nginx Full'  && \
+    ufw delete allow 'Nginx HTTP' && \
+    cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 USER meteor 
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
