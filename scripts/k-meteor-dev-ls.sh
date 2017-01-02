@@ -1,5 +1,5 @@
 #!/bin/bash
-filelines=$(ls -d */ /opt/application | cut -f1 -d'/')
+filelines=$(ls /opt/application )
 
 for line in $filelines ; do
     #echo "Checking $line"
