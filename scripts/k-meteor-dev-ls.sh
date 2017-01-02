@@ -1,15 +1,16 @@
 #!/bin/bash
 main() {
-###script k-meteor-dev-ls.sh
-filelines=$(ls /opt/application)
-valid_apps=""
-for line in $filelines ; do
-    #echo "Creando link para script $line"
-    if [ -d /opt/application/$line/app/.meteor ];then
-       valid_apps=$($valid_apps;line)
-    fi
+#!/bin/bash
+      filelines=$(ls -d */ /opt/application | cut -f1 -d'/')
+      valid_apps=""
+      for line in $filelines ; do
+          #echo "Checking $line"
+          if [ -d /opt/application/$line/app/.meteor ] && [ ! "$line" == "_k-meteor-dev" ];then
+             echo $line
+          fi
+          
+      done
+      #echo $valid_apps
 
-done
-echo valid_apps
 }
 main "$@"
