@@ -178,17 +178,20 @@ main() {
            
            use)
                ap=$3
+               if [  -z $ap ];then
+                 echo "$(kalan-var 'CURRENT_APP')"
+                 exit 0
+               fi
+              
                if [ ! -z $ap ] && [ -e /opt/application/$ap/app/.meteor ]; then
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
                   exit 0
                else 
-                  if [ ! -z $ap ];then
-                     echo "Can not use [$ap]. There is no valid project folder at $ap/app "
-                  else
-                     echo "$(kalan-var 'CURRENT_APP')"
-                  fi
+                 
+                  echo "Can not use [$ap]. There is no valid project folder at $ap/app "
+                 
                   exit 1
                fi
                
