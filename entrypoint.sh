@@ -4,8 +4,8 @@ the_user=$(whoami)
 if [ "$the_user" == "root" ];then
    echo ""
    echo "   Running NGINX proxy at port 80 and 443"
-   service nginx start
-   #nginx -g "daemon off;"
+   #service nginx start
+   nginx -g "daemon off;"
    exit 0
 fi
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
