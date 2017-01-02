@@ -3,24 +3,12 @@ main() {
    source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
    backup_folder="/home/meteor/k-temp"
 
-   function meteor-dev-ls {
-      filelines=$(ls -d */ /opt/application | cut -f1 -d'/')
-      valid_apps=""
-      for line in $filelines ; do
-          #echo "Checking $line"
-          if [ -d /opt/application/$line/app/.meteor ] && [ ! "$line" == "_k-meteor-dev" ];then
-             echo $line
-          fi
-          
-      done
-      #echo $valid_apps
-   }
 
    for arg in "$@" ; do
        case "$arg" in
 
          ls)
-               valid_apps="$(meteor-dev-ls)"
+               valid_apps="$(k-meteor-dev-ls)"
                echo "$valid_apps"
                exit 0
          ;;
