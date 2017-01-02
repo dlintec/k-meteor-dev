@@ -2,7 +2,8 @@
 export DOCKER_WD="$(pwd)"
 the_user=$(whoami)
 if [ "$the_user" == "root" ];then
-   echo "Starting NGINX proxy for port 80 and 443"
+   echo ""
+   echo "   Running NGINX proxy at port 80 and 443"
    nginx -g "daemon off;"
    exit 0
 fi
