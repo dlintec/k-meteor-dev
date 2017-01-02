@@ -22,7 +22,7 @@ RUN curl https://install.meteor.com/ | sh
 WORKDIR /opt/application/
 
 
-EXPOSE 3000 3001 3040
+EXPOSE 80 443 3000 3001 3040
 ENV PYTHON=/usr/bin/python2.7
 
 ENV APP_NAME="default"
