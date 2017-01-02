@@ -177,7 +177,7 @@ main() {
            ;;
            
            use)
-               ap=$2
+               ap=$3
                if [ ! -z $ap ] && [ -e /opt/application/$ap/app/.meteor ]; then
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
