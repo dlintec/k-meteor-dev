@@ -165,7 +165,7 @@ main() {
            ;;
            
            use)
-               ap=$3
+               ap=$2
                if [  -z $ap ];then
                  echo "$(kalan-var 'CURRENT_APP')"
                  exit 0
