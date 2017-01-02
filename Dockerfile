@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx 
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx #ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 #apt-get update && \
@@ -56,6 +56,8 @@ COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
 
 RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 RUN  ln -s $LOCAL_IMAGE_PATH/ngynx-proxy-settings /etc/nginx/sites-available/default
+#RUN ufw allow 'Nginx Full'
+#RUN ufw delete allow 'Nginx HTTP'
 
 USER meteor 
 RUN meteor npm install -g maka-cli && \
