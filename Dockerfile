@@ -53,9 +53,9 @@ RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
 COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
-RUN ufw allow 'Nginx Full'  && \
-    ufw delete allow 'Nginx HTTP' && \
-    mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+RUN ufw allow 'Nginx Full'  
+RUN ufw delete allow 'Nginx HTTP' 
+RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 RUN  ln -s $LOCAL_IMAGE_PATH/ngynx-proxy-settings /etc/nginx/sites-available/default
 
 USER meteor 
