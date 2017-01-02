@@ -90,7 +90,7 @@ else
         			2) #start default app
 				        clear
 					nohup k $current_app &
-					#read TEST
+					read TEST
 				;;
       				3) #create app
 					new_name=$(whiptail --title "Create New Meteor Application" \
