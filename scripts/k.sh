@@ -187,7 +187,7 @@ main() {
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
-                  exit 0
+                  exit 0 
                else 
                  
                   echo "Can not use [$ap]. There is no valid project folder at $ap/app "
