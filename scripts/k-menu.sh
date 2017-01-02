@@ -76,7 +76,6 @@ else
        				1) #select app
 					echo "select app"
 					list_apps="$(k ls)"
-					echo "ListApps:$list_apps"
 					
 					selected_app=$(k-list-menu "$list_apps" "Application" "Select default app for all meteor commands" "blue")
 					if [ ! -z "$selected_app" ];then
@@ -84,7 +83,7 @@ else
 						cd /opt/application/$selected_app/app
 						menu_status="App selected"
 					fi
-					echo "$list_apps"
+					
 					
 				;;
         			2) #start default app
