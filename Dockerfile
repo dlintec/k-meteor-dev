@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx  
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 #apt-get update && \
