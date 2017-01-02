@@ -22,7 +22,7 @@ server {
     }
     #Redirect Admin requests to secure server
     location /admin  {
-         rewrite ^/(.*) https://127.0.0.1/$1 permanent;
+         rewrite ^ https://$host$request_uri? permanent;
         
     }
     include snippets/self-signed.conf;
