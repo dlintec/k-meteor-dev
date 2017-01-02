@@ -70,3 +70,4 @@ meteor npm install -g jsdoc
 
 WORKDIR /opt/application/
 CMD ["nginx", "-g", "daemon off;"]
+USER root 
