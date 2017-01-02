@@ -83,7 +83,8 @@ else
 						cd /opt/application/$selected_app/app
 						menu_status="App selected"
 					fi
-					 
+					echo "$list_apps"
+					read waitvar
 				;;
         			2) #start default app
 				        clear
