@@ -1,5 +1,11 @@
 #!/bin/bash
 export DOCKER_WD="$(pwd)"
+user=$(whoami)
+if [ "$user" == "root ];then
+   echo "Starting NGINX proxy for port 80 and 443"
+   nginx -g daemon off
+   exit 0
+fi
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 echo "EXECUTING entrypoint"
 if [[ "$DOCKER_WD" == /opt/application* ]]; then 
