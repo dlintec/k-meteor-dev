@@ -4,7 +4,7 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx ufw
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx 
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 #apt-get update && \
@@ -53,8 +53,7 @@ RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs
 RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
 COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
-RUN ufw allow 'Nginx Full'  
-RUN ufw delete allow 'Nginx HTTP' 
+
 RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 RUN  ln -s $LOCAL_IMAGE_PATH/ngynx-proxy-settings /etc/nginx/sites-available/default
 
