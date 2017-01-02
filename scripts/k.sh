@@ -9,7 +9,7 @@ main() {
 
          ls)
                valid_apps="$(k-meteor-dev-ls)"
-               echo "$valid_apps"
+               echo "$valid_apps" 
                exit 0
          ;;
 
