@@ -76,8 +76,7 @@ else
        				1) #select app
 					
 					list_apps="$(k ls)"
-					echo "select app: $list_apps"
-					read waitvar
+					
 					selected_app=$(k-list-menu "$list_apps" "Application" "Select default app for all meteor commands" "blue")
 					if [ ! -z "$selected_app" ];then
 						k use $selected_app
