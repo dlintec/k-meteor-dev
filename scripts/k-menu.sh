@@ -134,7 +134,7 @@ else
 					echo "  $(pwd)"
 					echo "-------------------------------------------"
 					bash
-					read wait
+					wait
 					#exit_run=0
 					#while [ "$exit_run" != 1 ]; do
 					#	read -p ">" THE_COMMAND
