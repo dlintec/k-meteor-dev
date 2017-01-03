@@ -134,6 +134,7 @@ else
 					
 					 k updateapp
 					 read -n 1 -p "   press a key to continue" wait_var
+				;;
        				5) #Run command
 					clear
 					current_app=$(kalan-var "CURRENT_APP")
