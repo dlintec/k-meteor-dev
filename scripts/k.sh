@@ -23,6 +23,7 @@ main() {
                echo "   Are you sure?"
                echo "----------------------------------------------------"
                read -n 1 -p "   press (y) to accept or any key to cancel" confirm_update
+               echo ""
                if [ "$confirm_update" == "y" ];then
                   cd /opt/application/$current_app/app
                   git fetch --all
