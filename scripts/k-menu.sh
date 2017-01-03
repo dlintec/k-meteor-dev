@@ -112,19 +112,20 @@ else
 							new_template=$(whiptail --title "Create New Meteor Application" \
 							       --inputbox "\n  Type a Git hub repository name to use as template \n  or leave blank to create new app:" 10 60 "" 3>&1 1>&2 2>&3)
 							exitstatus2=$?
-							if [ $exitstatus = 0 ]; then
-								echo "Using template $new_template"
-								export APP_TEMPLATE="$new_template"
-							   else
-								new_template=""
+							if [ $exitstatus2 = 0 ]; then
+								if [ ! -z "$new_template" ];then
+									echo "Using template $new_template"
+									export APP_TEMPLATE="$new_template"
+								fi
+								clear
+								k create $valid_name 
+								k use $valid_name
+								cd /opt/application/$new_name/app
+								echo "---------------------------------------"
+								echo "press any key to return to menu" 
+								read -n 1 TEST
+							   
 							fi
-							clear
-							k create $valid_name 
-							k use $valid_name
-							cd /opt/application/$new_name/app
-							echo "---------------------------------------"
-							echo "press any key to return to menu" 
-							read -n 1 TEST
 						fi
 					fi
 				;;
