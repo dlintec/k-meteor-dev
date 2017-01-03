@@ -21,10 +21,10 @@ server {
         proxy_pass         http://127.0.0.1:3000;
     }
     #Redirect Admin requests to secure server
-    location /admin/  {
-         rewrite ^ https://$host$request_uri? permanent;
-        proxy_pass         http://127.0.0.1:3000;
-    }
+    #location /admin/  {
+    #     rewrite ^ https://$host$request_uri? permanent;
+    #    proxy_pass         http://127.0.0.1:3000;
+    #}
     include snippets/self-signed.conf;
     include snippets/ssl-params.conf;
     location = /favicon.ico { access_log off; log_not_found off; }
