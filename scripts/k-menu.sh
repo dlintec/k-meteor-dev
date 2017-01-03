@@ -92,11 +92,11 @@ else
 					kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
 				        clear
 					echo "Starting meteor in detached process"
-				        echo "press a key to return to menu"
 					echo "The application will still be running"
+				        echo "press a key to return to menu"
 					nohup k $current_app &
 					
-					read -n 1 -p "press a key to return to menu" TEST
+					read -n 1  TEST
 					clear
 				;;
       				3) #create app
