@@ -88,7 +88,11 @@ else
 					
 				;;
         			2) #start default app
+				        kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
 				        clear
+					echo "Starting meteor in detached process"
+					echo "press a key to return to menu"
+					echo "The application will still be running"
 					nohup k $current_app &
 					read TEST
 				;;
