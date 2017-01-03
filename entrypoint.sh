@@ -153,7 +153,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
          #meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
          #meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
          #meteor update
-         #meteor npm install --save bcrypt babel-runtime
+         meteor npm install --save bcrypt babel-runtime
         #meteor update accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema aldeed:tabular autoupdate \
         #babel-runtime blaze coffeescript dburles:collection-helpers ddp-client ddp-server ecmascript email http launch-screen less \
         #matb33:collection-hooks momentjs:moment nicolaslopezj:roles softwarerero:accounts-t9n useraccounts:bootstrap \
