@@ -91,10 +91,11 @@ else
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
 					kill $(ps aux | grep '[n]ode /opt/application/$current_app' | awk '{print $2}' )
 				        clear
-					echo "Starting meteor in detached process"
-					echo "press a key to return to menu"
-					echo "The application will still be running"
+					#echo "Starting meteor in detached process"
+					#echo "press a key to return to menu"
+					#echo "The application will still be running"
 					nohup k $current_app &
+					clear
 					#read TEST
 				;;
       				3) #create app
