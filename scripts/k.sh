@@ -12,7 +12,31 @@ main() {
                echo "$valid_apps" 
                exit 0
          ;;
-
+         updateapp)
+            current_app=$(kalan-var "CURRENT_APP")
+            if [ ! -z "$current_app" ] && [ -d /opt/application/$current_app/app/.git ];then
+               clear
+               echo ""
+               echo "----------------------------------------------------"
+               echo "   Updating the app will overwrite any "
+               echo "   changes made in the local code. "
+               echo "   Are you sure?"
+               echo "----------------------------------------------------"
+               read -n 1 -p "   press (y) to accept or any key to cancel" confirm_update
+               if [ "$confirm_update" == "y" ];then
+                  cd /opt/application/$current_app/app
+                  git fetch --all
+                  git reset --hard origin/master
+                  git pull
+               fi
+               
+             else
+               echo "Application $current_app is not a Git repository"
+               echo "Can not be updated"
+             fi
+ 
+             exit 0
+         ;;
          backup)
               name=$2
               if [ -z "$name" ];then
