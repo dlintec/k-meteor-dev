@@ -133,15 +133,17 @@ else
 					echo "-------------------------------------------"
 					echo "  $(pwd)"
 					echo "-------------------------------------------"
-					exit_run=0
-					while [ "$exit_run" != 1 ]; do
-						read -p ">" THE_COMMAND
-						if [ ! "$THE_COMMAND" == "exit" ];then
-						   eval k $THE_COMMAND
-						else
-						   exit_run="1"
-						fi
-					done
+					bash
+					read wait
+					#exit_run=0
+					#while [ "$exit_run" != 1 ]; do
+					#	read -p ">" THE_COMMAND
+					#	if [ ! "$THE_COMMAND" == "exit" ];then
+					#	   eval k $THE_COMMAND
+					#	else
+					#	   exit_run="1"
+					#	fi
+					#done
 				;;
        				5) #Update this containter
 					clear
