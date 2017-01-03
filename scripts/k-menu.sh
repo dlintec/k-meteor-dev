@@ -1,4 +1,5 @@
 #!/bin/bash
+export TERM=xterm
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 clear
 echo "";echo ""
