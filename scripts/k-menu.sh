@@ -90,11 +90,12 @@ else
         			2) #start default app
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
 					kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
+					nohup k $current_app &
 				        clear
 					echo "Starting meteor in detached process"
-					echo "The application will still be running"
+					echo "Running application [$current_app]"
+					echo "The application keep running"
 				        echo "press a key to return to menu"
-					nohup k $current_app &
 					
 					read -n 1  TEST
 					clear
