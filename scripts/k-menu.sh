@@ -96,7 +96,7 @@ else
 					echo "The application will still be running"
 					nohup k $current_app &
 					
-					read TEST
+					read -n 1 -p "press a key to return to menu" TEST
 					clear
 				;;
       				3) #create app
