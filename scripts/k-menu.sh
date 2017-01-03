@@ -57,12 +57,13 @@ else
 		"1" "Select app" \
 		"2" "Start app " \
 		"3" "Create new app" \
-		"4" "Run a command" \
-		"5" "Update this containter" \
-		"6" "Settings" \
-		"7" "Backup" \
-		"8" "Restore" \
-		"9" "Help" \
+		"4" "Update app" \
+		"5" "Run a command" \
+		"6" "Update this containter" \
+		"7" "Settings" \
+		"8" "Backup" \
+		"9" "Restore" \
+		"10" "Help" \
 		"0" "Exit" 3>&1 1>&2 2>&3)
 
 		exitstatus=$?
@@ -129,7 +130,11 @@ else
 						fi
 					fi
 				;;
-       				4) #Run command
+				4) # update app
+					
+					 k updateapp
+					 read -n 1 -p "   press a key to continue" wait_var
+       				5) #Run command
 					clear
 					current_app=$(kalan-var "CURRENT_APP")
 					cd /opt/application/$current_app/app
@@ -150,7 +155,7 @@ else
 					#	fi
 					#done
 				;;
-       				5) #Update this containter
+       				6) #Update this containter
 					clear
 					k update
 					kalan-var "k_menu_updated" "1"
@@ -159,7 +164,7 @@ else
 					echo "exiting k-menu level"
 					exit 0
 				;;
-				6) #settings
+				7) #settings
 				    settings_string=$(cat ~/.$GIT_IMAGE.cfg)
 					selected_setting=$(k-list-menu "$settings_string" "SETTINGS" "Select config variable to edit" "red")
 					if [ ! -z "$selected_setting" ];then
@@ -179,7 +184,7 @@ else
 					#read  TEST
 
 				;;
-				7) #backup
+				8) #backup
 					echo "backup"
 					new_name=$(whiptail --title "Create Backup" \
 					       --inputbox "\n  Type a DESCRIPTION for the Backup:" 10 60 "" 3>&1 1>&2 2>&3)
@@ -193,7 +198,7 @@ else
 					fi
 					read -n 1 -p "press akey to continue..." wait_var
 				;;
-				8) #restore
+				9) #restore
 					echo "Restore"
 					backups_list=$(ls /opt/application/_k-meteor-dev/backups/)
 					selected_backup=$(k-list-menu "$backups_list" "SETTINGS" "Select a Backup to restore" "red")
@@ -203,7 +208,7 @@ else
 					read -n 1 -p "press akey to continue..." wait_var
 
 				;;
-				9) #help
+				10) #help
 					echo "Help"
 
 				;;
