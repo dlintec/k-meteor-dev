@@ -16,11 +16,23 @@ echo "   Creating Persistent data volume k-meteor-dev-local"
 echo "-----------------------------------------------------"
 
 docker volume create --name k-meteor-dev-local
+if errorlevel 1 (
+   echo Failure Creating Volume. Reason Given is %errorlevel%
+
+   pause
+   exit /b %errorlevel%
+)
 echo ""
 echo "-----------------------------------------------------"
 echo "   Creaing Docker Image"
 echo "-----------------------------------------------------"
 docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
+if errorlevel 1 (
+   echo Failure Creating Docker Container Image. Reason Given is %errorlevel%
+
+   pause
+   exit /b %errorlevel%
+)
 echo ""
 echo "-----------------------------------------------------"
 echo "   Image Created"
@@ -32,6 +44,12 @@ echo "   Starting container of NGINX (root)"
 echo "-----------------------------------------------------"
 
 docker run --rm -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
+if errorlevel 1 (
+   echo Failure Starting container. Reason Given is %errorlevel%
+
+   pause
+   exit /b %errorlevel%
+)
 echo ""
 echo "-----------------------------------------------------"
 echo "   WELCOME to k-metoer-dev"
