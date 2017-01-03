@@ -52,8 +52,8 @@ else
                 echo $colors_normal > /etc/newt/palette
 		#NEWT_COLORS="$colors_normal" 
 		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
-		--menu " \n  MAIN MENU                    Container v$APP_VER.\n \n  Selected:[$current_app]\n  $menu_status\n  Choose an action:\n" \
-		 22 60 12 \
+		--menu " \n  MAIN MENU                    Container v$APP_VER.\n  Selected:[$current_app]\n  $menu_status\n  Choose an action:\n" \
+		 22 60 11 \
 		"1" "Select app" \
 		"2" "Start app " \
 		"3" "Create new app" \
