@@ -1,3 +1,4 @@
+#!/bin/bash
 docker stop k-meteor-dev
 docker rm k-meteor-dev
 mkdir -p /opt/application/
