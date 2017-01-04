@@ -2,9 +2,7 @@
 main() {
    source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
    backup_folder="/home/meteor/k-temp"
-
-
-   for arg in "$@" ; do
+  for arg in "$@" ; do
        case "$arg" in
 
          ls)
@@ -25,6 +23,7 @@ main() {
                read -n 1 -p "   press (y) to accept or any key to cancel" confirm_update
                echo ""
                if [ "$confirm_update" == "y" ];then
+                  k-output "updateapp:$current_app"
                   cd /opt/application/$current_app/app
                   git fetch --all
                   git reset --hard origin/master
@@ -206,6 +205,8 @@ main() {
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
+                  
+                  
                   exit 0 
                else 
                  
