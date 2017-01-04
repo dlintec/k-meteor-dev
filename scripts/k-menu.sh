@@ -91,6 +91,9 @@ else
 					selected_app=$(k-list-menu "$list_apps" "Application" "Select default app for all meteor commands" "blue")
 
 					if [ ! -z "$selected_app" ];then
+						if [ "$app_status" == "Running" ];then
+							k stop
+						fi
 						k use $selected_app
 						cd /opt/application/$selected_app/app
 						menu_status="App selected"
