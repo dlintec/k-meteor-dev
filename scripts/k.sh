@@ -144,6 +144,8 @@ main() {
 
          update)
                k-update.sh
+               exitstatus=$?
+               k-output "k:update:$exitstatus" $exitstatus
                exit 0
          ;;
          drun)
