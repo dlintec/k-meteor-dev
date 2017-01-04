@@ -110,15 +110,15 @@ else
 					else
 
 						k drun $current_app
-						exit_wait=0
-						while [ "$exit_wait" != 1 ]; do
+						exit_wait="0"
+						while [ "$exit_wait" == "0" ]; do
 							clear
 							tail /opt/application/k-output.log
 							sleep 3
 							running_process="$(lsof -w -n -i tcp:3000)"
 							if [ ! -z "$running_process" ];then
 								clear
-								exit_wait=1
+								exit_wait="1"
 							fi
 							
 						done
