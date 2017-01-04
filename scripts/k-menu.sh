@@ -234,7 +234,7 @@ else
 				;;
 				10) #help
 					clear
-					echo "$(cat /opt/application/k-output.log)"
+					echo "$(tail --lines 1000 /opt/application/k-output.log)"
 					echo ""
 					echo "----------------------------------"
 					echo "Press ENTER to go back to menu"
