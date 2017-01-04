@@ -1,6 +1,6 @@
 #!/bin/bash   
    output_log_file="/opt/application/k-output.log"
-   TIMESTAMP=`date "+%Y-%m-%d_%H:%M:%S"`
+   TIMESTAMP=`date "+%Y-%m-%d %H:%M:%S"`
    function k-output {
       log_text=$1
       exit_code=$2
