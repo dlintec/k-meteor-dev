@@ -9,3 +9,5 @@ docker run -d --name k-meteor-dev \
 docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
 docker exec -d --user meteor k-meteor-dev /bin/bash k drun
 docker exec -it --user meteor k-meteor-dev /bin/bash k menu
+echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
+chmod  +x kmenu
