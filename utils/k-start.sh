@@ -7,4 +7,5 @@ docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
 docker run -d --name k-meteor-dev \
 --user root -p 80:80 -p 443:443 -v /opt/application://opt/application -v  k-meteor-dev-local://home/meteor --restart always k-meteor-dev
 docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
-docker exec -it --user meteor k-meteor-dev /bin/bash k drun
+docker exec -d --user meteor k-meteor-dev /bin/bash k drun
+docker exec -it --user meteor k-meteor-dev /bin/bash k menu
