@@ -29,13 +29,13 @@ main() {
                   git reset --hard origin/master
                   git pull
                   exitstatus=$?
-                  k-output "k:updateapp:$current_app:$exitstatus" $exitstatus
+                  k-output "k.sh:updateapp:$current_app:$exitstatus" $exitstatus
                fi
                exit $exitstatus
              else
                echo "Application $current_app is not a Git repository"
                echo "Can not be updated"
-               k-output "k:updateapp:$current_app:Not a Git repository:1" "1"
+               k-output "k.sh:updateapp:$current_app:Not a Git repository:1" "1"
                exit 1
              fi
  
@@ -49,10 +49,10 @@ main() {
               mkdir -p /opt/application/_k-meteor-dev/backups
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar"
               echo "Be patient. Starting backup..."
-              k-output "k:bakcup:start:$file_name"
+              k-output "k.sh:bakcup:start:$file_name"
               tar -pczf $file_name /home/meteor/ 
               exitstatus=$?
-              k-output "k:bakcup:finish:$file_name:$exitstatus"
+              k-output "k.sh:bakcup:finish:$file_name:$exitstatus"
               echo "Backup finished"
               
               exit 0
@@ -75,7 +75,7 @@ main() {
                      mkdir $temp_folder
                      echo "making backup"
                                   
-                     k-output "k:restore:start:$file_name"
+                     k-output "k.sh:restore:start:$file_name"
  
                      for line in $old_ls ; do
                       
@@ -89,7 +89,7 @@ main() {
                     cd /
                     tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
                     exitstatus=$?
-                    k-output "k:restore:tar:$file_name:$exitstatus" $exit_status
+                    k-output "k.sh:restore:tar:$file_name:$exitstatus" $exit_status
  
                     if [ -d /home/meteor/.meteor ] && [ -e /home/meteor/localimage/scripts/k-update.sh ];then
                        valid_tar="true"
@@ -149,7 +149,7 @@ main() {
          update)
                k-update.sh
                exitstatus=$?
-               k-output "k:update:$exitstatus" $exitstatus
+               k-output "k.sh:update:$exitstatus" $exitstatus
                exit 0
          ;;
          drun)
@@ -221,7 +221,7 @@ main() {
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
                   
-                  k-output "k:use:$APP_NAME" "-"
+                  k-output "k.sh:use:$APP_NAME" "-"
                   
                   exit 0 
                else 
@@ -238,7 +238,7 @@ main() {
               pars=$@
               meteor maka $pars
               exitstatus=$?
-              k-output "k:maka:$pars:$exitstatus"
+              k-output "k.sh:maka:$pars:$exitstatus"
               exit 0
            ;;
            meteor)
@@ -249,7 +249,7 @@ main() {
               export APP_LOCALDB="/home/meteor/meteorlocal/$current_app"
               echo "CURRENT_APP : [$current_app]"
               exitstatus=$?
-              k-output "k:meteor:$m_command:$pars:$exitstatus"
+              k-output "k.sh:meteor:$m_command:$pars:$exitstatus"
 
               if [ ! -z $current_app ] && [ -d /opt/application/$current_app/app ];then
                  link_or_folder="/opt/application/$current_app/app/.meteor/local"
@@ -263,7 +263,7 @@ main() {
                         fi
                         meteor $pars
                         exitstatus=$?
-                        k-output "k:meteor:$m_command:$pars:$exitstatus" $exit_status
+                        k-output "k.sh:meteor:$m_command:$pars:$exitstatus" $exit_status
                        
                         exit 0
                      ;;
@@ -303,7 +303,7 @@ main() {
                         else
                            meteor $pars
                            exitstatus=$?
-                           k-output "k:meteor:$m_command:$pars:$exitstatus" $exit_status
+                           k-output "k.sh:meteor:$m_command:$pars:$exitstatus" $exit_status
 
                         fi
                         exit 0
