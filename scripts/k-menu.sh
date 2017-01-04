@@ -100,6 +100,7 @@ else
 				;;
         			2) #start default app
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
+					clear
 					if [ "$app_status" == "Running" ];then
 						kill $(ps -U meteor | grep "[m]ongo" | awk '{print $1}' )
 						kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
