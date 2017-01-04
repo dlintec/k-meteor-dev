@@ -138,7 +138,10 @@ main() {
                k-update.sh
                exit 0
          ;;
- 
+         drun)
+               kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
+               nohup k run &
+         ;;
          run)
                ap=$2
                if [ ! -z $ap ] && [ -d /opt/application/$ap ]; then
