@@ -110,10 +110,11 @@ else
 					else
 
 						k drun $current_app
+						clear
 						exit_wait="0"
 						while [ "$exit_wait" == "0" ]; do
 							clear
-							tail /opt/application/k-output.log
+							echo "Starting [$current_app] in detached mode"
 							sleep 3
 							running_process="$(lsof -w -n -i tcp:3000)"
 							if [ ! -z "$running_process" ];then
