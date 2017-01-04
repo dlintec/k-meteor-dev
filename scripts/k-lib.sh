@@ -3,13 +3,16 @@
    TIMESTAMP=`date "+%Y-%m-%d_%H:%M:%S"`
    function k-output {
       log_text=$1
-      use_lines=$2
-      
-      if [ ! -z "$use_lines" ];then
+      exit_code=$2
+      event_type="event"
+      if [ "$exit_code" -ge "1" ];then
+      	event_type="error"
+      fi
+      if [ ! -z "$exit_code" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
       fi
-      echo "k:event|$TIMESTAMP|$log_text" >> $output_log_file
-      if [ ! -z "$use_lines" ];then
+      echo "$TIMESTAMP|$event_type|$log_text" >> $output_log_file
+      if [ ! -z "$exit_code" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
       fi
    }
