@@ -10,6 +10,12 @@ main() {
                echo "$valid_apps" 
                exit 0
          ;;
+         stop)
+               kill $(ps -U meteor | grep "[m]ongo" | awk '{print $1}' )
+					kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
+					current_app=$(kalan-var "CURRENT_APP")	    
+               k-output "k.sh:stop:$current_app"
+         ;;
          updateapp)
             current_app=$(kalan-var "CURRENT_APP")
             if [ ! -z "$current_app" ] && [ -d /opt/application/$current_app/app/.git ];then
@@ -217,6 +223,7 @@ main() {
                fi
               
                if [ ! -z $ap ] && [ -e /opt/application/$ap/app/.meteor ]; then
+                  
                   export APP_NAME="$ap"
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
