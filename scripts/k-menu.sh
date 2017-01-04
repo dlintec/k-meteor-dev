@@ -72,7 +72,7 @@ else
 		"7" "Settings" \
 		"8" "Backup" \
 		"9" "Restore" \
-		"10" "Help" \
+		"10" "Logs" \
 		"0" "Exit" 3>&1 1>&2 2>&3)
 
 		exitstatus=$?
@@ -228,8 +228,12 @@ else
 
 				;;
 				10) #help
-					echo "Help"
-
+					echo "$(cat /opt/application/nohup.out)"
+					echo ""
+					echo "----------------------------------"
+					echo "Press ENTER to go back to menu"
+					read wait_var
+					
 				;;
 				esac
 
