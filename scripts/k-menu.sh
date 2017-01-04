@@ -103,6 +103,7 @@ else
 					if [ "$app_status" == "Running" ];then
 						kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
 					else
+					        kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
 						nohup k $current_app &
 					fi
 				;;
