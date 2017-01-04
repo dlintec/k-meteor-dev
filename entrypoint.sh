@@ -126,7 +126,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
          git clone https://github.com/$GIT_REPO/$APP_TEMPLATE.git app
       fi
       exitstatus=$?
-      k-output "entrypoint.sh:create:template:$APP_TEMPLATE:$exitstatus"
+      k-output "entrypoint.sh:create:template:$APP_TEMPLATE:$exitstatus" $exitstatus
        mkdir -p $APP_LOCALDB
       if [ -d /opt/application/$APP_NAME/app/.meteor/local ];then
          cp -arv /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
@@ -159,7 +159,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
         echo "Configuring and updating for k-cms"
           meteor npm install --save bcrypt babel-runtime
           exitstatus=$?
-          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus"
+          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
        fi
        
@@ -230,7 +230,7 @@ else
           echo "Starting meteor npm install"
           meteor npm install
           exitstatus=$?
-          k-output "entrypoint.sh:configure:app:default:$exitstatus"
+          k-output "entrypoint.sh:configure:app:default:$exitstatus" $exitstatus
 
        fi
    fi
@@ -254,7 +254,7 @@ else
   kalan-var "CURRENT_APP" "$APP_NAME"
   echo ""
   echo "Starting meteor. Press Ctrl+Z to stop."
-  k-output "entrypoint.sh:starting:$APP_NAME" "-"
+  #k-output "entrypoint.sh:starting:$APP_NAME" "-"
   #echo "CURRENT_APP: [$APP_NAME]"
   meteor $APP_SETTINGS $APP_PARAMETERS
  fi
