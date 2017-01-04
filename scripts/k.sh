@@ -23,19 +23,23 @@ main() {
                read -n 1 -p "   press (y) to accept or any key to cancel:" confirm_update
                echo ""
                if [ "$confirm_update" == "y" ];then
-                  k-output "updateapp:$current_app"
+                  
                   cd /opt/application/$current_app/app
                   git fetch --all
                   git reset --hard origin/master
                   git pull
+                  exitstatus=$?
+                  k-output "k:updateapp:$current_app:$exitstatus" $exitstatus
                fi
-               
+               exit $exitstatus
              else
                echo "Application $current_app is not a Git repository"
                echo "Can not be updated"
+               k-output "k:updateapp:$current_app:Not a Git repository:1" "1"
+               exit 1
              fi
  
-             exit 0
+             
          ;;
          backup)
               name=$2
