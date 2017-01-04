@@ -142,6 +142,7 @@ main() {
                ap=$2
                #kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
                nohup k run $ap &
+               exit 0
          ;;
          run)
                ap=$2
