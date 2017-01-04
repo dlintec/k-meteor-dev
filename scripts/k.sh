@@ -141,7 +141,8 @@ main() {
          drun)
                ap=$2
                #kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
-               nohup k run $ap &
+               #nohup k run $ap &
+               nohup k run $ap > /opt/application/k-output.log 2>&1&
                exit 0
          ;;
          run)
