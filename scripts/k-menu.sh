@@ -101,9 +101,9 @@ else
         			2) #start default app
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
 					if [ "$app_status" == "Running" ];then
-						kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
+						kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
 					else
-					        kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
+					        kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
 						#nohup k $current_app 1>&2  | tee nohup.out &
 						nohup k $current_app & 
 						exit_wait=0
