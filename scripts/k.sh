@@ -20,7 +20,7 @@ main() {
                echo "   changes made in the local code. "
                echo "   Are you sure?"
                echo "----------------------------------------------------"
-               read -n 1 -p "   press (y) to accept or any key to cancel" confirm_update
+               read -n 1 -p "   press (y) to accept or any key to cancel:" confirm_update
                echo ""
                if [ "$confirm_update" == "y" ];then
                   k-output "updateapp:$current_app"
