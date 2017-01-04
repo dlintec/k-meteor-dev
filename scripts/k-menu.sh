@@ -108,6 +108,8 @@ else
 						#nohup k $current_app & 
 						exit_wait=0
 						while [ "$exit_wait" != 1 ]; do
+							clear
+							tail nohup.out
 							sleep 3
 							running_process="$(lsof -w -n -i tcp:3000)"
 							if [ ! -z "$running_process" ];then
