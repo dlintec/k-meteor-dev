@@ -50,12 +50,21 @@ else
 		current_app=$(kalan-var "CURRENT_APP")
  		colors_normal="$(k-colors normal)"
                 echo $colors_normal > /etc/newt/palette
+		running_process="$(lsof -w -n -i tcp:3000)"
+		app_status="Stopped"
+		startStop_option="Start"
+		if [ -z "$running_process" ];then
+		   app_status="Stopped"
+		else
+		   app_status="Running"
+		   startStop_option="Stop"
+		fi
 		#NEWT_COLORS="$colors_normal" 
 		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
-		--menu " \n  MAIN MENU                    Container v$APP_VER.\n  Selected:[$current_app]   Running:[]$apps_running\n  $menu_status\n  Choose an action:\n" \
+		--menu " \n  MAIN MENU                    Container v$APP_VER.\n  Selected:[$current_app]   status:[$app_status]$apps_running\n  $menu_status\n  Choose an action:\n" \
 		 22 60 11 \
 		"1" "Select app" \
-		"2" "Start app " \
+		"2" "$startStop_option app " \
 		"3" "Create new app" \
 		"4" "Update app" \
 		"5" "Run a command" \
@@ -91,16 +100,11 @@ else
 				;;
         			2) #start default app
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
-					kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
-					nohup k $current_app &
-				        clear
-					echo "Starting meteor in detached process"
-					echo "Running application [$current_app]"
-					echo "The application keep running"
-				        echo "press a key to return to menu"
-					
-					read -n 1  TEST
-					clear
+					if [ "$app_status" == "Running" ];then
+						kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
+					else
+						nohup k $current_app &
+					fi
 				;;
       				3) #create app
 					new_name=$(whiptail --title "Create New Meteor Application" \
