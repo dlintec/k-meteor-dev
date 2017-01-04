@@ -103,9 +103,8 @@ else
 					if [ "$app_status" == "Running" ];then
 						kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
 					else
-					        kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
-						#nohup k $current_app 1>&2  | tee nohup.out &
-						nohup k $current_app & 
+
+						k drun $current_app
 						exit_wait=0
 						while [ "$exit_wait" != 1 ]; do
 							clear
