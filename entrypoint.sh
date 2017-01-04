@@ -1,7 +1,7 @@
 #!/bin/bash
 export DOCKER_WD="$(pwd)"
 the_user=$(whoami)
-k-output "entrypoint.sh:user:$the_user" 1
+k-output "entrypoint.sh:user:$the_user" 0
 if [ "$the_user" == "root" ];then
    echo ""
    echo "   Running NGINX proxy at port 80 and 443"
