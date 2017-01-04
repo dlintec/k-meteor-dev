@@ -1,10 +1,13 @@
 #!/bin/bash
 export DOCKER_WD="$(pwd)"
 the_user=$(whoami)
+k-output "entrypoint.sh:user:$the_user" 1
 if [ "$the_user" == "root" ];then
    echo ""
    echo "   Running NGINX proxy at port 80 and 443"
    #service nginx start
+   k-output "entrypoint.sh:nginx:$(nginx -t)"
+   
    nginx -g "daemon off;"
    exit 0
 fi
@@ -38,6 +41,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
    if [ -z $APP_TEMPLATE ]; then
       cd /opt/application/
       echo "Creating new app $APP_NAME (maka create)"
+      k-output "entrypoint.sh:maka:$APP_NAME"
       #mkdir -p /opt/application/$APP_NAME
       cd /opt/application
       meteor maka create "$APP_NAME"
@@ -106,6 +110,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
 
    else
       echo "Creating new app from template: [$APP_TEMPLATE]"
+      
       if [ "$APP_TEMPLATE" == "meteor-application-template" ];then
          export APP_SETTINGS_FILE="/opt/application/$APP_NAME/config/settings.development.json"
          export APP_SETTINGS="--settings $APP_SETTINGS_FILE"
@@ -119,6 +124,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
          cd $APP_WORKDIR
          git clone https://github.com/$GIT_REPO/$APP_TEMPLATE.git app
       fi
+      exitstatus=$?
+      k-output "entrypoint.sh:create:template:$APP_TEMPLATE:$exitstatus"
        mkdir -p $APP_LOCALDB
       if [ -d /opt/application/$APP_NAME/app/.meteor/local ];then
          cp -arv /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
@@ -141,6 +148,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
        echo $APP_SETTINGS > /opt/application/$APP_NAME/app_settings.txt
        cd /opt/application/$APP_NAME/app 
        if [ "$APP_TEMPLATE" == "base" ];then
+          k-output "entrypoint.sh:create:base"
           meteor add npm-bcrypt
           meteor update
           meteor npm install --save babel-runtime bcrypt jquery bootstrap react react-dom react-router react-bootstrap react-komposer react-router-bootstrap jquery-validation
@@ -148,19 +156,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
        fi
       if [ "$APP_TEMPLATE" == "k-cms" ];then
         echo "Configuring and updating for k-cms"
-         #meteor add npm-bcrypt
-         #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
-         #meteor add orionjs:filesystem orionjs:image-attribute orionjs:file-attribute vsivsi:orion-file-collection orionjs:summernote orionjs:summernote orionjs:lang-es orionjs:pages
-         #meteor add sacha:spin vsivsi:orion-file-collection michalvalasek:autoform-bootstrap-colorpicker
-         #meteor update
-         meteor npm install --save bcrypt babel-runtime
-        #meteor update accounts-password aldeed:autoform aldeed:collection2 aldeed:simple-schema aldeed:tabular autoupdate \
-        #babel-runtime blaze coffeescript dburles:collection-helpers ddp-client ddp-server ecmascript email http launch-screen less \
-        #matb33:collection-hooks momentjs:moment nicolaslopezj:roles softwarerero:accounts-t9n useraccounts:bootstrap \
-        #useraccounts:core vsivsi:file-collection 
-        
-         #k meteor reset
-      fi
+          meteor npm install --save bcrypt babel-runtime
+          exitstatus=$?
+          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus"
+
+       fi
        
 
        #meteor npm install
@@ -228,6 +228,9 @@ else
           #meteor update 
           echo "Starting meteor npm install"
           meteor npm install
+          exitstatus=$?
+          k-output "entrypoint.sh:configure:app:default:$exitstatus"
+
        fi
    fi
      #meteor update --all-packages
@@ -241,6 +244,7 @@ fi
 if [ -d /opt/application/$APP_NAME/.maka ];then
     echo "maka start"
   cd /opt/application/$APP_NAME
+  k-output "entrypoint.sh:maka_starting:$APP_NAME"
   meteor maka run
 else
   cd /opt/application/$APP_NAME/app
@@ -249,6 +253,7 @@ else
   kalan-var "CURRENT_APP" "$APP_NAME"
   echo ""
   echo "Starting meteor. Press Ctrl+Z to stop."
+  k-output "entrypoint.sh:starting:$APP_NAME"
   #echo "CURRENT_APP: [$APP_NAME]"
   meteor $APP_SETTINGS $APP_PARAMETERS
  fi
