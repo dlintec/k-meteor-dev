@@ -1,4 +1,13 @@
 #!/bin/bash   
+   output_log_file="/opt/application/k-output.log"
+   TIMESTAMP=`date "+%Y-%m-%d_%H:%M:%S"`
+   function k-output {
+      log_text=$1
+      echo "---------------------------------------------------------------------------------" >> $output_log_file
+      echo "k:event|$TIMESTAMP|$log_text" >> $output_log_file
+      echo "---------------------------------------------------------------------------------" >> $output_log_file
+   }
+ 
    function addreplacevalue {
      usesudo="$4"
      archivo="$3"
