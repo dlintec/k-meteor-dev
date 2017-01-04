@@ -8,11 +8,11 @@
       if [ "$exit_code" -ge "1" ];then
       	event_type="error"
       fi
-      if [ ! -z "$exit_code" ];then
+      if [ "$exit_code" == "-" ] || [ "$event_type" != "event" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
       fi
       echo "$TIMESTAMP|$event_type|$log_text" >> $output_log_file
-      if [ ! -z "$exit_code" ];then
+      if [ "$exit_code" == "-" ] || [ "$event_type" != "event" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
       fi
    }
