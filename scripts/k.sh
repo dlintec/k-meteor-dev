@@ -139,8 +139,9 @@ main() {
                exit 0
          ;;
          drun)
+               ap=$2
                kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
-               nohup k run &
+               nohup k run $ap &
          ;;
          run)
                ap=$2
