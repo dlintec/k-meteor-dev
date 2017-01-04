@@ -217,7 +217,7 @@ main() {
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
                   
-                  k-output "k:use:finish:$APP_NAME" 0
+                  k-output "k:use:$APP_NAME" "-"
                   
                   exit 0 
                else 
