@@ -5,7 +5,7 @@
       log_text=$1
       exit_code=$2
       event_type="event"
-      if [ "$exit_code" -ge "1" ];then
+      if [ ! "$exit_code" == "0" ] && [ "$exit_code" != "-" ];then
       	event_type="error"
       fi
       if [ "$exit_code" == "-" ] || [ "$event_type" != "event" ];then
