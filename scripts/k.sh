@@ -45,7 +45,10 @@ main() {
               mkdir -p /opt/application/_k-meteor-dev/backups
               file_name="/opt/application/_k-meteor-dev/backups/$(date '+%Y-%m-%d_%H-%M-%S')_$name.tar"
               echo "Be patient. Starting backup..."
+              k-output "k:bakcup:start:$file_name"
               tar -pczf $file_name /home/meteor/ 
+              exitstatus=$?
+              k-output "k:bakcup:finish:$file_name:$exitstatus"
               echo "Backup finished"
               
               exit 0
@@ -67,6 +70,9 @@ main() {
                     old_ls="$(ls -a /home/meteor)"
                      mkdir $temp_folder
                      echo "making backup"
+                                  
+                     k-output "k:restore:start:$file_name"
+ 
                      for line in $old_ls ; do
                       
                          if [ ! "$line" == "." ] && [ ! "$line" == ".." ] && [ ! "$line" == "k-temp" ];then
@@ -78,6 +84,9 @@ main() {
                      
                     cd /
                     tar -pxzf /opt/application/_k-meteor-dev/backups/$file_name
+                    exitstatus=$?
+                    k-output "k:restore:tar:$file_name:$exitstatus" $exit_status
+ 
                     if [ -d /home/meteor/.meteor ] && [ -e /home/meteor/localimage/scripts/k-update.sh ];then
                        valid_tar="true"
                     fi
@@ -206,6 +215,7 @@ main() {
                   kalan-var "CURRENT_APP" "$APP_NAME"
                   echo "Using: [$(kalan-var 'CURRENT_APP')]"
                   
+                  k-output "k:use:finish:$APP_NAME" 0
                   
                   exit 0 
                else 
@@ -221,6 +231,8 @@ main() {
               shift
               pars=$@
               meteor maka $pars
+              exitstatus=$?
+              k-output "k:maka:$pars:$exitstatus"
               exit 0
            ;;
            meteor)
@@ -230,6 +242,9 @@ main() {
               current_app=$(kalan-var "CURRENT_APP")
               export APP_LOCALDB="/home/meteor/meteorlocal/$current_app"
               echo "CURRENT_APP : [$current_app]"
+              exitstatus=$?
+              k-output "k:meteor:$m_command:$pars:$exitstatus"
+
               if [ ! -z $current_app ] && [ -d /opt/application/$current_app/app ];then
                  link_or_folder="/opt/application/$current_app/app/.meteor/local"
                  cd /opt/application/$current_app/app
@@ -241,6 +256,9 @@ main() {
                             ln -s $APP_LOCALDB $link_or_folder
                         fi
                         meteor $pars
+                        exitstatus=$?
+                        k-output "k:meteor:$m_command:$pars:$exitstatus" $exit_status
+                       
                         exit 0
                      ;;
                      reset)
@@ -278,6 +296,9 @@ main() {
                            entrypoint.sh
                         else
                            meteor $pars
+                           exitstatus=$?
+                           k-output "k:meteor:$m_command:$pars:$exitstatus" $exit_status
+
                         fi
                         exit 0
 
