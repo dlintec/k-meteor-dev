@@ -228,6 +228,7 @@ else
 
 				;;
 				10) #help
+					clear
 					echo "$(cat /opt/application/k-output.log)"
 					echo ""
 					echo "----------------------------------"
