@@ -61,8 +61,8 @@ else
 		fi
 		#NEWT_COLORS="$colors_normal" 
 		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
-		--menu " \n  MAIN MENU                    Container v$APP_VER.\n  Selected:[$current_app]   status:[$app_status]$apps_running\n  $menu_status\n  Choose an action:\n" \
-		 22 60 11 \
+		--menu "  MAIN MENU                    Container v$APP_VER.\n  Selected:[$current_app]   status:[$app_status]$apps_running\n  $menu_status" \
+		 21 60 11 \
 		"1" "Select app" \
 		"2" "$startStop_option app " \
 		"3" "Create new app" \
