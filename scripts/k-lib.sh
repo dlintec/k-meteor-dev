@@ -3,9 +3,15 @@
    TIMESTAMP=`date "+%Y-%m-%d_%H:%M:%S"`
    function k-output {
       log_text=$1
+      use_lines=$2
+      
+      if [ ! -z "$use_lines" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
+      fi
       echo "k:event|$TIMESTAMP|$log_text" >> $output_log_file
+      if [ ! -z "$use_lines" ];then
       echo "---------------------------------------------------------------------------------" >> $output_log_file
+      fi
    }
  
    function addreplacevalue {
