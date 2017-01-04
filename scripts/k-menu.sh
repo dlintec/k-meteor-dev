@@ -102,6 +102,9 @@ else
 				        #kill $(ps aux | grep '[m]eteor' | awk '{print $2}')
 					if [ "$app_status" == "Running" ];then
 						kill $(ps -U meteor | grep "[n]ode" | awk '{print $1}' )
+						    
+     						 k-output "k-menu.sh:stop"
+
 					else
 
 						k drun $current_app
