@@ -104,7 +104,19 @@ else
 						kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
 					else
 					        kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
-						nohup k $current_app &
+						
+						nohup k $current_app & tail -f nohup.out
+						exit_wait=0
+						while [ "$exit_wait" != 1 ]; do
+							sleep 3
+							running_process="$(lsof -w -n -i tcp:3000)"
+							if [ ! -z "$running_process" ];then
+								clear
+								exit_wait=1
+							fi
+							
+						done
+						
 					fi
 				;;
       				3) #create app
