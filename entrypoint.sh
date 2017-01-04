@@ -254,7 +254,7 @@ else
   kalan-var "CURRENT_APP" "$APP_NAME"
   echo ""
   echo "Starting meteor. Press Ctrl+Z to stop."
-  k-output "entrypoint.sh:starting:$APP_NAME"
+  k-output "entrypoint.sh:starting:$APP_NAME" "-"
   #echo "CURRENT_APP: [$APP_NAME]"
   meteor $APP_SETTINGS $APP_PARAMETERS
  fi
