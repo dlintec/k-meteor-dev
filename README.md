@@ -13,6 +13,8 @@ Updated to **Meteor version 1.4.2.3.**
 Configure development folder and environment
 ==================================================
 
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart
+
 1 Prerequisites
 ------------------
 - **Docker** for Windows or Mac. 
