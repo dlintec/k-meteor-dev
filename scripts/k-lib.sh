@@ -11,7 +11,7 @@
       if [ "$exit_code" == "-" ] || [ ! "$event_type" == "event" ];then
       echo "---------------------------------------------------------" >> $output_log_file
       fi
-      echo "$TIMESTAMP|$event_type|$log_text" >> $output_log_file
+      echo "K_LOG|$TIMESTAMP|$event_type|$log_text" >> $output_log_file
       if [ "$exit_code" == "-" ] || [ ! "$event_type" == "event" ];then
       echo "---------------------------------------------------------" >> $output_log_file
       fi
