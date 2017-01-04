@@ -104,8 +104,8 @@ else
 						kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
 					else
 					        kill $(lsof -w -n -i tcp:3000 | grep "[n]ode" | awk '{print $2}' )
-						nohup k $current_app 1>&2  | tee nohup.out &
-						#nohup k $current_app & 
+						#nohup k $current_app 1>&2  | tee nohup.out &
+						nohup k $current_app & 
 						exit_wait=0
 						while [ "$exit_wait" != 1 ]; do
 							clear
