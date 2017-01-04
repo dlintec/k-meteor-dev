@@ -1,6 +1,7 @@
 #!/bin/bash
 export DOCKER_WD="$(pwd)"
 the_user=$(whoami)
+source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 k-output "entrypoint.sh:user:$the_user" "-"
 if [ "$the_user" == "root" ];then
    echo ""
@@ -11,7 +12,7 @@ if [ "$the_user" == "root" ];then
    nginx -g "daemon off;"
    exit 0
 fi
-source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
+
 echo "EXECUTING entrypoint"
 if [[ "$DOCKER_WD" == /opt/application* ]]; then 
  
