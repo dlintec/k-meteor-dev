@@ -1,6 +1,7 @@
 FROM ubuntu:xenial
 
 MAINTAINER Tadeo Gutierrez "info@dlintec.com"
+ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 RUN apt-get update && \
@@ -24,7 +25,7 @@ WORKDIR /opt/application/
 
 EXPOSE 80 443 3000 3001 3040
 ENV PYTHON=/usr/bin/python2.7
-ENV TERM=xterm
+
 ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
 ENV APP_VER=1.83
