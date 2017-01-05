@@ -162,7 +162,14 @@ if [ ! -d /opt/application/$APP_NAME ];then
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
        fi
-       
+       if [ "$APP_TEMPLATE" == "meteor-react-d3" ];then
+        echo "Configuring and updating for k-cms"
+          meteor npm install --save bcrypt babel-runtime react react-dom react-addons-pure-render-mixin
+          exitstatus=$?
+          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
+
+       fi
+      
 
        #meteor npm install
        #meteor add npm-bcrypt 
