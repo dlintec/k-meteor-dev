@@ -98,7 +98,7 @@ else
 						cd /opt/application/$selected_app/app
 						menu_status="App selected"
 					fi
-					read wait_var
+					
 					
 				;;
         			2) #start default app
