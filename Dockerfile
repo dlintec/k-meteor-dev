@@ -24,7 +24,7 @@ WORKDIR /opt/application/
 
 EXPOSE 80 443 3000 3001 3040
 ENV PYTHON=/usr/bin/python2.7
-
+ENV TERM=xterm
 ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
 ENV APP_VER=1.83
@@ -67,7 +67,7 @@ meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
-ENV TERM=xterm
+
 WORKDIR /opt/application/
 #CMD ["nginx", "-g", "daemon off;"]
 #USER root 
