@@ -163,7 +163,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
 
        fi
        if [ "$APP_TEMPLATE" == "meteor-react-d3" ];then
-        echo "Configuring and updating for k-cms"
+        echo "Configuring and updating for k-react-d3"
           rm -rf /opt/application/$APP_NAME/app/node_modules
           meteor npm install --save bcrypt babel-runtime 
           k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
