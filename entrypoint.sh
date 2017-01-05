@@ -167,7 +167,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           rm -rf /opt/application/$APP_NAME/app/node_modules
           meteor npm install 
           meteor npm install --save bcrypt babel-runtime 
-          k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
+          meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
           react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
           react-addons-test-utils react-addons-perf react-mounter bootstrap-colorpicker
           meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
