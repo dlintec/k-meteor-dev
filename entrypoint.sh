@@ -7,7 +7,7 @@ if [ "$the_user" == "root" ];then
    echo ""
    echo "   Running NGINX proxy at port 80 and 443"
    #service nginx start
-   k-output "entrypoint.sh:nginx:$(nginx -t)"
+   k-output "entrypoint.sh:nginx:start"
    
    nginx -g "daemon off;"
    exit 0
