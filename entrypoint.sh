@@ -175,7 +175,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           #meteor add summernote:standalone@0.6.16
           #meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
           #meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
-          #meteor add orionjs:lang-en orionjs:lang-es orionjs:pages 
+          #meteor add orionjs:lang-en orionjs:lang-es orionjs:pages orionjs:summernote accounts-ui
           #meteor remove autopublish insecure
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
