@@ -166,17 +166,17 @@ if [ ! -d /opt/application/$APP_NAME ];then
         echo "Configuring and updating for k-react-d3"
           rm -rf /opt/application/$APP_NAME/app/node_modules
           meteor npm install 
-          #meteor npm install --save bcrypt babel-runtime 
-          #k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
-          #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
-          #react-addons-test-utils react-addons-perf react-mounter bootstrap-colorpicker
-          #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
-          #meteor add kadira:flow-router kadira:blaze-layout
-          #meteor add summernote:standalone@0.6.16
-          #meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
-          #meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
-          #meteor add orionjs:lang-en orionjs:lang-es orionjs:pages orionjs:summernote accounts-ui 
-          #meteor remove autopublish insecure
+          meteor npm install --save bcrypt babel-runtime 
+          k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
+          react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
+          react-addons-test-utils react-addons-perf react-mounter bootstrap-colorpicker
+          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
+          meteor add kadira:flow-router kadira:blaze-layout
+          meteor add summernote:standalone@0.6.16
+          meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
+          meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
+          meteor add orionjs:lang-en orionjs:lang-es orionjs:pages orionjs:summernote accounts-ui 
+          meteor remove autopublish insecure
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
