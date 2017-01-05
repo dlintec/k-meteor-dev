@@ -67,7 +67,7 @@ meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
-
+ENV TERM=xterm
 WORKDIR /opt/application/
 #CMD ["nginx", "-g", "daemon off;"]
 #USER root 
