@@ -5,13 +5,14 @@
       log_text=$1
       exit_code=$2
       event_type="event"
+      current_user=$(whoami)
       if [ ! -z "$exit_code" ] && [ ! "$exit_code" == "0" ] && [ ! "$exit_code" == "-" ];then
       	event_type="error"
       fi
       if [ "$exit_code" == "-" ] || [ ! "$event_type" == "event" ];then
       echo "---------------------------------------------------------" >> $output_log_file
       fi
-      echo "KLOG|$TIMESTAMP|$GIT_IMAGE|$event_type|$log_text" >> $output_log_file
+      echo "KLOG|$TIMESTAMP|$GIT_IMAGE|$current_user|$event_type|$log_text" >> $output_log_file
       if [ "$exit_code" == "-" ] || [ ! "$event_type" == "event" ];then
       echo "---------------------------------------------------------" >> $output_log_file
       fi
