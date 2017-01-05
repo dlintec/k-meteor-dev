@@ -16,6 +16,15 @@ main() {
 					current_app=$(kalan-var "CURRENT_APP")	    
                k-output "k.sh:stop:$current_app"
          ;;
+	 dropdatabase)
+	    current_app=$(kalan-var "CURRENT_APP")
+	    if [ ! -z "$current_app" ] && [ -d /home/meteor/meteorlocal/$current_app/db ];then
+	    	k-output "k.sh:dropdatabase:$current_app"
+		echo "Dropping database for $current_app"
+	    	rm -rf /home/meteor/meteorlocal/$current_app/db
+	    fi
+	    exit 0
+	 ;;
          updateapp)
             current_app=$(kalan-var "CURRENT_APP")
             if [ ! -z "$current_app" ] && [ -d /opt/application/$current_app/app/.git ];then
