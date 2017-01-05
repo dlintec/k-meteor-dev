@@ -165,10 +165,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
        if [ "$APP_TEMPLATE" == "meteor-react-d3" ];then
         echo "Configuring and updating for k-react-d3"
           rm -rf /opt/application/$APP_NAME/app/node_modules
-          meteor npm install --save bcrypt babel-runtime 
-          k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
-          react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
-          react-addons-test-utils react-addons-perf
+          #meteor npm install --save
+          #meteor npm install --save bcrypt babel-runtime 
+          #k meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
+          #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
+          #react-addons-test-utils react-addons-perf
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
