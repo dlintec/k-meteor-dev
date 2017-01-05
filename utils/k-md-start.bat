@@ -14,20 +14,23 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	SET runStopOption=Start Container
 	SET runStopSub=START_CONTAINER
 	SET auto_menu=1
+	SET status_string=Preparing environment
 	REM echo "found:%running_k_meteor_dev%."
 	IF "%running_k_meteor_dev%."=="." (
 		SET runStopOption=Start Container
 		SET runStopSub=START_CONTAINER
+		SET status_string=Stopped
      	) else (
 		SET runStopOption=Stop Container
 		SET runStopSub=STOP_CONTAINER
 		SET container_status=running
+		SET status_string=RUNNING
 	)
 	cls
 	echo ----------------------------------------------------------
 	echo    K-METEOR-DEV - Docker container for meteor development 
 	echo    (2017 Tadeo Gutierrez)
-	echo    Preparing environment 
+	echo    CONTAINER STATUS:[ %status_string% ]
 	echo ----------------------------------------------------------
 
 	ECHO.
