@@ -176,6 +176,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           #meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
           #meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
           #meteor add orionjs:lang-en orionjs:lang-es orionjs:pages 
+          #meteor remove autopublish insecure
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
