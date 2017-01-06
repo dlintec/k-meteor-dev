@@ -158,6 +158,10 @@ if [ ! -d /opt/application/$APP_NAME ];then
       if [ "$APP_TEMPLATE" == "k-cms" ];then
         echo "Configuring and updating for k-cms"
           meteor npm install --save bcrypt babel-runtime
+          #meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
+          #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
+          #react-addons-test-utils react-addons-perf react-mounter 
+          #meteor npm install --save reactbootstrap-colorpicker
           #meteor add react d3js:d3 momentjs:moment
 
           exitstatus=$?
