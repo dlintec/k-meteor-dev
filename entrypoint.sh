@@ -158,6 +158,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
       if [ "$APP_TEMPLATE" == "k-cms" ];then
         echo "Configuring and updating for k-cms"
           meteor npm install --save bcrypt babel-runtime
+          #meteor add react d3js:d3 momentjs:moment
+
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
 
