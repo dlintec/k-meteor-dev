@@ -161,7 +161,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           #meteor npm install --save jquery@2.2.4
           #meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
           #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
-          #react-addons-test-utils react-addons-perf react-mounter 
+          #react-addons-test-utils react-addons-perf react-mounter fs-extra
           #####meteor npm install --save reactbootstrap-colorpicker
           #meteor add react d3js:d3 momentjs:moment react-meteor-data ultimatejs:tracker-react timbrandin:autoform-slingshot timbrandin:image-resize-client
 
