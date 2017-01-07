@@ -163,7 +163,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
           #react-addons-test-utils react-addons-perf react-mounter 
           #####meteor npm install --save reactbootstrap-colorpicker
-          #meteor add react d3js:d3 momentjs:moment react-meteor-data
+          #meteor add react d3js:d3 momentjs:moment react-meteor-data ultimatejs:tracker-react
 
           exitstatus=$?
           k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
