@@ -3,8 +3,10 @@ MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
+USER root
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof apt-get install imagemagick #ufw
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof apt-get install imagemagick 
+#ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
 #apt-get update && \
