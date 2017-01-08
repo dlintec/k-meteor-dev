@@ -1,5 +1,5 @@
 FROM ubuntu:16.10
-AINTAINER Tadeo Gutierrez "info@dlintec.com"
+MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
