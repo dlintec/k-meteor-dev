@@ -4,7 +4,7 @@ ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 USER root
-RUN apt-get update && \
+RUN apt-get update; && \
 apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof apt-get install imagemagick 
 #ufw
 
