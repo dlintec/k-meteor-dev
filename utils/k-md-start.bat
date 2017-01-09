@@ -2,9 +2,6 @@
 
 REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 
-
-
-
 :MENU
 	SET running_k_meteor_dev=
 
@@ -68,6 +65,8 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	) else (
 		echo Stopping k-meteor-dev
 	   docker stop k-meteor-dev
+	   timeout 5
+	   GOTO:MENU
 	)
 	GOTO:MENU
 
@@ -98,7 +97,7 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	echo "-----------------------------------------------------"
 
 
-	docker run --rm -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
+	docker run --rm -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
 	if errorlevel 1 (
 	   echo Failure Starting container. Reason Given is %errorlevel%
 
