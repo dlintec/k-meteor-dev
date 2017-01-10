@@ -64,8 +64,8 @@ RUN  ln -s $LOCAL_IMAGE_PATH/nginx-proxy-settings /etc/nginx/sites-available/def
 #RUN ufw allow 'Nginx Full'
 #RUN ufw delete allow 'Nginx HTTP'
 
-#RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
-#COPY nginx.conf /etc/nginx/nginx.conf
+RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
+COPY nginx.conf /etc/nginx/nginx.conf
 
 USER meteor 
 RUN meteor npm install -g maka-cli && \
