@@ -56,9 +56,9 @@ RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
 COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
 
-RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak && \
-     mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
-COPY nginx.conf /etc/nginx/nginx.conf
+RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
+#RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
+#COPY nginx.conf /etc/nginx/nginx.conf
 RUN  ln -s $LOCAL_IMAGE_PATH/nginx-proxy-settings /etc/nginx/sites-available/default
 #RUN systemctl enable nginx
 #RUN update-rc.d nginx defaults
