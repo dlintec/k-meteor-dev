@@ -127,6 +127,7 @@ else
 					fi
 				;;
       				3) #create app
+					export $APP_TEMPLATE=""
 					new_name=$(whiptail --title "Create New Meteor Application" \
 					       --inputbox "\n  Type a NAME for the new app:" 10 60 "" 3>&1 1>&2 2>&3)
 
