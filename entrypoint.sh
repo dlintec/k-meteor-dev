@@ -39,7 +39,7 @@ export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
 if [ ! -d /opt/application/$APP_NAME ];then
       echo "No previous folder for app $APP_NAME"
 
-   if [ -z $APP_TEMPLATE ]; then
+   if [ -z $APP_TEMPLATE ] || [ "$APP_TEMPLATE" == "maka" ]; then
       cd /opt/application/
       echo "Creating new app $APP_NAME (maka create)"
       k-output "entrypoint.sh:maka:$APP_NAME"
