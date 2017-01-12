@@ -74,16 +74,17 @@ if [ ! -d /opt/application/$APP_NAME ];then
 }'
       echo $package_string >> /opt/application/$APP_NAME/app/package.json
 
+     
+      meteor maka npm install --save bcrypt babel-runtime 
       meteor maka npm install -g jsdoc
-      meteor maka npm install --save babel-runtime
       meteor maka jsdoc
      
      
       #meteor maka npm install --save react react-dom react-addons-transition-group react-addons-css-transition-group react-addons-linked-state-mixin react-addons-create-fragment react-addons-update react-addons-pure-render-mixin react-addons-test-utils react-addons-perf
       meteor add accounts-ui 
 
-      #meteor add react react-meteor-data kadira:react-layout
-      meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
+      #meteor add react react-meteor-data kadira:react-layout npm-bcrypt 
+      meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
       meteor add kadira:flow-router kadira:blaze-layout
       meteor remove autopublish insecure
 
