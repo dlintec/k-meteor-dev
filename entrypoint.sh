@@ -217,7 +217,7 @@ fi
 
 file="/opt/application/$APP_NAME/app/.meteor/local"
 if [[ -L "$file" && -d "$file" ]];then
-    #echo "LOCAL is a symlink to a directory"
+    echo "LOCAL is a symlink to a directory"
 
     if [ ! "$LINK_LOCAL" == "$APP_LOCALDB" ];then
        echo "LOCAL symlink not same for $APP_NAME $LINK_LOCAL"
@@ -239,12 +239,8 @@ else
        mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
    else 
-      # echo "No previous local on source"
-      if [[ -d "$APP_LOCALDB" ]];then
-        echo "Cleaning Existing LOCALDB folder:"
-        echo "$APP_LOCALDB"
-        rm -rf $APP_LOCALDB
-      fi
+       echo "No previous local link or path on source"
+
         mkdir -p $APP_LOCALDB
 
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
