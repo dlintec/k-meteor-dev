@@ -75,8 +75,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
       echo $package_string >> /opt/application/$APP_NAME/app/package.json
 
      
-      meteor maka npm install --save bcrypt babel-runtime 
-      meteor maka npm install -g jsdoc
+      meteor  npm install --save bcrypt babel-runtime 
+      meteor  npm install -g jsdoc
       meteor maka jsdoc
      
      
