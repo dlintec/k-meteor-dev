@@ -77,7 +77,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       fi
      
       meteor  npm install --save bcrypt babel-runtime 
-      meteor  npm install -g jsdoc
+      meteor  npm install --save jsdoc
       meteor maka jsdoc
      
      
