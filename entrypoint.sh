@@ -230,8 +230,8 @@ else
 
        echo "BACKUP and Copying original folder to LOCALDB..."
        if [[ -d "$APP_LOCALDB" ]];then
-           echo "Cleaning Existing LOCALDB folder..."
-           rm -rf $APP_LOCALDB
+           #echo "Cleaning Existing LOCALDB folder..."
+           #rm -rf $APP_LOCALDB
            mkdir -p $APP_LOCALDB
        fi
 
