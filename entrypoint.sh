@@ -182,7 +182,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
           react-addons-test-utils react-addons-perf react-mounter bootstrap-colorpicker
           meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
           meteor add kadira:flow-router kadira:blaze-layout
-          meteor add summernote:standalone@0.6
+          meteor add summernote:standalone@0.6.16
           meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
           meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
           meteor add orionjs:lang-en orionjs:lang-es orionjs:pages orionjs:summernote accounts-ui 
