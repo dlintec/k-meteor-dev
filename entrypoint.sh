@@ -63,6 +63,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
       fi
       cd /opt/application/$APP_NAME/app
       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
+      if [ ! -e /opt/application/$APP_NAME/app/package.json ];then
       package_string='{
   "name": "app",
   "private": true,
@@ -73,7 +74,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
   }
 }'
       echo $package_string >> /opt/application/$APP_NAME/app/package.json
-
+      fi
      
       meteor  npm install --save bcrypt babel-runtime 
       meteor  npm install -g jsdoc
