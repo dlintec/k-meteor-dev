@@ -56,6 +56,17 @@ main() {
  
              
          ;;
+	 exportdb)
+	 	current_app=$(kalan-var "CURRENT_APP")
+		cd /opt/application/$current_app
+	        echo "Please wait. Exporting Database to /opt/application/$current_app/dumps..."
+		
+	      mongodump -h 127.0.0.1 --port 3001 -d meteor_db
+	 ;;
+	 importdb)
+	         current_app=$(kalan-var "CURRENT_APP")
+	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor dump/meteor_db
+	 ;;
          backup)
               name=$2
               if [ -z "$name" ];then
@@ -67,7 +78,7 @@ main() {
               k-output "k.sh:bakcup:start:$file_name"
               tar -pczf $file_name /home/meteor/ 
               exitstatus=$?
-              k-output "k.sh:bakcup:finish:$file_name:$exitstatus"
+              k-output "k.sh:backup:finish:$file_name:$exitstatus"
               echo "Backup finished"
               
               exit 0
