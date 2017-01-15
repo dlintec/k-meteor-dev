@@ -126,7 +126,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
          export APP_WORKDIR="/opt/application/$APP_NAME"
          mkdir -p $APP_WORKDIR
          cd $APP_WORKDIR
-         if [ "$APP_TEMPLATE" == https* ];then
+         if [[ "$APP_TEMPLATE" == https* ]];then
             git clone $APP_TEMPLATE app
          else
             git clone https://github.com/$GIT_REPO/$APP_TEMPLATE.git app
