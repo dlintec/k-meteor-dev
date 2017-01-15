@@ -126,7 +126,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
          export APP_WORKDIR="/opt/application/$APP_NAME"
          mkdir -p $APP_WORKDIR
          cd $APP_WORKDIR
-         git clone https://github.com/$GIT_REPO/$APP_TEMPLATE.git app
+         if [ "$APP_TEMPLATE" == https://github.com/* ];then
+            git clone $APP_TEMPLATE app
+         else
+            git clone https://github.com/$GIT_REPO/$APP_TEMPLATE.git app
+         fi
       fi
       exitstatus=$?
       k-output "entrypoint.sh:create:template:$APP_TEMPLATE:$exitstatus" $exitstatus
