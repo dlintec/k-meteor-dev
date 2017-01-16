@@ -220,6 +220,7 @@ main() {
                if [ ! -z $template ]; then
                   export APP_TEMPLATE="$template"
                fi
+	       k clean
                cd /opt/application
                entrypoint.sh
                exit 0
