@@ -4,8 +4,9 @@ ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 USER root
+
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick mongodb-server
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick
 #ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
@@ -74,7 +75,10 @@ meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
-
+RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu yakkety/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+RUN apt-get update && \
+apt-get install -y mongodb-org
 WORKDIR /opt/application/
 #CMD ["nginx", "-g", "daemon off;"]
 #USER root 
