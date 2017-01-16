@@ -4,7 +4,7 @@ ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 USER root
-RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+##RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu yakkety/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 
 RUN apt-get update && \
