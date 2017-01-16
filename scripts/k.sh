@@ -67,7 +67,7 @@ main() {
 	 ;;
 	 importdb)
 	         current_app=$(kalan-var "CURRENT_APP")
-	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor dump/meteor
+	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor --drop /opt/application/$current_app/dump/meteor
 		
 		exit 0
 	 ;;
