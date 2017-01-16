@@ -61,11 +61,11 @@ main() {
 		cd /opt/application/$current_app
 	        echo "Please wait. Exporting Database to /opt/application/$current_app/dumps..."
 		
-	      mongodump -h 127.0.0.1 --port 3001 -d meteor_db
+	      meteor mongodump -h 127.0.0.1 --port 3001 -d meteor_db
 	 ;;
 	 importdb)
 	         current_app=$(kalan-var "CURRENT_APP")
-	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor dump/meteor_db
+	 	meteor mongorestore -h 127.0.0.1 --port 3001 -d meteor dump/meteor_db
 	 ;;
          backup)
               name=$2
