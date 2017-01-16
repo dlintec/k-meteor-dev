@@ -163,15 +163,15 @@ else
 					selected_app_option=$(k-list-menu "$list_app_options" "Application" "Select and action for current app [$current_app]" "blue")
 
 					if [ ! -z "$selected_app_option" ];then
-				  		if [[ "$selected_app_option" == "Update" ];then
+				  		if [ "$selected_app_option" == "Update" ];then
 							k updateapp
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
-						if [[ "$selected_app_option" == "Export DB" ];then
+						if [ "$selected_app_option" == "Export DB" ];then
 							k exportdb
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
-						if [[ "$selected_app_option" == "Import DB" ];then
+						if [ "$selected_app_option" == "Import DB" ];then
 							k importdb
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
