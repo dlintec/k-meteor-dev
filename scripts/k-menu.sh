@@ -158,7 +158,7 @@ else
 				4) # Application Actions
 					
 					
-					list_app_options=$'Update\nExport DB\nImport DB'
+					list_app_options=$'Update\nExport-DB\nImport-DB'
 					current_app=$(kalan-var "CURRENT_APP")
 					selected_app_option=$(k-list-menu "$list_app_options" "Application" "Select and action for current app [$current_app]" "blue")
 
@@ -167,11 +167,11 @@ else
 							k updateapp
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
-						if [ "$selected_app_option" == "Export DB" ];then
+						if [ "$selected_app_option" == "Export-DB" ];then
 							k exportdb
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
-						if [ "$selected_app_option" == "Import DB" ];then
+						if [ "$selected_app_option" == "Import-DB" ];then
 							k importdb
 					 		read -n 1 -p "   press a key to continue" wait_var
 						fi
