@@ -66,7 +66,7 @@ else
 		"1" "Select app" \
 		"2" "$startStop_option app " \
 		"3" "Create new app" \
-		"4" "Update app" \
+		"4" "Application Actions" \
 		"5" "Run a command" \
 		"6" "Update this containter" \
 		"7" "Settings" \
@@ -155,10 +155,29 @@ else
 						fi
 					fi
 				;;
-				4) # update app
+				4) # Application Actions
 					
-					 k updateapp
-					 read -n 1 -p "   press a key to continue" wait_var
+					
+					list_app_options=$'Update\nExport DB\nImport DB'
+					current_app=$(kalan-var "CURRENT_APP")
+					selected_app_option=$(k-list-menu "$list_app_options" "Application" "Select and action for current app [$current_app]" "blue")
+
+					if [ ! -z "$selected_app_option" ];then
+				  		if [[ "$selected_app_option" == "Update" ];then
+							k updateapp
+					 		read -n 1 -p "   press a key to continue" wait_var
+						fi
+						if [[ "$selected_app_option" == "Export DB" ];then
+							k exportdb
+					 		read -n 1 -p "   press a key to continue" wait_var
+						fi
+						if [[ "$selected_app_option" == "Import DB" ];then
+							k importdb
+					 		read -n 1 -p "   press a key to continue" wait_var
+						fi
+					fi
+					
+					 
 				;;
        				5) #Run command
 					clear
