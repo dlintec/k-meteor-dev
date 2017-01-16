@@ -1,13 +1,12 @@
-FROM ubuntu:16.10
+FROM ubuntu:xenial
 MAINTAINER Tadeo Gutierrez "info@dlintec.com"
 ENV TERM=xterm
 #apt-get -y dist-upgrade && \
 #zip unzip software-properties-common
 USER root
-RUN apt-get update && \ 
-apt-get install -y gnupg
+
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 RUN apt-get update && \
 apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick mongodb-org
 #ufw
