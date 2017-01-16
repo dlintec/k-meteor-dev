@@ -5,7 +5,7 @@ ENV TERM=xterm
 #zip unzip software-properties-common
 USER root
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick 
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick mongodb-server
 #ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
