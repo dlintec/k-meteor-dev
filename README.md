@@ -10,13 +10,13 @@ Updated to **Meteor version 1.4.2.3.**
 Install & Run
 =============
 
-The meteor development environment works on Linux, Mac, and Windows. It can be installed with the scripts included in the following the instructions for each platform or manually configured through the commands described in the "Manual configuration" section of this document.
+The meteor development environment works on Linux, Mac, and Windows. It can be installed with the following instructions for each platform or manually configured through the commands described in the "Manual configuration" section at the end of this document.
 
 
 Linux:
 --------------------
 
-a) Download and Install Docker for your platform: 
+a) Download and Install Docker for your linux distro: 
 
 - <a href="https://docs.docker.com/engine/installation/linux/" target="_blank">Docker for desktop Linux Installation</a>
 
