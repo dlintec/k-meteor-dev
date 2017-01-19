@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 docker stop k-meteor-dev
 docker rm k-meteor-dev
 mkdir -p $HOME/Desktop/k-meteor-dev
