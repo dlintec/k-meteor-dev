@@ -56,7 +56,7 @@ a) Install Docker for Windows
 -[Docker for Windows Installer](https://download.docker.com/win/stable/InstallDocker.msi)  
 The new version of docker (Native windows virtualization for Hyper-V) works on windows 10 Professional. 
 
-If you have an older version of windows you can still run it under VirtualBox with <a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank">k-md-start.bat</a> but the development folder for your applications will only work  inside the virtual machine and will not be accesible from your windows host.
+If you have an older version of windows you can still run it under VirtualBox with <a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank">Docker Toolbox for Windows</a> but the development folder for your applications will only work  inside the virtual machine and will not be accesible from your windows host.
 
 b) Create a folder for your application code. 
 
