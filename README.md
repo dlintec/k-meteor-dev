@@ -37,7 +37,8 @@ b)Copy the following command in a new console and press enter:
 
     
 - This will create a script called "kstart" in your home path (/Users/youruser) and a new folder at /Users/youruser/Desktop/k-meteor-dev. This folder will be mounted inside the container under /opt/application.
-- Once Docker is installed in your host machine, open the docker application and in "settings/Shared drives" add /Users/youruser/Desktop/k-meteor-dev
+
+c)Once Docker is installed in your host machine, open the docker application and in "settings/Shared drives" add /Users/youruser/Desktop/k-meteor-dev
 
 
 
