@@ -2,6 +2,9 @@
 
 REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 
+
+
+
 :MENU
 	SET running_k_meteor_dev=
 
@@ -111,7 +114,26 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 :REBUILD_IMAGE
 	docker rmi k-meteor-dev
 	SET auto_menu=0
-	GOTO:CREATE_IMAGE
+	echo ""
+	echo "-----------------------------------------------------"
+	echo "   Rebuilding Docker Image"
+	echo "-----------------------------------------------------"
+	docker build --tag="k-meteor-dev" --no-cache git://github.com/dlintec/k-meteor-dev
+	if errorlevel 1 (
+	   echo Failure Creating Docker Container Image. Reason Given is %errorlevel%
+
+	   pause
+	   REM exit /b %errorlevel%
+	)else(
+	echo ""
+	echo "-----------------------------------------------------"
+	echo "   Image Created"
+	echo "-----------------------------------------------------"
+	echo ""
+	pause
+	)
+	GOTO:MENU
+
 
 :CREATE_IMAGE
 	echo ""
