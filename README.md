@@ -10,6 +10,9 @@ Updated to **Meteor version 1.4.2.3.**
 1 Install
 ==========
 
+The meteor development environment works on Linux, Mac, and Windows.
+
+
 Linux installation:
 --------------------
 
