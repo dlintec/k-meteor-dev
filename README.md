@@ -1,10 +1,8 @@
 k-meteor-dev
 ==========
 
-<a href="http://example.com/" target="_blank">example</a>
 
-
-A [Dockerfile](http://docs.docker.io/en/latest/reference/builder/){:target="_blank"} for building a [Meteor](http://www.meteor.com){:target="_blank"}
+A [Dockerfile](http://docs.docker.io/en/latest/reference/builder/) for building a [Meteor](http://www.meteor.com)
 development container.
 
 Updated to **Meteor version 1.4.2.3.**
@@ -16,9 +14,10 @@ Updated to **Meteor version 1.4.2.3.**
 
 a)Install Docker for your platform: 
 
-- [Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/){:target="_blank"}
+<a href="https://docs.docker.com/engine/installation/linux/" target="_blank">Docker for desktop Linux Installation</a>
 
-- [Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg){:target="_blank"}
+<a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
+
 
 
 Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application
