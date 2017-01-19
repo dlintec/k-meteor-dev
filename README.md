@@ -7,48 +7,50 @@ development container.
 
 Updated to **Meteor version 1.4.2.3.**
 
-Install
+Install & Run
 =============
 
 The meteor development environment works on Linux, Mac, and Windows. It can be installed with the scripts included in the following the instructions for each platform or manually configured through the commands described in the "Manual configuration" section of this document.
 
 
-Linux installation:
+Linux:
 --------------------
 
-a)Download and Install Docker for your platform: 
+a) Download and Install Docker for your platform: 
 
 - <a href="https://docs.docker.com/engine/installation/linux/" target="_blank">Docker for desktop Linux Installation</a>
 
-b)Copy the following command in a new console and press enter: 
+b) Copy the following command in a new console and press enter: 
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > $HOME/kstart;chmod +x kstart;.$HOME/kstart
     
 - This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder). All your applications will be created on that folder of your host machine and mounted inside the container under /opt/application.
 
-c)Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application to the shared volumes
+c) Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application to the shared volumes
 
-Mac installation:
+d) Type ./kstart at the command line to start the container
+
+Mac:
 -----------------
 
-a)Download and Install Docker for Mac:
+a) Download and Install Docker for Mac:
 
 - <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
 
-b)Copy the following command in a new console and press enter:
+b) Copy the following command in a new console and press enter:
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;mkdir -p $HOME/Desktop/k-meteor-dev
 
     
 - This will create a script called "kstart" in your home path (/Users/youruser) and a new folder at /Users/youruser/Desktop/k-meteor-dev. This folder will be mounted inside the container under /opt/application.
 
-c)Once Docker is installed in your host machine, open the docker application and in "settings/Shared drives" add /Users/youruser/Desktop/k-meteor-dev
+c) Once Docker is installed in your host machine, open the docker application and in "settings/Shared drives" add /Users/youruser/Desktop/k-meteor-dev
+
+d) Type ./kstart at the command line to start the container. 
 
 
 
-
-
-Windows installation:
+Windows:
 --------------------
 
 a) Install Docker for Windows
@@ -62,8 +64,9 @@ b) Create a folder for your application code.
 
 c) Download <a href="https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/k-md-start.bat" target="_blank">k-md-start.bat</a> file and save it in your desktop. The batch file uses "E:\meteor" for the applications code, but you can replace E:\meteor reference at line 100 to point to the folder you created in the previous step.
 
+d) Open the docker application by right clicking the little docker whale icon at the system tray and in "settings/Shared drives". Check the drive where you created the application code folder and click apply.
 
-
+e) To run the container double click the batch file you downloaded to your desktop. 
 
 
 
