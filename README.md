@@ -16,9 +16,10 @@ Updated to **Meteor version 1.4.2.3.**
 
 a)Install Docker for your platform: 
 
--[Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg)
+- [Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/)
 
--[Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/)
+- [Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg)
+
 
 Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application
 
@@ -27,6 +28,10 @@ for Linux:
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
     
+    
+for Mac:
+
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
     
     
 c)Press Enter/Return.
