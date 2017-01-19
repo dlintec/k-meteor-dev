@@ -9,16 +9,39 @@ development container.
 
 Updated to **Meteor version 1.4.2.3.**
 
-1 Prerequisites
+1 Install
 ------------------
-- **Docker** for Windows, Linux or Mac. 
 
-**Install Prerequisites:**
+**Linux and Mac:** 
+a)Install Docker for your platform: 
+[Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg)
+[Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/)
 
-**Docker installers:** 
+Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application
+
+b)Copy the following command in a new console: 
+for Linux:
+
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
+    
+    
+    
+c)Press Enter/Return.
+This will create a script called "kstart" in your current path. This script will create the OS docker image and install al the environment. Check for error messages.
+
+
+**Windows:**
+a)Install Docker for Windows
 
 -[Docker for Windows Installer](https://download.docker.com/win/stable/InstallDocker.msi)  
--[Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg)
+The new version of docker (Native windows virtualization for Hyper-V) works on windows 10 Professional. 
+
+
+
+
+**Windows:**
+If you have an older version of windows you can still run it under VirtualBox but the development folder for your applications will only work  inside the virtual machine and will not be accesible from your windows host.
+
 
 Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-windows/) /  [Docker for Mac startup guide](https://docs.docker.com/docker-for-mac/)
 
