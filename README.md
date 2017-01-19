@@ -13,6 +13,7 @@ Updated to **Meteor version 1.4.2.3.**
 ------------------
 
 **Linux and Mac:** 
+
 a)Install Docker for your platform: 
 [Docker for Mac install package](https://download.docker.com/mac/stable/Docker.dmg)
 [Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/)
