@@ -8,27 +8,30 @@ development container.
 Updated to **Meteor version 1.4.2.3.**
 
 1 Install
-------------------
+==========
 
-**Linux and Mac:** 
+Linux installation:
+--------------------
 
-a)Install Docker for your platform: 
+**a)Download and Install Docker for your platform: **
 
 - <a href="https://docs.docker.com/engine/installation/linux/" target="_blank">Docker for desktop Linux Installation</a>
 
-- <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
-
-
-b)Copy the following command in a new console and press enter: 
-
-for Linux:
+**b)Copy the following command in a new console and press enter: **
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > $HOME/kstart;chmod +x kstart;.$HOME/kstart
     
 - This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder). All your applications will be created on that folder of your host machine and mounted inside the container under /opt/application.
 - Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application to the shared volumes
 
-for Mac:
+Mac installation:
+-----------------
+
+**a)Download and Install Docker for Mac: **
+
+- <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
+
+**b)Copy the following command in a new console and press enter: **
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;mkdir -p $HOME/Desktop/k-meteor-dev
 
