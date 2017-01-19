@@ -1,6 +1,6 @@
 k-meteor-dev
 ==========
-
+[Docker for desktop Linux Installation](https://docs.docker.com/engine/installation/linux/)[newtab]
 
 A [Dockerfile](http://docs.docker.io/en/latest/reference/builder/) for building a [Meteor](http://www.meteor.com)
 development container.
