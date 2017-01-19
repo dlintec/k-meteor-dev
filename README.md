@@ -26,13 +26,13 @@ b)Copy the following command in a new console and press enter:
 
 for Linux:
 
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
+    sudo curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
     
-- This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder. All your applications will be created on that folder of your host machine and mounted inside the container.
+- This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder). All your applications will be created on that folder of your host machine and mounted inside the container under /opt/application.
 
 for Mac:
 
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > kstart;chmod +x kstart;. kstart
+    sudo curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > /bin/kstart;sudo chmod +x /bin/kstart; kstart
     
 - This will create a script called "kstart" in your current path and a new folder at /Users/youruser/Desktop. This folder will be mounted inside the container under /opt/application.
 
