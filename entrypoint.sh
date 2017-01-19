@@ -25,8 +25,8 @@ if [[ "$DOCKER_WD" == /opt/application* ]]; then
 fi
 
 if [ "$APP_NAME" == "default" ]; then
-   echo "Setting APP_TEMPLATE to k-cms"
-   export APP_TEMPLATE="meteor-dev-kalan"
+   echo "Setting APP_TEMPLATE to k-react"
+   export APP_TEMPLATE="k-react"
 fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
