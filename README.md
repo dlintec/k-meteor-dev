@@ -19,23 +19,22 @@ a)Install Docker for your platform:
 - <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
 
 
-
-Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application
-
 b)Copy the following command in a new console and press enter: 
 
 for Linux:
 
-    sudo curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > $HOME/kstart;chmod +x kstart;.$HOME/kstart
     
 - This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder). All your applications will be created on that folder of your host machine and mounted inside the container under /opt/application.
+- Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application to the shared volumes
 
 for Mac:
 
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart
-    .$HOME/kstart
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;mkdir -p $HOME/Desktop/k-meteor-dev
+
     
-- This will create a script called "kstart" in your home path (/Users/youruser) and a new folder at /Users/youruser/Desktop. This folder will be mounted inside the container under /opt/application.
+- This will create a script called "kstart" in your home path (/Users/youruser) and a new folder at /Users/youruser/Desktop/k-meteor-dev. This folder will be mounted inside the container under /opt/application.
+- Once Docker is installed in your host machine, open the docker application and in "settings/Shared drives" add /Users/youruser/Desktop/k-meteor-dev
 
 
 
