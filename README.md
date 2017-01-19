@@ -9,15 +9,9 @@ development container.
 
 Updated to **Meteor version 1.4.2.3.**
 
-
-Configure development folder and environment
-==================================================
-
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
-
 1 Prerequisites
 ------------------
-- **Docker** for Windows or Mac. 
+- **Docker** for Windows, Linux or Mac. 
 
 **Install Prerequisites:**
 
@@ -29,6 +23,12 @@ Configure development folder and environment
 Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-windows/) /  [Docker for Mac startup guide](https://docs.docker.com/docker-for-mac/)
 
 
+Configure development folder and environment
+==================================================
+
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
+    
+    
 Build image from this repository
 
     docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
