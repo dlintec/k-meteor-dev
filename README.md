@@ -32,9 +32,9 @@ for Linux:
 
 for Mac:
 
-    sudo curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > /bin/kstart;sudo chmod +x /bin/kstart; kstart
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;. $HOME/kstart
     
-- This will create a script called "kstart" in your current path and a new folder at /Users/youruser/Desktop. This folder will be mounted inside the container under /opt/application.
+- This will create a script called "kstart" in your home path (/Users/youruser) and a new folder at /Users/youruser/Desktop. This folder will be mounted inside the container under /opt/application.
 
 
 
