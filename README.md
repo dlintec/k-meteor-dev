@@ -7,10 +7,10 @@ development container.
 
 Updated to **Meteor version 1.4.2.3.**
 
-1 Install
-==========
+Install
+=============
 
-The meteor development environment works on Linux, Mac, and Windows.
+The meteor development environment works on Linux, Mac, and Windows. It can be installed with the scripts included in the following the instructions for each platform or manually configured through the commands described in the "Manual configuration" section of this document.
 
 
 Linux installation:
@@ -48,26 +48,30 @@ c)Once Docker is installed in your host machine, open the docker application and
 
 
 
-**Windows:**
-a)Install Docker for Windows
+Windows installation:
+--------------------
+
+a) Install Docker for Windows
 
 -[Docker for Windows Installer](https://download.docker.com/win/stable/InstallDocker.msi)  
 The new version of docker (Native windows virtualization for Hyper-V) works on windows 10 Professional. 
 
-
-
-
-**Windows:**
 If you have an older version of windows you can still run it under VirtualBox but the development folder for your applications will only work  inside the virtual machine and will not be accesible from your windows host.
+
+b) Create a folder for your application code. 
+
+c) Download <a href="https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/k-md-start.bat" target="_blank">k-md-start.bat</a> file and save it in your desktop. The batch file uses "E:\meteor" for the applications code, but you can replace E:\meteor reference at line 100 to point to the folder you created in the previous step.
+
+
+
+
 
 
 Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-windows/) /  [Docker for Mac startup guide](https://docs.docker.com/docker-for-mac/)
 
 
-Configure development folder and environment
+Manual configuration
 ==================================================
-
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
     
     
 Build image from this repository
@@ -78,28 +82,18 @@ If you are running docker for windows, create persistent volume for /home/meteor
 
     docker volume create --name k-meteor-dev-local
 
-Add an alias tu call just "meteor-dev" instead of full docker command
 
-Replace "E:/meteor" with the path for your develompment folder in your host machine. This folder will be visible to container mounted as "/opt/application". Each folder inside will be treated as a project and should contain an "/app" folder in which the meteor application will be run by meteor.
+To run the container use the followind commands:
 
-To run the container use the followind command:
-
-For Linux
+For Linux and mac
 
     docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor --entrypoint //bin/bash k-meteor-dev
     
 For Windows
 
     docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor --entrypoint //bin/bash k-meteor-dev
-
-
-You will get a bash command lines inside the container. To start de default run
-
-    k meteor
+NOTE: Replace E:\meteor with the shared folder that contains your application code
     
-this will start the default app. If there is no "default" folder inside the mounted
-Note:When interrupted using `ctrl-C`, meteor will restart, so use the `docker stop` command to shutdown the server.
-
 
 Get bash prompt inside container
 
