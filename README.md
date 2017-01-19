@@ -24,6 +24,7 @@ a)Install Docker for your platform:
 Once Docker is installed in your host machine, open the docker application and "settings/Shared drives" add /opt/application
 
 b)Copy the following command in a new console: 
+
 for Linux:
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
@@ -31,10 +32,11 @@ for Linux:
     
 for Mac:
 
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > kstart;chmod +x kstart;. kstart
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > kstart;chmod +x kstart;. kstart
     
     
 c)Press Enter/Return.
+
 This will create a script called "kstart" in your current path. This script will create the OS docker image and install al the environment. Check for error messages.
 
 
