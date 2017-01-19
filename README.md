@@ -13,11 +13,11 @@ Updated to **Meteor version 1.4.2.3.**
 Linux installation:
 --------------------
 
-**a)Download and Install Docker for your platform: **
+a)Download and Install Docker for your platform: 
 
 - <a href="https://docs.docker.com/engine/installation/linux/" target="_blank">Docker for desktop Linux Installation</a>
 
-**b)Copy the following command in a new console and press enter: **
+b)Copy the following command in a new console and press enter: 
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > $HOME/kstart;chmod +x kstart;.$HOME/kstart
     
@@ -27,11 +27,11 @@ Linux installation:
 Mac installation:
 -----------------
 
-**a)Download and Install Docker for Mac: **
+a)Download and Install Docker for Mac:
 
 - <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
 
-**b)Copy the following command in a new console and press enter: **
+b)Copy the following command in a new console and press enter:
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;mkdir -p $HOME/Desktop/k-meteor-dev
 
