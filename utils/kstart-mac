@@ -1,0 +1,13 @@
+#!/bin/bash
+docker stop k-meteor-dev
+docker rm k-meteor-dev
+mkdir -p $HOME/Desktop/k-meteor-dev
+docker volume create --name k-meteor-dev-local
+docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
+docker run -d --name k-meteor-dev \
+--user root -p 80:80 -p 443:443 -v $HOME/Desktop/k-meteor-dev://opt/application -v  k-meteor-dev-local://home/meteor --restart always k-meteor-dev
+#docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
+docker exec -d --user meteor k-meteor-dev /bin/bash k drun
+docker exec -it --user meteor k-meteor-dev /bin/bash k menu
+echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
+chmod +x kmenu
