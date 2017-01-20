@@ -46,6 +46,7 @@ b) Copy the following command in a new console and press enter:
 
 c) Type ./kstart at the command line to start the container. 
 
+NOTE: Docker beta and latest versions cover some special cases that help running it on different configurations. Take a look at  [Docker for Mac startup guide](https://docs.docker.com/docker-for-mac/)
 
 
 Windows:
@@ -68,7 +69,7 @@ e) To run the container double click the batch file you downloaded to your deskt
 
 
 
-Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-windows/) /  [Docker for Mac startup guide](https://docs.docker.com/docker-for-mac/)
+Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-windows/) / 
 
 
 Manual configuration
