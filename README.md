@@ -89,7 +89,8 @@ To run the container use the followind commands:
 
 For Linux and mac
 
-    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v /opt/application:/opt/application -v  k-meteor-dev-local:/home/meteor --entrypoint /bin/bash k-meteor-dev
+    docker run --rm -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -p 3040:3040 -v /opt/application://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
+    
     
 For Windows
 
