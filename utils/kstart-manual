@@ -10,5 +10,7 @@ docker exec -it --user meteor k-meteor-dev /bin/bash k menu
 echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
 chmod +x kmenu
 
+#docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v  k-meteor-dev-local://home/meteor k-meteor-dev 
+
 #docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v /opt/application://opt/application -v  k-meteor-dev-local://home/meteor --restart always k-meteor-dev
 #docker exec -it --user meteor k-meteor-dev /bin/bash k menu
