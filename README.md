@@ -76,6 +76,9 @@ Manual configuration
 ==================================================
 
 IF your Host system can not run Docker in Native mode (windows pre 10 pro or Older Macs)
+
+For windows you can download [win-non-native.bat](https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/win-non-native.bat) to your desktop and run it or run the following commands manually.
+
     
 a)Run the first 3 commands to create image and volumes (only needed once)
 
