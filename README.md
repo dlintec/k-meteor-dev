@@ -85,7 +85,7 @@ a)Run the first 3 commands to create image and volumes (only needed once)
 
 b)Use the next three commands every time to start environment
 
-    docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v k-meteor-dev-app://opt/application -v  k-meteor-dev-local://home/meteor --restart always k-meteor-dev
+    docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v k-meteor-dev-app://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
     docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
     docker exec -it --user meteor k-meteor-dev /bin/bash k menu
     
