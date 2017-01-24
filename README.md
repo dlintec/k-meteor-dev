@@ -74,38 +74,23 @@ Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-wi
 
 Manual configuration
 ==================================================
-    
-    
-Build image from this repository
 
+IF your Host system can not run Docker in Native mode (windows pre 10 pro or Older Macs)
+    
+a)Run the first 3 commands to create image and volumes (only needed once)
     docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
-    
-If you are running docker for windows, create persistent volume for /home/meteor. (not necessary for docker on linux or mac)
-
     docker volume create --name k-meteor-dev-local
+    docker volume create --name k-meteor-dev-app
 
+b)Use the next four commands every time to start environment
 
-To run the container use the followind commands:
-
-For Linux and mac
-
-    docker run --rm -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -p 3040:3040 -v /opt/application://opt/application -v  k-meteor-dev-local://home/meteor k-meteor-dev
+    docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 -v k-meteor-dev-app://opt/application -v  k-meteor-dev-local://home/meteor --restart always k-meteor-dev
+    docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
+    docker exec -it --user meteor k-meteor-dev /bin/bash k menu
     
-    
-For Windows
+c)Create ssh container to access /opt/application (/server/data/) on sftp  port 22
 
-    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor://opt/application -v  k-meteor-dev-local://home/meteor --entrypoint //bin/bash k-meteor-dev
-NOTE: Replace E:\meteor with the shared folder that contains your application code
-    
-
-Get bash prompt inside container
-
-    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  k-meteor-dev-local:/home/meteor --entrypoint /bin/bash k-meteor-dev 
-
-Get bash prompt inside existing app
-
-    docker run --rm  --name k-meteor-dev -it -p 3000:3000 -p 3001:3001 -p 3040:3040 -v E:\meteor:/opt/application -v  k-meteor-dev-local:/home/meteor -w /opt/application --entrypoint /bin/bash k-meteor-dev 
-
+    docker run -d --name sftp-container -p 22:22 -v k-meteor-dev-app:/server/data -e USERNAME=admin -e PASSWORD=changeme lerenn/sftp-server
 
 References
 ----------
