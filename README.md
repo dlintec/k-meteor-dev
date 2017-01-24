@@ -94,7 +94,7 @@ b)Use the next three commands every time to start environment
     
 c)Create sftp container to access /opt/application (/server/data/) on sftp  port 22
 
-    docker run -d --name sftp-container -p 22:22 -v k-meteor-dev-app:/server/data -e USERNAME=admin -e PASSWORD=changeme lerenn/sftp-server
+    docker run -d --name sftp-container -v k-meteor-dev-app:/home/meteor/share -p 2222:22 -d atmoz/sftp meteor:changeme:1000
 
 References
 ----------
