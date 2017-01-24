@@ -10,4 +10,4 @@ docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
 docker exec -it --user meteor k-meteor-dev /bin/bash k menu
 
 #Create ssh container to access /opt/application (/server/data/) on sftp  port 22
-docker run -d -p 22:22 -v k-meteor-dev-app:/server/data -e USERNAME=admin -e PASSWORD=changeme lerenn/sftp-server
+docker run -d --name sftp-container -p 22:22 -v k-meteor-dev-app:/server/data -e USERNAME=admin -e PASSWORD=changeme lerenn/sftp-server
