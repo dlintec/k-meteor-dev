@@ -92,7 +92,7 @@ b)Use the next three commands every time to start environment
     docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
     docker exec -it --user meteor k-meteor-dev /bin/bash k menu
     
-c)Create sftp container to access /opt/application (/server/data/) on sftp  port 22
+c)Create sftp container to access /opt/application (/server/data/) on sftp  port 2222
 
     docker run -d --name sftp-container -v k-meteor-dev-app:/home/meteor/share -p 2222:22 -d atmoz/sftp meteor:changeme:1000
 
