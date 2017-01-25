@@ -75,9 +75,17 @@ Guides: [Docker for Windows startup guide](https://docs.docker.com/docker-for-wi
 Manual configuration
 ==================================================
 
-IF your Host system can not run Docker in Native mode (windows pre 10 pro or Older Macs)
+IF your Host system can not run Docker in Native mode (windows pre 10 pro or Older Macs). Just copy and paste the following command at the docker console:
 
-For windows you can download [kstart-manual](https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-manual) to your desktop and run it or run from the docker console or run the following commands manually.
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-manual > $HOME/kstart;chmod +x $HOME/kstart
+    
+Just run the kstart script at the docker console to start the container
+
+    ./kstart
+    
+
+
+You can also run the commands manually.
 
     
 a)Run the first 3 commands to create image and volumes (only needed once)
