@@ -75,8 +75,8 @@ main() {
 		      rm -rf /opt/application/$current_app/dump
 		    fi
 		    cd /opt/application/$current_app
-		    mkdir -p /opt/application/$current_app/dump
-		    tar -xzf /opt/application/$current_app/app/dump.tar --directory /opt/application/$current_app/dump
+		   
+		    tar -xzf /opt/application/$current_app/app/dump.tar 
 
 		fi
 		if [ -d /opt/application/$current_app/dump/meteor ];then
