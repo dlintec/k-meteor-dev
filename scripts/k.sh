@@ -60,7 +60,10 @@ main() {
 	 	current_app=$(kalan-var "CURRENT_APP")
 		cd /opt/application/$current_app
 	        echo "Please wait. Exporting Database to /opt/application/$current_app/dumps..."
-		
+		if [ -d /opt/application/$current_app/dump ];then
+		      echo "cleaning dump directory"
+		      rm -rf /opt/application/$current_app/dump
+		fi
 	     	mongodump -h 127.0.0.1 --port 3001 -d meteor
 		echo "Compressing dump to /opt/application/$current_app/app/dump.tar"
 		tar -czf /opt/application/$current_app/app/dump.tar -C /opt/application/$current_app/ dump
