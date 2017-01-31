@@ -63,7 +63,7 @@ main() {
 		
 	     	mongodump -h 127.0.0.1 --port 3001 -d meteor
 		echo "Compressing dump to /opt/application/$current_app/app/dump.tar"
-		tar -pczf /opt/application/$current_app/app/dump.tar /opt/application/$current_app/dump
+		tar -czf /opt/application/$current_app/app/dump.tar /opt/application/$current_app/dump
 
 		exit 0
 	 ;;
@@ -76,7 +76,7 @@ main() {
 		    fi
 		    cd /opt/application/$current_app
 		    mkdir -p /opt/application/$current_app/dump
-		    tar -pxzf /opt/application/$current_app/app/dump.tar --directory /opt/application/$current_app/dump
+		    tar -xzf /opt/application/$current_app/app/dump.tar --directory /opt/application/$current_app/dump
 
 		fi
 		if [ -d /opt/application/$current_app/dump/meteor ];then
