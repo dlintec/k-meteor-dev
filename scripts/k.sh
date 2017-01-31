@@ -62,11 +62,12 @@ main() {
 	        echo "Please wait. Exporting Database to /opt/application/$current_app/dumps..."
 		
 	     	mongodump -h 127.0.0.1 --port 3001 -d meteor
-		
+		tar -pczf /opt/application/$current_app/app/dump.tar /opt/application/$current_app/dump
 		exit 0
 	 ;;
 	 importdb)
 	         current_app=$(kalan-var "CURRENT_APP")
+		
 	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor --drop /opt/application/$current_app/dump/meteor
 		
 		exit 0
