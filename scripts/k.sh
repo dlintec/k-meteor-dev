@@ -62,14 +62,27 @@ main() {
 	        echo "Please wait. Exporting Database to /opt/application/$current_app/dumps..."
 		
 	     	mongodump -h 127.0.0.1 --port 3001 -d meteor
+		echo "Compressing dump to /opt/application/$current_app/app/dump.tar"
 		tar -pczf /opt/application/$current_app/app/dump.tar /opt/application/$current_app/dump
+
 		exit 0
 	 ;;
 	 importdb)
 	         current_app=$(kalan-var "CURRENT_APP")
-		
-	 	mongorestore -h 127.0.0.1 --port 3001 -d meteor --drop /opt/application/$current_app/dump/meteor
-		
+		if [ -e /opt/application/$current_app/app/dump.tar ];then
+		    if [ -d /opt/application/$current_app/dump ];then
+		      echo "cleaning dump directory"
+		      rm -rf /opt/application/$current_app/dump
+		    fi
+		    cd /opt/application/$current_app
+		    tar -pxzf /opt/application/$current_app/app/dump.tar --directory /opt/application/$current_app/dump
+
+		fi
+		if [ -d /opt/application/$current_app/dump/meteor ];then
+	 		mongorestore -h 127.0.0.1 --port 3001 -d meteor --drop /opt/application/$current_app/dump/meteor
+		else
+		      echo "No dump folder to restore from. Nothing done."
+		fi
 		exit 0
 	 ;;
          backup)
