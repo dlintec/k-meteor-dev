@@ -8,7 +8,7 @@ USER root
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 RUN apt-get update && \
-apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick mongodb-org
+apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof imagemagick mongodb-org language-pack-en
 #ufw
 
 #add-apt-repository -y ppa:ubuntu-desktop/ubuntu-make && \
