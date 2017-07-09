@@ -40,8 +40,9 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	IF "%container_status%"=="running" (
 		ECHO . 2 - Open menu inside container
 		ECHO . 3 - Open command line inside container
+		ECHO . 4 - Open ROOT command line inside container
 	)
-	ECHO . 4 - Rebuild k-meteor-dev docker image
+	ECHO . 5 - Rebuild k-meteor-dev docker image
 	ECHO . 0 - EXIT
 	ECHO.
 	echo ----------------------------------------------------------
@@ -51,8 +52,10 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 		IF %M%==2 GOTO:EXEC_MENU
 
 		IF %M%==3 GOTO:EXEC_BASH
+
+		IF %M%==4 GOTO:EXEC_BASH_ROOT
 	)
-	IF %M%==4 GOTO:REBUILD_IMAGE
+	IF %M%==5 GOTO:REBUILD_IMAGE
 	IF %M%==0 GOTO EOF
 	pause
 
@@ -157,7 +160,7 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	IF auto_menu==1 (
 	echo ""
 	echo "-----------------------------------------------------"
-	echo "   WELCOME to k-metoer-dev"
+	echo "   WELCOME to k-meteor-dev"
 	echo "-----------------------------------------------------"
 	echo ""
 	sleep 2
@@ -170,7 +173,7 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	cls
 	echo .
 	echo "-----------------------------------------------------"
-	echo "   WELCOME to k-metoer-dev command line"
+	echo "   WELCOME to k-meteor-dev command line"
 	echo "   Type 'exit' and press ENTER to return to menu "
 
 	echo "-----------------------------------------------------"
@@ -178,6 +181,17 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 	docker exec -it --user meteor k-meteor-dev /bin/bash
 	GOTO:MENU
 
+:EXEC_BASH_ROOT
+	cls
+	echo .
+	echo "-----------------------------------------------------"
+	echo "   WELCOME to k-meteor-dev ROOT command line"
+	echo "   Type 'exit' and press ENTER to return to menu "
+
+	echo "-----------------------------------------------------"
+	echo ""
+	docker exec -it --user root k-meteor-dev /bin/bash
+	GOTO:MENU
 :EXEC_MENU
 	docker exec -it --user meteor k-meteor-dev /bin/bash k menu 
 	GOTO:MENU
