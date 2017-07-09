@@ -15,7 +15,6 @@ apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim
 #apt-get update && \
 #apt-get install -y ubuntu-make
 
-RUN dpkg-reconfigure locales
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
 RUN useradd -mUd /home/meteor meteor && \
 chown -Rh meteor /usr/local
