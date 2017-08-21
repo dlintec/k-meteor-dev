@@ -72,7 +72,9 @@ main() {
 	 ;;
 	 importdb)
 	         current_app=$(kalan-var "CURRENT_APP")
+		 echo "Searching dump file for $current_app"
 		if [ -e /opt/application/$current_app/app/dump.tar ];then
+		    echo "dump file found"
 		    if [ -d /opt/application/$current_app/dump ];then
 		      echo "cleaning dump directory"
 		      rm -rf /opt/application/$current_app/dump
@@ -80,7 +82,8 @@ main() {
 		    cd /opt/application/$current_app
 		   
 		    tar -xzf /opt/application/$current_app/app/dump.tar 
-
+		else
+		    echo "No dump file found"
 		fi
 		if [ -d /opt/application/$current_app/dump/meteor ];then
 	 		mongorestore -h 127.0.0.1 --port 3001 -d meteor --drop /opt/application/$current_app/dump/meteor
