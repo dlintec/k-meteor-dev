@@ -78,7 +78,7 @@ USER meteor
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
 
-#RUN nvm install node
+RUN $LOCAL_IMAGE_PATH/.nvm/nvm.sh install node
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
