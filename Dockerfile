@@ -16,7 +16,6 @@ apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim
 #apt-get install -y ubuntu-make
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
 RUN useradd -mUd /home/meteor meteor && \
 chown -Rh meteor /usr/local
@@ -24,6 +23,7 @@ chown -Rh meteor /usr/local
 USER meteor
 
 RUN curl https://install.meteor.com/ | sh
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | NVM_DIR=/usr/local/nvm bash
 
 
 WORKDIR /opt/application/
@@ -38,7 +38,7 @@ ENV APP_VER=1.83
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
-ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvm"
 #replace with "yourdomain.com"
 ENV DOMAIN_NAME="127.0.0.1"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
