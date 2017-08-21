@@ -16,6 +16,8 @@ apt-get install -y curl git python2.7 python2.7-dev build-essential whiptail vim
 #apt-get install -y ubuntu-make
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
 RUN useradd -mUd /home/meteor meteor && \
 chown -Rh meteor /usr/local
 
