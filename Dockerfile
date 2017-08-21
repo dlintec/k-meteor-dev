@@ -76,6 +76,9 @@ RUN  ln -s $LOCAL_IMAGE_PATH/nginx.conf /etc/nginx/nginx.conf
 USER meteor 
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
+
+RUN nvm install node
+
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
 ENTRYPOINT [ "entrypoint.sh" ]
