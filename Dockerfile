@@ -23,7 +23,7 @@ chown -Rh meteor /usr/local
 USER meteor
 
 RUN curl https://install.meteor.com/ | sh
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | NVM_DIR=/usr/local/nvm bash
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh bash
 
 
 WORKDIR /opt/application/
