@@ -8,6 +8,6 @@
     echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm' >> $HOME/.bashrc
     source $NVM_DIR/nvm.sh
 
-    nvm install node
+    nvm install 'lts/*'
  fi
 
