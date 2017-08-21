@@ -1,7 +1,7 @@
 #!/bin/bash  
-file="$HOME/.bashrc"
 
- if grep -q "nvm.sh" "$File"; then
+
+ if grep -q "nvm.sh" $HOME/.bashrc; then
     echo "NVM already installed"
  else
     curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
