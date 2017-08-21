@@ -34,7 +34,8 @@ ENV PYTHON=/usr/bin/python2.7
 
 ENV APP_NAME="default"
 ENV GIT_REPO="dlintec"
-ENV APP_VER=1.83
+
+ENV APP_VER=2.0
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
@@ -75,13 +76,12 @@ RUN  ln -s $LOCAL_IMAGE_PATH/nginx.conf /etc/nginx/nginx.conf
 #COPY nginx.conf /etc/nginx/nginx.conf
 
 USER meteor 
-RUN meteor npm install -g maka-cli && \
-meteor npm install -g jsdoc
 
-
-
+#RUN meteor npm install -g maka-cli && \
+#meteor npm install -g jsdoc
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
+
 ENTRYPOINT [ "entrypoint.sh" ]
 
 WORKDIR /opt/application/
