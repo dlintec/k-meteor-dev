@@ -1,5 +1,6 @@
 #!/bin/bash  
-file=$HOME/.bashrc
+file="$HOME/.bashrc"
+
  if grep -q "nvm.sh" "$File"; then
     echo "NVM already installed"
  else
