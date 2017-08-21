@@ -39,6 +39,7 @@ ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
 ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/meteor/.nvm"
+ENV NVM_DIR="/home/meteor/.nvm"
 #replace with "yourdomain.com"
 ENV DOMAIN_NAME="127.0.0.1"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
