@@ -23,7 +23,7 @@ chown -Rh meteor /usr/local
 USER meteor
 
 RUN curl https://install.meteor.com/ | sh
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh bash
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
 
 
 WORKDIR /opt/application/
@@ -38,7 +38,7 @@ ENV APP_VER=1.83
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
-ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvm"
+ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/meteor/.nvm"
 #replace with "yourdomain.com"
 ENV DOMAIN_NAME="127.0.0.1"
 #COPY entrypoint.sh /usr/local/bin/entrypoint.sh
