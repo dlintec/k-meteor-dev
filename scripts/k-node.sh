@@ -9,5 +9,6 @@
     source $NVM_DIR/nvm.sh
 
     nvm install 'lts/*'
+    echo "Type 'exit' to return to menu or open a new terminal for the changes to take effect"
  fi
 
