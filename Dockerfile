@@ -80,7 +80,7 @@ meteor npm install -g jsdoc
 
 #RUN chmod +x /home/meteor/.nvm/nvm.sh
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | sh
-RUN source /home/meteor/.nvm/nvm.sh 
+#RUN source /home/meteor/.nvm/nvm.sh 
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
