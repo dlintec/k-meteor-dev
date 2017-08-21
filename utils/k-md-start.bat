@@ -43,6 +43,7 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 		ECHO . 4 - Open ROOT command line inside container
 	)
 	ECHO . 5 - Rebuild k-meteor-dev docker image
+	ECHO . 6 - Refresh k-meteor-dev docker image
 	ECHO . 0 - EXIT
 	ECHO.
 	echo ----------------------------------------------------------
@@ -56,6 +57,7 @@ REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 		IF %M%==4 GOTO:EXEC_BASH_ROOT
 	)
 	IF %M%==5 GOTO:REBUILD_IMAGE
+	IF %M%==6 GOTO:CREATE_IMAGE
 	IF %M%==0 GOTO EOF
 	pause
 
