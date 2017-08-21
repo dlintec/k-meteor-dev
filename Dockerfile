@@ -23,7 +23,7 @@ chown -Rh meteor /usr/local
 USER meteor
 
 RUN curl https://install.meteor.com/ | sh
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash
+
 
 
 WORKDIR /opt/application/
@@ -79,6 +79,7 @@ RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
 
 #RUN chmod +x /home/meteor/.nvm/nvm.sh
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | sh
 RUN source /home/meteor/.nvm/nvm.sh 
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
