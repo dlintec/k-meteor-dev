@@ -81,7 +81,7 @@ meteor npm install -g jsdoc
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | sh
 RUN chmod +x $LOCAL_IMAGE_PATH/.nvm/nvm.sh
 RUN . /home/meteor/localimage/.nvm/nvm.sh
-RUN nvm install node
+RUN /home/meteor/localimage/.nvm/nvm.sh install node
 
 #RUN chmod +x /usr/local/bin/entrypoint.sh
 #ENTRYPOINT [ "/usr/local/bin/meteor" ]
