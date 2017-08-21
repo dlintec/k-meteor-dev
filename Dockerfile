@@ -78,6 +78,7 @@ USER meteor
 RUN meteor npm install -g maka-cli && \
 meteor npm install -g jsdoc
 
+RUN touch /home/meteor/.bash_profile
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | sh
 RUN chmod +x $LOCAL_IMAGE_PATH/.nvm/nvm.sh
 RUN . /home/meteor/localimage/.nvm/nvm.sh
