@@ -8,12 +8,7 @@ USER root
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 RUN apt-get update && \
-apt-get install -y curl wget git python2.7 python2.7-dev build-essential whiptail vim nano nginx software-properties-common lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 
-
-RUN add-apt-repository -y ppa:webupd8team/java 
-
-#RUN apt-get update && \
-#apt-get install -y oracle-java8-installer
+apt-get install -y curl wget git python2.7 python2.7-dev build-essential whiptail vim nano nginx lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
 
