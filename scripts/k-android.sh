@@ -5,8 +5,8 @@ else
 
    wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
    unzip sdk-tools-linux-3859397 -d /home/meteor/android
-   echo 'export ANDROID_HOME=/home/meteor/android/tools' >> ~/.bashrc
-   echo 'export PATH=$PATH:/usr/lib/android-sdk/tools:/usr/lib/android-sdk/platform-tools' >> ~/.bashrc
+   echo 'export ANDROID_HOME=/usr/lib/android-sdk' >> ~/.bashrc
+   echo 'export PATH=$PATH:/home/meteor/android/tools:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools' >> ~/.bashrc
 
 fi
 
