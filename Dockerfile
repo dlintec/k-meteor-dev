@@ -12,8 +12,8 @@ apt-get install -y curl wget git python2.7 python2.7-dev build-essential whiptai
 
 RUN add-apt-repository -y ppa:webupd8team/java 
 
-RUN apt-get update && \
-apt-get install -y oracle-java8-installer
+#RUN apt-get update && \
+#apt-get install -y oracle-java8-installer
 
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
 
