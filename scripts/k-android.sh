@@ -19,7 +19,7 @@ else
    sdkmanager 'build-tools;25.0.3' 
    sdkmanager 'platforms;android-25' 
    #sdkmanager 'ndk-bundle'
-   mkdir ~/.gradle
-    echo 'org.gradle.daemon=true' >> ~/.gradle/gradle.properties
+   #mkdir ~/.gradle
+   #echo 'org.gradle.daemon=true' >> ~/.gradle/gradle.properties
 fi
 
