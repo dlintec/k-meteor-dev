@@ -70,7 +70,10 @@ RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
 RUN  ln -s $LOCAL_IMAGE_PATH/nginx.conf /etc/nginx/nginx.conf
 #COPY nginx.conf /etc/nginx/nginx.conf
 
-RUN apt-get install -y default-jdk android-sdk android-sdk-platform-tools
+#RUN apt-get install -y default-jdk android-sdk android-sdk-platform-tools
+
+RUN apt-get install -y default-jdk 
+
 USER meteor 
 
 #RUN meteor npm install -g maka-cli && \
