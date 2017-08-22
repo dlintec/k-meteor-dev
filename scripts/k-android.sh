@@ -22,6 +22,7 @@ else
    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
    sdkmanager 'build-tools;25.0.3' 
    sdkmanager 'platforms;android-25' 
+   sdkmanager 'platform-tools'
    #sdkmanager 'ndk-bundle'
    #mkdir ~/.gradle
    #echo 'org.gradle.daemon=true' >> ~/.gradle/gradle.properties
