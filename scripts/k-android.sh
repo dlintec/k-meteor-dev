@@ -14,6 +14,12 @@ else
    echo 'export ANDROID_HOME=/home/meteor/android25/tools' >> ~/.bashrc
    echo 'export PATH=$PATH:/home/meteor/android25/tools:/home/meteor/android25/tools/bin' >> ~/.bashrc
    touch ~/.android/repositories.cfg
- 
+   export ANDROID_HOME=/home/meteor/android25
+   export PATH=$PATH:/home/meteor/android25/tools:/home/meteor/android25/tools/bin
+   sdkmanager 'build-tools;25.0.3' 
+   sdkmanager 'platforms;android-25' 
+   #sdkmanager 'ndk-bundle'
+   mkdir ~/.gradle
+    echo 'org.gradle.daemon=true' >> ~/.gradle/gradle.properties
 fi
 
