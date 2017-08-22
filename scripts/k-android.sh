@@ -11,11 +11,10 @@ else
    
    wget https://dl.google.com/android/repository/tools_r25.2.3-linux.zip
    unzip tools_r25.2.3-linux -d /home/meteor/android25
-   echo 'export ANDROID_HOME=/home/meteor/android25/tools' >> ~/.bashrc
-   echo 'export PATH=$PATH:/home/meteor/android25/tools:/home/meteor/android25/tools/bin' >> ~/.bashrc
+   echo 'export ANDROID_HOME=/home/meteor/android25' >> ~/.bashrc
+   echo 'export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin' >> ~/.bashrc
    touch ~/.android/repositories.cfg
-   export ANDROID_HOME=/home/meteor/android25
-   export PATH=$PATH:/home/meteor/android25/tools:/home/meteor/android25/tools/bin
+   source ~/.bashrc
    sdkmanager 'build-tools;25.0.3' 
    sdkmanager 'platforms;android-25' 
    #sdkmanager 'ndk-bundle'
