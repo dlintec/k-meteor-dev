@@ -29,3 +29,4 @@ else
    
 fi
 
+meteor add-platform android
