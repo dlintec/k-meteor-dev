@@ -8,4 +8,4 @@ keytool -genkey -alias $current_app -keyalg RSA -keysize 2048 -validity 10000
 
 cd /opt/application/$current_app/build/android/
 
-jarsigner -digestalg SHA1 unaligned.apk $current_app
+jarsigner -digestalg SHA1 release-unsigned.apk $current_app
