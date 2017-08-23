@@ -24,6 +24,12 @@ if [[ "$DOCKER_WD" == /opt/application* ]]; then
    fi
 fi
 
+server_url="$(kalan-var 'SERVER_URL')"
+if [ -z "$server_url" ] ;then
+   server_url="http://$DOMAIN_NAME"
+   kalan-var "SERVER_URL" "$server_url"
+fi
+
 if [ "$APP_NAME" == "default" ]; then
    echo "Setting APP_TEMPLATE to k-react"
    export APP_TEMPLATE="k-react"
@@ -286,11 +292,7 @@ else
 
   echo "Starting meteor. Press Ctrl+Z to stop."
   #k-output "entrypoint.sh:starting:$APP_NAME" "-"
-   server_url="$(kalan-var 'SERVER_URL')"
-   if [ -z "$server_url" ] ;then
-      server_url="http://$DOMAIN_NAME"
-      kalan-var "SERVER_URL" "$server_url"
-   fi
+
    export ROOT_URL=$server_url
   meteor $APP_SETTINGS $APP_PARAMETERS
  fi
