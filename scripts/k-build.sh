@@ -1,10 +1,11 @@
 #!/bin/bash  
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 current_app=$(kalan-var "CURRENT_APP")
-meteor build ~/build-output-directory --server=your-desired-app-hostname.meteor.com
+meteor build /opt/application/$current_app/build --server=$DOMAIN_NAME:80
     
-keytool -genkey -alias your-app-name -keyalg RSA -keysize 2048 -validity 10000
+    
+keytool -genkey -alias $current_app -keyalg RSA -keysize 2048 -validity 10000
 
-cd ~/build-output-directory/android/
+cd /opt/application/$current_app/build/android/
 
-jarsigner -digestalg SHA1 unaligned.apk your-app-name
+jarsigner -digestalg SHA1 unaligned.apk $current_app
