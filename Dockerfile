@@ -34,7 +34,7 @@ ENV APP_VER=2.0
 ENV APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 ENV GIT_IMAGE="k-meteor-dev"
 ENV LOCAL_IMAGE_PATH=/home/meteor/localimage
-ENV PATH="$LOCAL_IMAGE_PATH/scripts:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$LOCAL_IMAGE_PATH/.nvm"
+ENV PATH="$LOCAL_IMAGE_PATH/scripts:/home/meteor/links:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$LOCAL_IMAGE_PATH/.nvm"
 ENV NVM_DIR="$LOCAL_IMAGE_PATH/.nvm"
 #replace with "yourdomain.com"
 ENV DOMAIN_NAME="127.0.0.1"
@@ -44,7 +44,7 @@ ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
 chmod +x $LOCAL_IMAGE_PATH/entrypoint.sh  && \
 chmod -R +x $LOCAL_IMAGE_PATH/scripts/
 RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
-
+RUN mkdir -p /home/meteor/links/
 USER root
 
 
