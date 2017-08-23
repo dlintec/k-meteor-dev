@@ -278,13 +278,15 @@ if [ -d /opt/application/$APP_NAME/.maka ];then
   meteor maka run
 else
   cd /opt/application/$APP_NAME/app
-  #echo "Starting application: [$APP_NAME]"
-  echo $APP_SETTINGS
+ 
   kalan-var "CURRENT_APP" "$APP_NAME"
   echo ""
+  echo "CURRENT_APP: [$APP_NAME]"
+  echo $APP_SETTINGS
+
   echo "Starting meteor. Press Ctrl+Z to stop."
   #k-output "entrypoint.sh:starting:$APP_NAME" "-"
-  #echo "CURRENT_APP: [$APP_NAME]"
+  
   meteor $APP_SETTINGS $APP_PARAMETERS
  fi
 #exit 0
