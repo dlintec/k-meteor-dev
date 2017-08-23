@@ -84,38 +84,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
      
       meteor  npm install --save bcrypt babel-runtime 
       meteor  npm install --save jsdoc
-      meteor maka jsdoc
-     
-     
-      ##meteor maka npm install --save react react-dom react-addons-transition-group react-addons-css-transition-group react-addons-linked-state-mixin react-addons-create-fragment react-addons-update react-addons-pure-render-mixin react-addons-test-utils react-addons-perf
-      
-      #meteor add accounts-ui 
-
-      ##meteor add react react-meteor-data kadira:react-layout npm-bcrypt 
-      #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
-      #meteor add kadira:flow-router kadira:blaze-layout
-      #meteor remove autopublish insecure
-
-      ## meteor add accounts-password      #meteor add accounts-facebook accounts-google 
-      ##meteor add twbs:bootstrap fortawesome:fontawesome
-      ##meteor add useraccounts:bootstrap
-      ##meteor maka add fezvrasta:bootstrap-material-design
-      ##meteor npm install
-      ##meteor add npm-bcrypt orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
-      ##meteor add sacha:spin orionjs:filesystem orionjs:image-attribute vsivsi:orion-file-collection
-
-      ##meteor remove autopublish insecure
-
-       ##meteor add npm-bcrypt 
-      ##meteor add orionjs:core 
-      ##meteor add twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap 
-      ##meteor add iron:router
-      ##meteor add fourseven:scss
-      ##meteor add materialize:materialize@=0.97.0 orionjs:materialize
-      ##meteor add kadira:flow-router kadira:blaze-layout
-
-      #meteor update --all-packages
-      
+      #meteor maka jsdoc
+         
       echo "Default meteor app created: $APP_NAME"
 
    else
@@ -161,53 +131,6 @@ if [ ! -d /opt/application/$APP_NAME ];then
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
        echo $APP_SETTINGS > /opt/application/$APP_NAME/app_settings.txt
        cd /opt/application/$APP_NAME/app 
-       if [ "$APP_TEMPLATE" == "base" ];then
-          k-output "entrypoint.sh:create:base"
-          meteor add npm-bcrypt
-          meteor update
-          meteor npm install --save babel-runtime bcrypt jquery bootstrap react react-dom react-router react-bootstrap react-komposer react-router-bootstrap jquery-validation
-          meteor add thereactivestack:blazetoreact
-       fi
-      if [ "$APP_TEMPLATE" == "k-cms" ];then
-        echo "Configuring and updating for k-cms"
-          meteor npm install --save bcrypt babel-runtime
-          #meteor npm install --save jquery@2.2.4
-          #meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
-          #react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
-          #react-addons-test-utils react-addons-perf react-mounter fs-extra
-          #####meteor npm install --save reactbootstrap-colorpicker
-          #meteor add react d3js:d3 momentjs:moment react-meteor-data ultimatejs:tracker-react timbrandin:autoform-slingshot timbrandin:image-resize-client
-
-          exitstatus=$?
-          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
-
-       fi
-       if [ "$APP_TEMPLATE" == "meteor-react-d3" ];then
-        echo "Configuring and updating for k-react-d3"
-          rm -rf /opt/application/$APP_NAME/app/node_modules
-
-          meteor npm install --save bcrypt babel-runtime 
-          meteor npm install --save react react-dom react-addons-transition-group react-addons-linked-state-mixin \
-          react-addons-css-transition-group react-addons-create-fragment react-addons-update react-addons-pure-render-mixin \
-          react-addons-test-utils react-addons-perf react-mounter bootstrap-colorpicker
-          meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap
-          meteor add kadira:flow-router kadira:blaze-layout
-          meteor add summernote:standalone@0.6.16
-          meteor add orionjs:accounts orionjs:attributes orionjs:base orionjs:collections orionjs:config
-          meteor add orionjs:dictionary orionjs:file-attribute orionjs:filesystem orionjs:image-attribute 
-          meteor add orionjs:lang-en orionjs:lang-es orionjs:pages orionjs:summernote accounts-ui 
-          meteor remove autopublish insecure
-          exitstatus=$?
-          k-output "entrypoint.sh:configure:template:$APP_TEMPLATE:$exitstatus" $exitstatus
-
-       fi
-      
-
-       #meteor npm install
-       #meteor add npm-bcrypt 
-       #meteor add orionjs:core twbs:bootstrap fortawesome:fontawesome orionjs:bootstrap iron:router
-       #meteor remove autopublish insecure
-       #meteor update --all-packages
 
    fi
    echo "New application created:[$APP_NAME]"
@@ -235,7 +158,7 @@ if [[ -L "$file" && -d "$file" ]];then
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
     fi
 else
-    #echo "No previous link OK"
+   echo "No previous link OK"
    if [[ -d /opt/application/$APP_NAME/app/.meteor/local ]];then
 
        echo "BACKUP and Copying original folder to LOCALDB..."
@@ -268,8 +191,8 @@ else
           k-output "entrypoint.sh:configure:app:default:$exitstatus" $exitstatus
 
        fi
-   fi
-     #meteor update --all-packages
+    fi
+     
 fi
 
 if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
