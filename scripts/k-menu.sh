@@ -21,11 +21,7 @@ if [ -z "$autostart" ] ;then
    autostart='0'
    kalan-var "METEOR_AUTOSTART" "$autostart"
 fi
-server_url="$(kalan-var 'SERVER_URL')"
-if [ -z "$autostart" ] ;then
-   server_url="http://$DOMAIN_NAME"
-   kalan-var "SERVER_URL" "$server_url"
-fi
+
 
 if [ "$just_updated" == "1" ] ;then
 	kalan-var "k_menu_updated" "_DELETE_"
