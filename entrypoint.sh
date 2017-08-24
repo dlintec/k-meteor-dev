@@ -173,7 +173,9 @@ else
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db
    else 
        echo "No previous local link or path on source"
-
+         if [ ! -d /opt/application/$APP_NAME/app/.meteor/local ];then
+           mkdir -p /opt/application/$APP_NAME/app/.meteor/local
+         fi
         mkdir -p $APP_LOCALDB
 
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db
