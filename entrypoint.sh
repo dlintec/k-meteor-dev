@@ -35,7 +35,7 @@ if [ "$APP_NAME" == "default" ]; then
    export APP_TEMPLATE="k-react"
 fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
-export LINK_LOCALDB="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
+export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
 
 
 #if [ -d /opt/application/$APP_NAME/packages ];then
@@ -64,11 +64,11 @@ if [ ! -d /opt/application/$APP_NAME ];then
          cp -ar /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
          mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
       fi
-      if [ ! -d /opt/application/$APP_NAME/app/.meteor/local ];then
-        mkdir -p /opt/application/$APP_NAME/app/.meteor/local
+      if [ ! -d /opt/application/$APP_NAME/app/.meteor ];then
+        mkdir -p /opt/application/$APP_NAME/app/.meteor
       fi
       cd /opt/application/$APP_NAME/app
-      ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+      ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
       if [ ! -e /opt/application/$APP_NAME/app/package.json ];then
       package_string='{
   "name": "app",
@@ -152,10 +152,10 @@ file="/opt/application/$APP_NAME/app/.meteor/local"
 if [[ -L "$file" && -d "$file" ]];then
     echo "LOCAL is a symlink to a directory"
 
-    if [ ! "$LINK_LOCALDB" == "$APP_LOCALDB" ];then
-       echo "LOCAL symlink not same for $APP_NAME $LINK_LOCALDB"
+    if [ ! "$LINK_LOCAL" == "$APP_LOCALDB" ];then
+       echo "LOCAL symlink not same for $APP_NAME $LINK_LOCAL"
        rm /opt/application/$APP_NAME/app/.meteor/local
-       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
     fi
 else
    echo "No previous link OK"
@@ -169,13 +169,11 @@ else
        fi
 
        cp -ar /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
-       mv /opt/application/$APP_NAME/app/.meteor/local/opt/application/$APP_NAME/local_backup
+       mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
    else 
        echo "No previous local link or path on source"
-         if [ ! -d /opt/application/$APP_NAME/app/.meteor/local ];then
-           mkdir -p /opt/application/$APP_NAME/app/.meteor/local
-         fi
+
         mkdir -p $APP_LOCALDB
 
        ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
