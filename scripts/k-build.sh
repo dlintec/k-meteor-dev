@@ -8,5 +8,5 @@ echo "Starting Build for $current_app for $server_url ..."
 # cd /opt/application/android/app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine
 # /app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java
 
-meteor build /opt/application/$current_app/build --server=$server_url --mobile-server=$server_url
+meteor build /opt/application/$current_app/build --server=$server_url 
     
