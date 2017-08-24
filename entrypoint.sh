@@ -35,7 +35,7 @@ if [ "$APP_NAME" == "default" ]; then
    export APP_TEMPLATE="k-react"
 fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
-export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
+export LINK_LOCALDB="$(readlink /opt/application/$APP_NAME/app/.meteor/local/db)"
 
 
 #if [ -d /opt/application/$APP_NAME/packages ];then
@@ -59,16 +59,16 @@ if [ ! -d /opt/application/$APP_NAME ];then
       fi
       mkdir -p $APP_LOCALDB
 
-      if [ -d /opt/application/$APP_NAME/app/.meteor/local ];then
+      if [ -d /opt/application/$APP_NAME/app/.meteor/local/db ];then
          echo "Copy generated local to $APP_LOCALDB..."
-         cp -ar /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
-         mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
+         cp -ar /opt/application/$APP_NAME/app/.meteor/local/db/* $APP_LOCALDB
+         mv /opt/application/$APP_NAME/app/.meteor/local/db /opt/application/$APP_NAME/local_backup
       fi
-      if [ ! -d /opt/application/$APP_NAME/app/.meteor ];then
-        mkdir -p /opt/application/$APP_NAME/app/.meteor
+      if [ ! -d /opt/application/$APP_NAME/app/.meteor/local ];then
+        mkdir -p /opt/application/$APP_NAME/app/.meteor/local
       fi
       cd /opt/application/$APP_NAME/app
-      ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
+      ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db 
       if [ ! -e /opt/application/$APP_NAME/app/package.json ];then
       package_string='{
   "name": "app",
@@ -111,9 +111,9 @@ if [ ! -d /opt/application/$APP_NAME ];then
       exitstatus=$?
       k-output "entrypoint.sh:create:template:$APP_TEMPLATE:$exitstatus" $exitstatus
        mkdir -p $APP_LOCALDB
-      if [ -d /opt/application/$APP_NAME/app/.meteor/local ];then
-         cp -arv /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
-         mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
+      if [ -d /opt/application/$APP_NAME/app/.meteor/local/db ];then
+         cp -arv /opt/application/$APP_NAME/app/.meteor/local/db/* $APP_LOCALDB
+         mv /opt/application/$APP_NAME/app/.meteor/local/db /opt/application/$APP_NAME/local_backup
       fi
       if [ ! -e /opt/application/$APP_NAME/app/package.json ];then
       package_string='{
@@ -128,7 +128,7 @@ if [ ! -d /opt/application/$APP_NAME ];then
            echo $package_string >> /opt/application/$APP_NAME/app/package.json
       fi
       
-       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db
        echo $APP_SETTINGS > /opt/application/$APP_NAME/app_settings.txt
        cd /opt/application/$APP_NAME/app 
 
@@ -148,18 +148,18 @@ if [[ ! -d "$APP_LOCALDB" ]];then
   export NEW_LOCALDB="$APP_LOCALDB"
 fi
 
-file="/opt/application/$APP_NAME/app/.meteor/local"
+file="/opt/application/$APP_NAME/app/.meteor/local/db"
 if [[ -L "$file" && -d "$file" ]];then
     echo "LOCAL is a symlink to a directory"
 
-    if [ ! "$LINK_LOCAL" == "$APP_LOCALDB" ];then
-       echo "LOCAL symlink not same for $APP_NAME $LINK_LOCAL"
-       rm /opt/application/$APP_NAME/app/.meteor/local
-       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local 
+    if [ ! "$LINK_LOCALDB" == "$APP_LOCALDB" ];then
+       echo "LOCAL symlink not same for $APP_NAME $LINK_LOCALDB"
+       rm /opt/application/$APP_NAME/app/.meteor/local/db
+       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db 
     fi
 else
    echo "No previous link OK"
-   if [[ -d /opt/application/$APP_NAME/app/.meteor/local ]];then
+   if [[ -d /opt/application/$APP_NAME/app/.meteor/local/db ]];then
 
        echo "BACKUP and Copying original folder to LOCALDB..."
        if [[ -d "$APP_LOCALDB" ]];then
@@ -168,15 +168,15 @@ else
            mkdir -p $APP_LOCALDB
        fi
 
-       cp -ar /opt/application/$APP_NAME/app/.meteor/local/* $APP_LOCALDB
-       mv /opt/application/$APP_NAME/app/.meteor/local /opt/application/$APP_NAME/local_backup
-       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+       cp -ar /opt/application/$APP_NAME/app/.meteor/local/db/* $APP_LOCALDB
+       mv /opt/application/$APP_NAME/app/.meteor/local/db /opt/application/$APP_NAME/local_backup
+       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db
    else 
        echo "No previous local link or path on source"
 
         mkdir -p $APP_LOCALDB
 
-       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local
+       ln -s $APP_LOCALDB /opt/application/$APP_NAME/app/.meteor/local/db
 
    fi     
 
