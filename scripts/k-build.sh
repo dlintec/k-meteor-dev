@@ -3,9 +3,13 @@ source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 current_app=$(kalan-var "CURRENT_APP")
 server_url="$(kalan-var 'SERVER_URL')"
 mobile_url="$(kalan-var 'MOBILE_URL')"
+if [ -z "$mobile_url" ] ;then
+   mobile_url="$server_url"
+   kalan-var "MOBILE_URL" "$mobile_url"
+fi
 
 
-echo "Starting Build for $current_app for $server_url ..."
+echo "Building app [$current_app] MOBILE_URL=$mobile_url ..."
 
 # modificar archivo de cordova para aceptar certificados autofirmados
 # cd /opt/application/android/app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine
