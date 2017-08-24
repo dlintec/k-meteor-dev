@@ -217,6 +217,6 @@ else
   #k-output "entrypoint.sh:starting:$APP_NAME" "-"
 
    export ROOT_URL=$server_url
-  meteor $APP_SETTINGS $APP_PARAMETERS
+  meteor --mobile-server $server_url $APP_SETTINGS $APP_PARAMETERS
  fi
 #exit 0
