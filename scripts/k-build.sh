@@ -10,11 +10,11 @@ if [ -z "$mobile_build_url" ] ;then
 fi
 
 
-echo "Building app [$current_app] MOBILE_BUILD_URL=$mobile_build_url ..."
+echo "Building app [$current_app] MOBILE_BUILD_URL=$server_url ..."
 
 # modificar archivo de cordova para aceptar certificados autofirmados
 # cd /opt/application/android/app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine
 # /app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java
 
-meteor build /opt/application/$current_app/build --server=$mobile_build_url 
+meteor build /opt/application/$current_app/build --server=$server_url 
     
