@@ -61,8 +61,6 @@ openssl req -nodes -newkey rsa:2048 -keyout /home/meteor/ssl/certs/nginx-selfsig
 RUN openssl x509 -req -days 2000 -in /home/meteor/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
 
-RUN git clone https://github.com/letsencrypt/letsencrypt
-
 COPY ssl-params.conf /home/meteor/ssl/ssl-params.conf 
 COPY self-signed.conf /home/meteor/ssl/self-signed.conf
 
@@ -82,7 +80,7 @@ RUN  ln -s $LOCAL_IMAGE_PATH/nginx.conf /etc/nginx/nginx.conf
 #COPY nginx.conf /etc/nginx/nginx.conf
 
 #RUN apt-get install -y default-jdk android-sdk android-sdk-platform-tools
-
+RUN git clone https://github.com/letsencrypt/letsencrypt
 
 USER meteor 
 
