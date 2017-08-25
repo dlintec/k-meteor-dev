@@ -53,12 +53,14 @@ RUN chown -Rh root:root /home/meteor/ssl
 
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
-RUN cd /etc/ssl && \
+
+RUN cd /home/meteor/ssl && \
 openssl req -nodes -newkey rsa:2048 -keyout /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/server.csr \
   -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" 
 RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
 
+RUN git clone https://github.com/letsencrypt/letsencrypt
 
 COPY ssl-params.conf /home/meteor/ssl/ssl-params.conf 
 COPY self-signed.conf /home/meteor/ssl/self-signed.conf
