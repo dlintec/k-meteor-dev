@@ -51,6 +51,8 @@ USER root
 
 RUN mkdir -p /home/meteor/ssl/certs
 RUN chown -Rh root:root /home/meteor/ssl
+RUN mkdir -p /home/meteor/nginxconf
+RUN chown -Rh root:root /home/meteor/nginxconf
 
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
@@ -61,25 +63,24 @@ openssl req -nodes -newkey rsa:2048 -keyout /home/meteor/ssl/certs/nginx-selfsig
 RUN openssl x509 -req -days 2000 -in /home/meteor/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
 
-COPY ssl-params.conf /home/meteor/ssl/ssl-params.conf 
-COPY self-signed.conf /home/meteor/ssl/self-signed.conf
+COPY ssl-params.conf /home/meteor/nginxconf/ssl-params.conf
+RUN  ln -s /home/meteor/nginxconf/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 
-RUN  ln -s /home/meteor/ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
-RUN  ln -s /home/meteor/ssl/self-signed.conf /etc/nginx/snippets/self-signed.conf
+COPY self-signed.conf /home/meteor/nginxconf/self-signed.conf
+RUN  ln -s /home/meteor/nginxconf/self-signed.conf /etc/nginx/snippets/self-signed.conf
 
 RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
-RUN  ln -s $LOCAL_IMAGE_PATH/nginx-proxy-settings /etc/nginx/sites-available/default
-#RUN systemctl enable nginx
-#RUN update-rc.d nginx defaults
-#RUN ufw allow 'Nginx Full'
-#RUN ufw delete allow 'Nginx HTTP'
+COPY nginx-proxy-settings /home/meteor/nginxconf/nginx-proxy-settings
+RUN  ln -s /home/meteor/nginxconf/nginx-proxy-settings /etc/nginx/sites-available/default
+
 
 RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
-RUN  ln -s $LOCAL_IMAGE_PATH/nginx.conf /etc/nginx/nginx.conf
-#COPY nginx.conf /etc/nginx/nginx.conf
 
-#RUN apt-get install -y default-jdk android-sdk android-sdk-platform-tools
+COPY nginx.conf /home/meteor/nginxconf/nginx.conf
+RUN  ln -s /home/meteor/nginxconf/nginx.conf /etc/nginx/nginx.conf
+
+
 RUN git clone https://github.com/letsencrypt/letsencrypt
 
 USER meteor 
