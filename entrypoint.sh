@@ -135,8 +135,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
 
    fi
    
-   if [ ! -e /opt/application/$APP_NAME/app_config.txt ];then
-      file_line_value /opt/application/$APP_NAME/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
+   if [ ! -e /opt/application/$APP_NAME/app/app_config.txt ];then
+      file_line_value /opt/application/$APP_NAME/app/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
    fi
    echo "New application created:[$APP_NAME]"
    
