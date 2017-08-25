@@ -11,3 +11,4 @@ docker exec -it --user meteor k-meteor-dev /bin/bash k menu
 echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
 echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
 chmod  +x kmenu
+chmod  +x kroot
