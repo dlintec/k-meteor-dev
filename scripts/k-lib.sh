@@ -71,6 +71,19 @@
       fi
 
    }
+   function app-var {
+      new_value="$2"
+      if [[ -z "$new_value" ]];then
+         sed "y/ ,/\n\n/;/^$1/P;D" <~/.$GIT_IMAGE.cfg | awk -F= '{print $NF}'
+      else
+         if [ "$new_value" == "_DELETE_" ];then
+            addreplacevalue "$1" "$new_value" ~/.$GIT_IMAGE.cfg
+         else
+            addreplacevalue "$1" "$1=$new_value" ~/.$GIT_IMAGE.cfg
+         fi
+      fi
+
+   }
 function k-colors {
 	colors_normal=(
 		root=white,black
