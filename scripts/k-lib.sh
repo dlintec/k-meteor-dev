@@ -83,7 +83,7 @@
          sed "y/ ,/\n\n/;/^$old_value/P;D" <$the_file | awk -F= '{print $NF}'
       else
 	if [ ! -e $the_file ];then
-	echo "$new_value" >> $the_file
+	echo "" >> $the_file
 	fi
 
       
