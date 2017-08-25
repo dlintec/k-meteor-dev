@@ -200,7 +200,7 @@ if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     echo $APP_SETTINGS
 fi
 if [ ! -e /opt/application/$APP_NAME/app_config.txt ];then
-    echo $APP_SETTINGS
+   file_replace_line "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
 fi
 
 if [ -d /opt/application/$APP_NAME/.maka ];then
