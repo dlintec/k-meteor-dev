@@ -199,6 +199,9 @@ if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     APP_SETTINGS="$(cat /opt/application/$APP_NAME/app_settings.txt)"
     echo $APP_SETTINGS
 fi
+if [ ! -e /opt/application/$APP_NAME/app_config.txt ];then
+    echo $APP_SETTINGS
+fi
 
 if [ -d /opt/application/$APP_NAME/.maka ];then
     echo "maka start"
