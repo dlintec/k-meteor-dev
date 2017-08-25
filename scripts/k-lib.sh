@@ -71,21 +71,21 @@
       fi
 
    }
-   function file-var {
-      vfile="$3"
-      new_value="$2"
+   
+   function file_replace_line {
+      
+      new_value="$3"
+      old_value="$2"
+      the_file="$1"
       if [[ -z "$new_value" ]];then
-         sed "y/ ,/\n\n/;/^$1/P;D" <$vfile | awk -F= '{print $NF}'
+         sed "y/ ,/\n\n/;/^$old_value/P;D" <$the_file | awk -F= '{print $NF}'
       else
-         if [ "$new_value" == "_DELETE_" ];then
-            addreplacevalue "$1" "$new_value" $vfile
-         else
-            addreplacevalue "$1" "$1=$new_value" $vfile
-         fi
+         addreplacevalue "$old_value" "$new_value" $the_file
       fi
 
    }
-function k-colors {
+   
+   function k-colors {
 	colors_normal=(
 		root=white,black
 		border=red,red
@@ -140,7 +140,7 @@ function k-colors {
 	done
 
 
-}
+   }
    function k-list-menu {
          title="$2"
          option_list="$1"
