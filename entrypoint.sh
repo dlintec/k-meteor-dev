@@ -214,11 +214,12 @@ else
   cd /opt/application/$APP_NAME/app
  
   kalan-var "CURRENT_APP" "$APP_NAME"
-  echo ""
-  echo "CURRENT_APP: [$APP_NAME]"
-  echo $APP_SETTINGS
-
-  echo "Starting meteor. Press Ctrl+Z to stop."
+  echo "---------------------------------------"
+  echo " CURRENT_APP: [$APP_NAME]"
+  echo "  SERVER_URL: [$server_url]"
+  echo " Starting meteor.Press Ctrl+Z to stop."
+  echo "---------------------------------------"
+  echo "settings:[$APP_SETTINGS]"
   #k-output "entrypoint.sh:starting:$APP_NAME" "-"
 
    export ROOT_URL=$server_url
