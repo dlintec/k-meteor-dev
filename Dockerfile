@@ -44,8 +44,9 @@ RUN git clone https://github.com/$GIT_REPO/$GIT_IMAGE.git $LOCAL_IMAGE_PATH && \
 ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
 chmod +x $LOCAL_IMAGE_PATH/entrypoint.sh  && \
 chmod -R +x $LOCAL_IMAGE_PATH/scripts/
-RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
 RUN mkdir -p /home/meteor/links/ 
+RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
+
 USER root
 
 RUN mkdir -p /home/meteor/ssl/certs
@@ -57,7 +58,7 @@ chown -Rh meteor /etc/newt
 RUN cd /home/meteor/ssl && \
 openssl req -nodes -newkey rsa:2048 -keyout /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/server.csr \
   -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" 
-RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
+RUN openssl x509 -req -days 2000 -in /home/meteor/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
 RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
 
 RUN git clone https://github.com/letsencrypt/letsencrypt
