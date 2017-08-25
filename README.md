@@ -23,7 +23,7 @@ a) Download and Install Docker for your linux distro:
 
 b) Copy the following command in a new console and press enter: 
 
-    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart > $HOME/kstart;chmod +x $HOME/kstart
+    curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-linux > $HOME/kstart;chmod +x $HOME/kstart
     
 - This will create a script called "kstart" in your current path and a new folder at /opt/application (you should have user privileges to this folder). All your applications will be created on that folder of your host machine and mounted inside the container under /opt/application.
 
