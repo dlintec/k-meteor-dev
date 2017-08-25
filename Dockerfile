@@ -45,19 +45,26 @@ ln -s $LOCAL_IMAGE_PATH/entrypoint.sh /usr/local/bin/entrypoint.sh && \
 chmod +x $LOCAL_IMAGE_PATH/entrypoint.sh  && \
 chmod -R +x $LOCAL_IMAGE_PATH/scripts/
 RUN $LOCAL_IMAGE_PATH/scripts/k-update.sh
-RUN mkdir -p /home/meteor/links/
+RUN mkdir -p /home/meteor/links/ 
 USER root
 
+RUN mkdir -p /home/meteor/ssl/certs
+RUN chown -Rh root:root /home/meteor/ssl
 
 RUN chown -Rh meteor /usr/local && \
 chown -Rh meteor /etc/newt
 RUN cd /etc/ssl && \
-openssl req -nodes -newkey rsa:2048 -keyout /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/server.csr \
+openssl req -nodes -newkey rsa:2048 -keyout /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/server.csr \
   -subj "/C=MX/ST=MEX/L=Mexico/O=dlintec/OU=k-meteor-dev/CN=$DOMAIN_NAME" 
-RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /etc/ssl/certs/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
-RUN openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
-COPY ssl-params.conf /etc/nginx/snippets/ssl-params.conf 
-COPY self-signed.conf /etc/nginx/snippets/self-signed.conf
+RUN openssl x509 -req -days 2000 -in /etc/ssl/server.csr -signkey /home/meteor/ssl/certs/nginx-selfsigned.key -out /home/meteor/ssl/certs/nginx-selfsigned.crt
+RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
+
+
+COPY ssl-params.conf /home/meteor/ssl/ssl-params.conf 
+COPY self-signed.conf /home/meteor/ssl/self-signed.conf
+
+RUN  ln -s /home/meteor/ssl/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
+RUN  ln -s /home/meteor/ssl/self-signed.conf /etc/nginx/snippets/self-signed.conf
 
 RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
