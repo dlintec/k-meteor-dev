@@ -71,15 +71,16 @@
       fi
 
    }
-   function app-var {
+   function file-var {
+      vfile="$3"
       new_value="$2"
       if [[ -z "$new_value" ]];then
-         sed "y/ ,/\n\n/;/^$1/P;D" <~/.$GIT_IMAGE.cfg | awk -F= '{print $NF}'
+         sed "y/ ,/\n\n/;/^$1/P;D" <$vfile | awk -F= '{print $NF}'
       else
          if [ "$new_value" == "_DELETE_" ];then
-            addreplacevalue "$1" "$new_value" ~/.$GIT_IMAGE.cfg
+            addreplacevalue "$1" "$new_value" $vfile
          else
-            addreplacevalue "$1" "$1=$new_value" ~/.$GIT_IMAGE.cfg
+            addreplacevalue "$1" "$1=$new_value" $vfile
          fi
       fi
 
