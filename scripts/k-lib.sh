@@ -25,9 +25,7 @@
      buscar="$1"
      temporal="$archivo.tmp.kalan"
      listalineas=""
-     if [ ! -e $archivo ];then
-       echo "CONTAINER_NAME=$GIT_IMAGE" >> $archivo
-     fi
+     
      linefound=0       
      listalineas=$(cat $archivo)
      if [[ !  -z  $listalineas  ]];then
@@ -60,6 +58,10 @@
 
    function kalan-var {
       new_value="$2"
+      if [ ! -e ~/.$GIT_IMAGE.cfg ];then
+       echo "CONTAINER_NAME=$GIT_IMAGE" >> ~/.$GIT_IMAGE.cfg
+      fi
+
       if [[ -z "$new_value" ]];then
          sed "y/ ,/\n\n/;/^$1/P;D" <~/.$GIT_IMAGE.cfg | awk -F= '{print $NF}'
       else
@@ -80,7 +82,12 @@
       if [[ -z "$new_value" ]];then
          sed "y/ ,/\n\n/;/^$old_value/P;D" <$the_file | awk -F= '{print $NF}'
       else
-         addreplacevalue "$old_value" "$new_value" $the_file
+	if [ ! -e $the_file ];then
+	echo "$new_value" >> $the_file
+	fi
+
+      
+        addreplacevalue "$old_value" "$new_value" $the_file
       fi
 
    }
