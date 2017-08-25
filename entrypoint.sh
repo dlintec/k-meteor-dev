@@ -30,6 +30,7 @@ if [ -z "$server_url" ] ;then
    kalan-var "SERVER_URL" "$server_url"
 fi
 
+
 if [ "$APP_NAME" == "default" ]; then
    echo "Setting APP_TEMPLATE to k-react"
    export APP_TEMPLATE="k-react"
@@ -133,6 +134,10 @@ if [ ! -d /opt/application/$APP_NAME ];then
        cd /opt/application/$APP_NAME/app 
 
    fi
+   
+   if [ ! -e /opt/application/$APP_NAME/app_config.txt ];then
+      file_line_value /opt/application/$APP_NAME/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
+   fi
    echo "New application created:[$APP_NAME]"
    
    echo "    TO enter work dir for that app type: "
@@ -198,10 +203,6 @@ fi
 if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     APP_SETTINGS="$(cat /opt/application/$APP_NAME/app_settings.txt)"
     echo $APP_SETTINGS
-fi
-if [ ! -e /opt/application/$APP_NAME/app_config.txt ];then
-   
-   file_replace_line /opt/application/$APP_NAME/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
 fi
 
 if [ -d /opt/application/$APP_NAME/.maka ];then
