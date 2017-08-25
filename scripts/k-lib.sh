@@ -74,7 +74,7 @@
 
    }
    
-   function file_replace_line {
+   function file_line_value {
       
       new_value="$3"
       old_value="$2"
