@@ -14,7 +14,7 @@ if [ "$(whoami)" == "root" ];then
     echo "Creating SSL certificate (certbot)"
     echo "mail:[$ssl_mail] domain:[ssl_domain]"
     file_line_value /home/meteor/nginxconf/nginx-proxy-settings "server_name" "server_name $ssl_domain;"
-    certbot --nginx --agree-tos --email $ssl_mail -d ssl_domain
+    certbot --nginx --agree-tos -m $ssl_mail 
   fi
 else
    echo "You must be root to create SSL certificate"
