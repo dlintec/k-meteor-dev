@@ -20,7 +20,7 @@ docker exec -d --user meteor k-meteor-dev /bin/bash k drun
 docker exec -it --user meteor k-meteor-dev /bin/bash k menu
 echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
 echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
-echo "docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local" > kuninstall
+echo "docker rmi k-meteor-dev;docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local" > kuninstall
 chmod  +x kmenu
 chmod  +x kroot
 chmod  +x kuninstall
