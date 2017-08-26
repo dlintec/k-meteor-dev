@@ -4,23 +4,7 @@ the_user=$(whoami)
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 k-output "entrypoint.sh:user:$the_user" "-"
 
-server_url="$(kalan-var 'SERVER_URL')"
-if [ -z "$server_url" ] ;then
-   server_url="http://$DOMAIN_NAME"
-   kalan-var "SERVER_URL" "$server_url"
-fi
 
-ssl_mail="$(kalan-var 'SSL_MAIL')"
-if [ -z "$ssl_mail" ] ;then
-   ssl_mail="changeme"
-   kalan-var "SSL_MAIL" "$ssl_mail"
-fi
-
-ssl_domain="$(kalan-var 'SSL_DOMAIN')"
-if [ -z "$ssl_domain" ] ;then
-   ssl_domain="changeme"
-   kalan-var "SSL_DOMAIN" "$ssl_domain"
-fi
 
 if [ "$the_user" == "root" ];then
    echo ""
@@ -30,6 +14,24 @@ if [ "$the_user" == "root" ];then
    chown meteor:meteor /home/meteor/.$GIT_IMAGE.cfg
    nginx -g "daemon off;"
    exit 0
+else
+   server_url="$(kalan-var 'SERVER_URL')"
+   if [ -z "$server_url" ] ;then
+      server_url="http://$DOMAIN_NAME"
+      kalan-var "SERVER_URL" "$server_url"
+   fi
+
+   ssl_mail="$(kalan-var 'SSL_MAIL')"
+   if [ -z "$ssl_mail" ] ;then
+      ssl_mail="changeme"
+      kalan-var "SSL_MAIL" "$ssl_mail"
+   fi
+
+   ssl_domain="$(kalan-var 'SSL_DOMAIN')"
+   if [ -z "$ssl_domain" ] ;then
+      ssl_domain="changeme"
+      kalan-var "SSL_DOMAIN" "$ssl_domain"
+   fi
 fi
 
 echo "EXECUTING entrypoint"
