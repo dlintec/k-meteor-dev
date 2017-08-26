@@ -80,6 +80,10 @@ RUN  mv /etc/nginx/nginx.conf /etc/nginx/bak-nginx.conf
 COPY nginx.conf /home/meteor/nginxconf/nginx.conf
 RUN  ln -s /home/meteor/nginxconf/nginx.conf /etc/nginx/nginx.conf
 
+RUN apt-get install software-properties-common && \
+    add-apt-repository ppa:certbot/certbot && \
+    apt-get update && \
+    apt-get install python-certbot-nginx 
 
 USER meteor 
 
