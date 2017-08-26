@@ -15,24 +15,12 @@ if [ "$the_user" == "root" ];then
    nginx -g "daemon off;"
    exit 0
 else
-   server_url="$(kalan-var 'SERVER_URL')"
-   if [ -z "$server_url" ] ;then
-      server_url="http://$DOMAIN_NAME"
-      kalan-var "SERVER_URL" "$server_url"
-   fi
+   source $LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
 
-   ssl_mail="$(kalan-var 'SSL_MAIL')"
-   if [ -z "$ssl_mail" ] ;then
-      ssl_mail="changeme"
-      kalan-var "SSL_MAIL" "$ssl_mail"
-   fi
-
-   ssl_domain="$(kalan-var 'SSL_DOMAIN')"
-   if [ -z "$ssl_domain" ] ;then
-      ssl_domain="changeme"
-      kalan-var "SSL_DOMAIN" "$ssl_domain"
-   fi
 fi
+server_url="$(kalan-var 'SERVER_URL')"
+ssl_mail="$(kalan-var 'SSL_MAIL')"
+ssl_domain="$(kalan-var 'SSL_DOMAIN')"
 
 echo "EXECUTING entrypoint"
 if [[ "$DOCKER_WD" == /opt/application* ]]; then 
