@@ -14,7 +14,8 @@ if [ "$(whoami)" == "root" ];then
     echo "Creating SSL certificate (certbot)"
     echo "mail:[$ssl_mail] domain:[ssl_domain]"
     file_line_value /home/meteor/nginxconf/nginx-proxy-settings "server_name" "server_name $ssl_domain;"
-
+    file_line_value /home/meteor/nginxconf/nginx-proxy-settings "include snippets/self-signed.conf;" "#include snippets/self-signed.conf;"
+    file_line_value /home/meteor/nginxconf/nginx-proxy-settings "include snippets/ssl-params.conf;" "#include snippets/ssl-params.conf;"
     echo "#deleted self_signed.conf" > /home/meteor/nginxconf/self_signed.conf 
     echo "#ssl_certificate /home/meteor/ssl/certs/nginx-selfsigned.crt;" >> /home/meteor/nginxconf/self_signed.conf 
     echo "#ssl_certificate_key /home/meteor/ssl/certs/nginx-selfsigned.key;" >> /home/meteor/nginxconf/self_signed.conf 
