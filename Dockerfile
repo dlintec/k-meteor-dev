@@ -81,8 +81,6 @@ COPY nginx.conf /home/meteor/nginxconf/nginx.conf
 RUN  ln -s /home/meteor/nginxconf/nginx.conf /etc/nginx/nginx.conf
 
 
-RUN git clone https://github.com/letsencrypt/letsencrypt
-
 USER meteor 
 
 #RUN meteor npm install -g maka-cli && \
