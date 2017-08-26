@@ -27,7 +27,7 @@ if [ "$the_user" == "root" ];then
    echo "   Running NGINX proxy at port 80 and 443"
    #service nginx start
    k-output "entrypoint.sh:nginx:start"
-   
+   chown meteor:meteor /home/meteor/.$GIT_IMAGE.cfg
    nginx -g "daemon off;"
    exit 0
 fi
