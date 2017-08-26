@@ -10,8 +10,9 @@ RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiver
 
 RUN apt-get update && \
     apt-get install -y software-properties-common && \
-    add-apt-repository ppa:certbot/certbot && \
-    apt-get update && \
+    add-apt-repository ppa:certbot/certbot 
+    
+RUN apt-get update && \
     apt-get install -y python-certbot-nginx && \
     curl wget git python2.7 python2.7-dev build-essential \
     default-jdk whiptail vim nano nginx lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 
