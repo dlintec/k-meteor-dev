@@ -1,7 +1,7 @@
 #!/bin/bash
 echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
 echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
-echo "docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local;docker rmi k-meteor-dev" > kuninstall
+echo "docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local;docker volume rm k-meteor-dev-ssl;docker rmi k-meteor-dev" > kuninstall
 echo "docker build --tag="k-meteor-dev" --no-cache git://github.com/dlintec/k-meteor-dev" > krebuild
 chmod  +x kmenu
 chmod  +x kroot
