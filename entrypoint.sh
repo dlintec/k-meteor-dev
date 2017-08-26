@@ -14,10 +14,11 @@ if [ "$the_user" == "root" ];then
 
    nginx -g "daemon off;"
    exit 0
-else
-   $LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
+
 
 fi
+
+$LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
 server_url="$(kalan-var 'SERVER_URL')"
 ssl_mail="$(kalan-var 'SSL_MAIL')"
 ssl_domain="$(kalan-var 'SSL_DOMAIN')"
@@ -139,7 +140,8 @@ if [ ! -d /opt/application/$APP_NAME ];then
    fi
    
    if [ ! -e /opt/application/$APP_NAME/app/app_config.txt ];then
-      file_line_value /opt/application/$APP_NAME/app/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=changeme"
+      echo "MOBILE_BUILD_URL=$server_url" > /opt/application/$APP_NAME/app/app_config.txt
+      
    fi
    echo "New application created:[$APP_NAME]"
    
