@@ -25,4 +25,6 @@ else
   # /app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java
 
   meteor build /opt/application/$current_app/build --server=$mobile_build_url 
+  $LOCAL_IMAGE_PATH/scripts/k-sign.sh
+
 fi  
