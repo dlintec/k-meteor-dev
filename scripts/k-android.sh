@@ -17,7 +17,7 @@ else
    rm -rf tools_r25.2.3-linux.zip
    echo 'export ANDROID_HOME=/home/meteor/android25' >> ~/.bashrc
    echo 'export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin' >> ~/.bashrc
-   #touch ~/.android/repositories.cfg
+   touch ~/.android/repositories.cfg
    export ANDROID_HOME=/home/meteor/android25
    export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
    sdkmanager 'build-tools;25.0.3' 
