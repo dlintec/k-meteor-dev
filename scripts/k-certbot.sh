@@ -7,7 +7,7 @@ if [ "$(whoami)" == "root" ];then
   ssl_mail="$(kalan-var 'SSL_MAIL')"
   ssl_domain="$(kalan-var 'SSL_DOMAIN')"
 
-  if [ -z "$ssl_mail" ] || [ -z "$ssl_domain" ] || [ "$ssl_mail" == "changeme" ] || [ ! "$ssl_domain" == "changeme" ];then
+  if [ -z "$ssl_mail" ] || [ -z "$ssl_domain" ] || [ "$ssl_mail" == "changeme" ] || [ "$ssl_domain" == "changeme" ];then
     echo "SSL certificate can not be created"
     echo "Must define valid SSL_MAIL and SSL_DOMAIN at settings"
   else
