@@ -13,7 +13,7 @@ if [ -z "$mobile_build_url" ] || [ "$mobile_build_url" == "changeme" ] || [ "$mo
   echo "in app_config.txt file. "
   echo "MOBILE_BUILD_URL should be the IP or domain"
   echo "of the server of this app"
-  echo "MOBILE_BUILD_URL="http://myappdomain.com"
+  echo "MOBILE_BUILD_URL=http://myappdomain.com"
 else
   echo "Building app [$current_app]..."
   echo "---------------------------------------"
