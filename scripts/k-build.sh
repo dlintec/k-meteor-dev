@@ -7,7 +7,7 @@ server_url="$(kalan-var 'SERVER_URL')"
 if [ ! -e /opt/application/$current_app/app/app_config.txt ];then
   echo "MOBILE_BUILD_URL=$server_url" > /opt/application/$current_app/app/app_config.txt
 fi
-mobile_build_url="$(file_line_value /opt/application/$current_app/app/app_config.txt 'MOBILE_BUILD_URL')"
+mobile_build_url="$(file_line_value /opt/application/$current_app/app/app_config.txt 'MOBILE_BUILD_URL' )"
 if [ -z "$mobile_build_url" ] || [ "$mobile_build_url" == "changeme" ] || [ "$mobile_build_url" == "http://127.0.0.1" ] || [ "$mobile_build_url" == "http://localhost" ];then
   echo "You must define a MOBILE_BUILD_URL value"
   echo "in app_config.txt file. "
