@@ -1,7 +1,11 @@
 #!/bin/bash  
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 current_app=$(kalan-var "CURRENT_APP")
-   
+
+if [ ! -e /home/meteor/.$GIT_IMAGE.cfg ];then
+ echo "CONTAINER_NAME=$GIT_IMAGE" >> /home/meteor/.$GIT_IMAGE.cfg
+fi
+
  server_url="$(kalan-var 'SERVER_URL')"
  if [ -z "$server_url" ] ;then
     server_url="http://$DOMAIN_NAME"
