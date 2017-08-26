@@ -12,7 +12,7 @@ RUN apt-get update && \
     default-jdk whiptail vim nano nginx lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 \
     software-properties-common
     
-RUN add-apt-repository ppa:certbot/certbot 
+RUN add-apt-repository ppa:certbot/certbot && \
     apt-get update && \
     apt-get install -y python-certbot-nginx
     
