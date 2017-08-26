@@ -211,7 +211,7 @@ else
 					exit 0
 				;;
 				7) #settings
-				    settings_string=$(cat ~/.$GIT_IMAGE.cfg)
+				    settings_string=$(cat /home/meteor/.$GIT_IMAGE.cfg)
 					selected_setting=$(k-list-menu "$settings_string" "SETTINGS" "Select config variable to edit" "red")
 					if [ ! -z "$selected_setting" ];then
 						IFS='=' read -ra value_pairs <<< "$selected_setting"    #Convert string to array
