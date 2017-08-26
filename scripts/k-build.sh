@@ -2,6 +2,9 @@
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
 $LOCAL_IMAGE_PATH/scripts/k-android.sh
 
+export ANDROID_HOME=/home/meteor/android25
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
+
 current_app=$(kalan-var "CURRENT_APP")
 server_url="$(kalan-var 'SERVER_URL')"
 if [ ! -e /opt/application/$current_app/app/app_config.txt ];then
