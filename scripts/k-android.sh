@@ -4,6 +4,8 @@ current_app=$(kalan-var "CURRENT_APP")
 
 if  grep -q "ANDROID_HOME" $HOME/.bashrc; then
     echo "Android tools already installed"
+    touch ~/.android/repositories.cfg
+
 else
 
    #wget https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip 
