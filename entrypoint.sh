@@ -16,6 +16,12 @@ if [ -z "$ssl_mail" ] ;then
    kalan-var "SSL_MAIL" "$ssl_mail"
 fi
 
+ssl_domain="$(kalan-var 'SSL_DOMAIN')"
+if [ -z "$ssl_domain" ] ;then
+   ssl_domain="changeme"
+   kalan-var "SSL_DOMAIN" "$ssl_domain"
+fi
+
 if [ "$the_user" == "root" ];then
    echo ""
    echo "   Running NGINX proxy at port 80 and 443"
