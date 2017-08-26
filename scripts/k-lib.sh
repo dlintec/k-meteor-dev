@@ -58,9 +58,7 @@
 
    function kalan-var {
       new_value="$2"
-      if [ ! -e /home/meteor/.$GIT_IMAGE.cfg ];then
-       echo "CONTAINER_NAME=$GIT_IMAGE" >> /home/meteor/.$GIT_IMAGE.cfg
-      fi
+
 
       if [[ -z "$new_value" ]];then
          sed "y/ ,/\n\n/;/^$1/P;D" </home/meteor/.$GIT_IMAGE.cfg | awk -F= '{print $NF}'
