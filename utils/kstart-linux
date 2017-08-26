@@ -1,4 +1,11 @@
 #!/bin/bash
+echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
+echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
+echo "docker rmi k-meteor-dev;docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local" > kuninstall
+chmod  +x kmenu
+chmod  +x kroot
+chmod  +x kuninstall
+
 docker stop k-meteor-dev
 docker rm k-meteor-dev
 mkdir -p /opt/application/
@@ -18,9 +25,4 @@ docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 \
 docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
 docker exec -d --user meteor k-meteor-dev /bin/bash k drun
 docker exec -it --user meteor k-meteor-dev /bin/bash k menu
-echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
-echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
-echo "docker rmi k-meteor-dev;docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local" > kuninstall
-chmod  +x kmenu
-chmod  +x kroot
-chmod  +x kuninstall
+
