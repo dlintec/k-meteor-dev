@@ -5,6 +5,7 @@ clear
 echo "";echo ""
 echo "    Starting $GIT_IMAGE..."
 sleep 2
+$LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
 
 current_app=$(kalan-var "CURRENT_APP")
 if [ -z "$current_app" ];then
