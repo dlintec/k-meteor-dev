@@ -4,6 +4,9 @@ $LOCAL_IMAGE_PATH/scripts/k-android.sh
 
 current_app=$(kalan-var "CURRENT_APP")
 server_url="$(kalan-var 'SERVER_URL')"
+if [ ! -e /opt/application/$APP_NAME/app/app_config.txt ];then
+  file_line_value /opt/application/$APP_NAME/app/app_config.txt "MOBILE_BUILD_URL" "MOBILE_BUILD_URL=$server_url"
+fi
 mobile_build_url="$(file_line_value /opt/application/$current_app/app/app_config.txt 'MOBILE_BUILD_URL')"
 
 echo "Building app [$current_app]..."
