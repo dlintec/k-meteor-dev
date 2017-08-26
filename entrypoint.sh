@@ -15,7 +15,7 @@ if [ "$the_user" == "root" ];then
    nginx -g "daemon off;"
    exit 0
 else
-   source $LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
+   $LOCAL_IMAGE_PATH/scripts/k-init-conf.sh
 
 fi
 server_url="$(kalan-var 'SERVER_URL')"
