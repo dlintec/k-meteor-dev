@@ -13,6 +13,7 @@ if [ "$(whoami)" == "root" ];then
   else
     echo "Creating SSL certificate (certbot)"
     echo "mail:[$ssl_mail] domain:[ssl_domain]"
+    certbot --nginx --agree-tos --email $ssl_mail -d ssl_domain
   fi
 else
    echo "You must be root to create SSL certificate"
