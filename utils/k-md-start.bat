@@ -2,9 +2,6 @@
 
 REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
 
-
-
-
 :MENU
 	SET running_k_meteor_dev=
 
