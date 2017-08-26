@@ -66,8 +66,8 @@ RUN openssl dhparam -out /home/meteor/ssl/certs/dhparam.pem 2048
 COPY ssl-params.conf /home/meteor/nginxconf/ssl-params.conf
 RUN  ln -s /home/meteor/nginxconf/ssl-params.conf /etc/nginx/snippets/ssl-params.conf
 
-COPY self-signed.conf /home/meteor/nginxconf/self-signed.conf
-RUN  ln -s /home/meteor/nginxconf/self-signed.conf /etc/nginx/snippets/self-signed.conf
+COPY ssl-certs.conf /home/meteor/nginxconf/ssl-certs.conf
+RUN  ln -s /home/meteor/nginxconf/ssl-certs.conf /etc/nginx/snippets/ssl-certs.conf
 
 RUN  mv /etc/nginx/sites-available/default /etc/nginx/sites-available/default.bak
 
