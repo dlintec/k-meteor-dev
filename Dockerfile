@@ -9,12 +9,7 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
 RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
 RUN apt-get update && \
     apt-get install -y curl wget git python2.7 python2.7-dev build-essential \
-    default-jdk whiptail vim nano nginx lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 \
-    software-properties-common
-    
-RUN add-apt-repository ppa:certbot/certbot && \
-    apt-get update && \
-    apt-get install -y python-certbot-nginx
+    default-jdk whiptail vim nano nginx lsof zip unzip imagemagick mongodb-org language-pack-en net-tools iproute2 
     
 RUN localedef en_US.UTF-8 -i en_US -fUTF-8 
 
