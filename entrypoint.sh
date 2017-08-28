@@ -36,8 +36,8 @@ fi
 
 
 if [ "$APP_NAME" == "default" ]; then
-   echo "Setting APP_TEMPLATE to k-react"
-   export APP_TEMPLATE="k-react"
+   echo "Setting APP_TEMPLATE to dlintec"
+   export APP_TEMPLATE="dlintec"
 fi
 export APP_LOCALDB="/home/meteor/meteorlocal/$APP_NAME"
 export LINK_LOCAL="$(readlink /opt/application/$APP_NAME/app/.meteor/local)"
