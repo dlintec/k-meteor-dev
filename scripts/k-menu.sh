@@ -50,6 +50,7 @@ else
         exit_menu=0
 	while [ "$exit_menu" != 1 ]; do
 		current_app=$(kalan-var "CURRENT_APP")
+		server_url=$(kalan-var "SERVER_URL")
  		colors_normal="$(k-colors normal)"
                 echo $colors_normal > /etc/newt/palette
 		running_process="$(lsof -w -n -i tcp:3000)"
@@ -63,7 +64,7 @@ else
 		fi
 		#NEWT_COLORS="$colors_normal" 
 		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
-		--menu " MAIN MENU v$APP_VER.\n Selected:[$current_app] status:[$app_status]$apps_running user:[$(whoami)]\n $menu_status" \
+		--menu " MAIN MENU v$APP_VER. [$server_url]\n Selected:[$current_app] status:[$app_status]$apps_running user:[$(whoami)]\n $menu_status" \
 		 21 60 11 \
 		"1" "Select app" \
 		"2" "$startStop_option app " \
