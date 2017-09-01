@@ -209,7 +209,11 @@ if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     APP_SETTINGS="$(cat /opt/application/$APP_NAME/app_settings.txt)"
     echo $APP_SETTINGS
 fi
-
+settings_json=""
+if [ -e /opt/application/$APP_NAME/app/settings.json ];then
+    settings_json="--settings /opt/application/$APP_NAME/app/settings.json"
+    echo $APP_SETTINGS
+fi
 if [ -d /opt/application/$APP_NAME/.maka ];then
     echo "maka start"
   cd /opt/application/$APP_NAME
@@ -228,6 +232,6 @@ else
   #k-output "entrypoint.sh:starting:$APP_NAME" "-"
 
    export ROOT_URL=$server_url
-  meteor --mobile-server $server_url $APP_SETTINGS $APP_PARAMETERS
+  meteor --mobile-server $server_url $settings_json $APP_SETTINGS $APP_PARAMETERS
  fi
 #exit 0
