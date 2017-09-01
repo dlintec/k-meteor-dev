@@ -212,7 +212,7 @@ fi
 settings_json=""
 if [ -e /opt/application/$APP_NAME/app/settings.json ];then
     settings_json="--settings /opt/application/$APP_NAME/app/settings.json"
-    echo $APP_SETTINGS
+    echo $settings_json
 fi
 if [ -d /opt/application/$APP_NAME/.maka ];then
     echo "maka start"
