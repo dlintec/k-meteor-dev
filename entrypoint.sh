@@ -213,7 +213,8 @@ fi
 if [ -e /opt/application/$APP_NAME/app/sample_settings.json ];then
    if [ ! -e /opt/application/$APP_NAME/app/settings.json ];then
       echo "Copying to settings.json"
-      cp /opt/application/$APP_NAME/app/sample_settings.json /opt/application/$APP_NAME/app/settings.json
+      settings_str="$(cat /opt/application/$APP_NAME/app/sample_settings.json)"
+      echo "$settings_str" > /opt/application/$APP_NAME/app/settings.json
    fi
 fi
 
