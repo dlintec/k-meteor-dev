@@ -209,6 +209,13 @@ if [ -e /opt/application/$APP_NAME/app_settings.txt ];then
     APP_SETTINGS="$(cat /opt/application/$APP_NAME/app_settings.txt)"
     echo $APP_SETTINGS
 fi
+
+if [ -e /opt/application/$APP_NAME/app/sample_settings.json ];then
+   if [ ! -e /opt/application/$APP_NAME/app/settings.json ];then
+      cp /opt/application/$APP_NAME/app/sample_settings.json /opt/application/$APP_NAME/app/settings.json
+   fi
+fi
+
 settings_json=""
 if [ -e /opt/application/$APP_NAME/app/settings.json ];then
     settings_json="--settings /opt/application/$APP_NAME/app/settings.json"
