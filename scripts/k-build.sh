@@ -29,6 +29,12 @@ else
 
   meteor build /opt/application/$current_app/build --server=$mobile_build_url 
   $LOCAL_IMAGE_PATH/scripts/k-sign.sh
-  cp -rf /opt/application/$current_app/build/android/release-unsigned.apk /opt/application/$current_app/app/public/release-unsigned.apk
+  if [ ! -e /opt/application/$current_app/app/app_config.txt ];then
+      echo "removind previous APK"
+      rm -rf /opt/application/$current_app/build/android/release-unsigned.apk
+  fi
+  echo "Copying APK to /opt/application/$current_app/app/public/release-unsigned.apk"
+  
+  cp  /opt/application/$current_app/build/android/release-unsigned.apk /opt/application/$current_app/app/public/release-unsigned.apk
 
 fi  
