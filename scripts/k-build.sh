@@ -29,7 +29,7 @@ else
 
   meteor build /opt/application/$current_app/build --server=$mobile_build_url 
   $LOCAL_IMAGE_PATH/scripts/k-sign.sh
-  if [ ! -e /opt/application/$current_app/app/app_config.txt ];then
+  if [ -e /opt/application/$current_app/build/android/release-unsigned.apk ];then
       echo "removind previous APK"
       rm -rf /opt/application/$current_app/build/android/release-unsigned.apk
   fi
