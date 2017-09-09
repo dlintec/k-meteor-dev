@@ -1,30 +1,38 @@
 #!/bin/bash
-echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
-echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
-echo "docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local;docker volume rm k-meteor-dev-ssl" > kuninstall
-echo "docker build --tag="k-meteor-dev" --no-cache git://github.com/dlintec/k-meteor-dev" > krebuild
-chmod  +x kmenu
-chmod  +x kroot
-chmod  +x kuninstall
-chmod  +x krebuild
+#kstart-linux
+main() {
+  param1="$1"
+  echo "docker exec -it --user meteor k-meteor-dev /bin/bash k menu" > kmenu
+  echo "docker exec -it --user root k-meteor-dev /bin/bash" > kroot
+  echo "docker stop k-meteor-dev;docker rm k-meteor-dev;docker volume rm k-meteor-dev-local;docker volume rm k-meteor-dev-ssl" > kuninstall
+  echo "docker build --tag="k-meteor-dev" --no-cache git://github.com/dlintec/k-meteor-dev" > krebuild
+  chmod  +x kmenu
+  chmod  +x kroot
+  chmod  +x kuninstall
+  chmod  +x krebuild
 
-docker stop k-meteor-dev
-docker rm k-meteor-dev
-mkdir -p /opt/application/
-docker volume create --name k-meteor-dev-local
-docker volume create --name k-meteor-dev-ssl
-echo "Creating image..."
-docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
-echo "Starting container..."
+  docker stop k-meteor-dev
+  docker rm k-meteor-dev
+  mkdir -p /opt/application/
+  docker volume create --name k-meteor-dev-local
+  docker volume create --name k-meteor-dev-ssl
+  echo "Creating image..."
+  docker build --tag="k-meteor-dev" git://github.com/dlintec/k-meteor-dev
+  echo "Starting container..."
 
-docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 \
-  -v /opt/application://opt/application \
-  -v  k-meteor-dev-local://home/meteor \
-  -v  k-meteor-dev-ssl://etc/letsencrypt \
-  --restart always \
-  k-meteor-dev
-  
-docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
-docker exec -d --user meteor k-meteor-dev /bin/bash k drun
-docker exec -it --user meteor k-meteor-dev /bin/bash k menu
+  docker run -d --name k-meteor-dev --user root -p 80:80 -p 443:443 \
+    -v /opt/application://opt/application \
+    -v  k-meteor-dev-local://home/meteor \
+    -v  k-meteor-dev-ssl://etc/letsencrypt \
+    --restart always \
+    k-meteor-dev
 
+  docker exec -it --user root k-meteor-dev chown -Rh meteor /opt/application
+  if [ ! "$param1" == "-i" ] ;then
+    docker exec -d --user meteor k-meteor-dev /bin/bash k drun
+  fi
+  docker exec -it --user meteor k-meteor-dev /bin/bash k menu
+
+}
+
+main "$@"
