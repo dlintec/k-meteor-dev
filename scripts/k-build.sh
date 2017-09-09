@@ -27,8 +27,9 @@ else
   # modificar archivo de cordova para aceptar certificados autofirmados
   # cd /opt/application/android/app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine
   # /app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java
-
+  echo "STARTING BUILD"
   meteor build /opt/application/$current_app/build --server=$mobile_build_url 
+  echo "BUILD COMMAND EXECUTED"
   if [ -e /opt/application/$current_app/build/android/release-unsigned.apk ];then
     echo "BUILDED APK found."
     $LOCAL_IMAGE_PATH/scripts/k-sign.sh
