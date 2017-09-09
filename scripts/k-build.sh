@@ -1,5 +1,6 @@
 #!/bin/bash  
 source $LOCAL_IMAGE_PATH/scripts/k-lib.sh
+meteor remove-platform android
 $LOCAL_IMAGE_PATH/scripts/k-android.sh
 
 export ANDROID_HOME=/home/meteor/android25
