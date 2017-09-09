@@ -25,7 +25,7 @@ if [ "$(whoami)" == "root" ];then
     certbot --nginx --agree-tos -m $ssl_mail 
 
     file_line_value /home/meteor/nginxconf/nginx-proxy-settings "include snippets/self-signed.conf;" "#include snippets/self-signed.conf;"
-
+    certbot --nginx
   fi
 else
    echo "You must be root to create SSL certificate"
