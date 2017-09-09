@@ -84,7 +84,7 @@ RUN  ln -s /home/meteor/nginxconf/nginx.conf /etc/nginx/nginx.conf
 RUN apt-get install -y software-properties-common && \
     add-apt-repository ppa:certbot/certbot && \ 
     apt-get update && \
-    apt-get install -y python-certbot-nginx 
+    apt-get install -y python-certbot-nginx gradle
 
 USER meteor 
 
