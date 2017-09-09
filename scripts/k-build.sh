@@ -29,13 +29,17 @@ else
   # /app/.meteor/local/cordova-build/platforms/android/CordovaLib/src/org/apache/cordova/engine/SystemWebViewClient.java
 
   meteor build /opt/application/$current_app/build --server=$mobile_build_url 
-  $LOCAL_IMAGE_PATH/scripts/k-sign.sh
-  if [ -e /opt/application/$current_app/app/public/release-unsigned.apk ];then
-      echo "removind previous APK /opt/application/$current_app/app/public/release-unsigned.apk"
-      rm -rf /opt/application/$current_app/app/public/release-unsigned.apk
-  fi
-  echo "Copying APK to /opt/application/$current_app/app/public/release-unsigned.apk"
-  
-  cp -rf /opt/application/$current_app/build/android/release-unsigned.apk /opt/application/$current_app/app/public/release-unsigned.apk
+  if [ -e /opt/application/$current_app/build/android/release-unsigned.apk ];then
+    echo "BUILDED APK found."
+    $LOCAL_IMAGE_PATH/scripts/k-sign.sh
+    if [ -e /opt/application/$current_app/app/public/release-unsigned.apk ];then
+        echo "removind previous APK /opt/application/$current_app/app/public/release-unsigned.apk"
+        rm -rf /opt/application/$current_app/app/public/release-unsigned.apk
+    fi
+    echo "Copying APK to /opt/application/$current_app/app/public/release-unsigned.apk"
 
+    cp -rf /opt/application/$current_app/build/android/release-unsigned.apk /opt/application/$current_app/app/public/release-unsigned.apk
+  else
+    echo "No APK found."
+  fi
 fi  
