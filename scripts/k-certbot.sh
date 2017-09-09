@@ -12,7 +12,7 @@ if [ "$(whoami)" == "root" ];then
     echo "Must define valid SSL_MAIL and SSL_DOMAIN at settings"
   else
     echo "Creating SSL certificate (certbot)"
-    echo "mail:[$ssl_mail] domain:[ssl_domain]"
+    echo "mail:[$ssl_mail] domain:[$ssl_domain]"
     file_line_value /home/meteor/nginxconf/nginx-proxy-settings "server_name" "server_name $ssl_domain;"
     file_line_value /home/meteor/nginxconf/nginx-proxy-settings "include snippets/self-signed.conf;" "#include snippets/self-signed.conf;"
     
