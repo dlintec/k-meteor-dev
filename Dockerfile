@@ -6,7 +6,8 @@ ENV TERM=xterm
 USER root
 
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+# before was mongo 3.2
+RUN echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 
 RUN apt-get update && \
     apt-get install -y apt-utils curl wget git python2.7 python2.7-dev build-essential software-properties-common \
