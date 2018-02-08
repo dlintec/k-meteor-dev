@@ -1,6 +1,6 @@
 @Echo Off
 
-REM meteor-dev - Docker container for meteor development (2017 Tadeo Gutierrez)
+REM meteor-dev - Docker container for meteor development (2018 Tadeo Gutierrez) v.2.1 20180207
 
 :MENU
 	SET running_k_meteor_dev=
