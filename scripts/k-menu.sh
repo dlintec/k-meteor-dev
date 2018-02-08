@@ -63,7 +63,7 @@ else
 		   startStop_option="Stop"
 		fi
 		#NEWT_COLORS="$colors_normal" 
-		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE v1.0.2c " \
+		OPTIONS=$(whiptail --title " Kalan $GIT_IMAGE " \
 		--menu " MAIN MENU v$APP_VER. $server_url\n Selected:[$current_app] status:[$app_status]$apps_running user:[$(whoami)]\n $menu_status" \
 		 21 60 11 \
 		"1" "Select app" \
