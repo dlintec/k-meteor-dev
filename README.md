@@ -36,7 +36,8 @@ Mac:
 
 a) Download and Install Docker for Mac:
 
-- <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package</a>
+- <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package (stable)</a>
+- <a href="https://download.docker.com/mac/edge/Docker.dmg" target="_blank">Docker for Mac install package (edge)</a>
 
 b) Copy the following command in a new console and press enter:
 
