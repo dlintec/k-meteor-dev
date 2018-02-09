@@ -39,6 +39,8 @@ a) Download and Install Docker for Mac:
 - <a href="https://download.docker.com/mac/stable/Docker.dmg" target="_blank">Docker for Mac install package (stable)</a>
 - <a href="https://download.docker.com/mac/edge/Docker.dmg" target="_blank">Docker for Mac install package (edge)</a>
 
+Note: Choose either versions (stable or edge). Try stable first. If you experience problems, uninstall it and try with the edge version.
+
 b) Copy the following command in a new console and press enter:
 
     curl https://raw.githubusercontent.com/dlintec/k-meteor-dev/master/utils/kstart-mac > $HOME/kstart;chmod +x $HOME/kstart;mkdir -p $HOME/Desktop/k-meteor-dev
@@ -59,7 +61,7 @@ a) Install Docker for Windows
 -[Docker for Windows Installer (stable)](https://download.docker.com/win/stable/Docker%20for%20Windows%20Installer.exe)  
 -[Docker for Windows Installer (edge)](https://download.docker.com/win/edge/Docker%20for%20Windows%20Installer.exe)  
 
-
+Note: Choose either versions (stable or edge). Try stable first. If you experience problems, uninstall it and try with the edge version.
 
 The new version of docker (Native windows virtualization for Hyper-V) works on windows 10 Professional. 
 
